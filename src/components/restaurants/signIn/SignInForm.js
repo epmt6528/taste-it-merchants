@@ -8,15 +8,15 @@ const styles = theme => ({
   textField: {
     display: 'flex',
     margin: theme.spacing.unit,
-    width: '50%'
+    width: '50%',
   },
   button: {
     margin: theme.spacing.unit
   }
 })
 
-const SignInForm = () => (
-  <form>
+const SignInForm = (props) => (
+  <form className="signIn-form">
     <TextField
     //   className={props.classes.textField}
       label='Email'
@@ -26,7 +26,7 @@ const SignInForm = () => (
       variant='outlined'
       InputLabelProps={{
         required: true,
-        color: 'white',
+        color: 'primary',
         shrink: true
       }}
     />

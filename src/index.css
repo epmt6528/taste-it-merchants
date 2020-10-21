@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@font-face {
+  font-family: 'Nexa';
+  src: local('Nexa'), url(./fonts/Nexa/NexaRegular.otf) format('truetype');
+}
+body {
+  font-family: 'Nexa';
+}
