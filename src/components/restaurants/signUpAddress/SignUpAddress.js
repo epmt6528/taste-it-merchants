@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SignUpAddressForm from "./SignUpAddressForm";
 import Container from "@material-ui/core/Container";
+import "./signUpAddress.css"
 
 class SignUpAddress extends Component {
   render() {

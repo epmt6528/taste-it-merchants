@@ -1,105 +1,17 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import { useForm, Form } from "../useForm";
 import Controls from "../../controls/Controls";
 import * as provinceService from "../provinceService";
 import * as cityService from "../cityService";
-
-// const useStyles = makeStyles((theme: Theme) =>
-//   createStyles({
-//     formControl: {
-//       margin: theme.spacing(1),
-//       minWidth: 120,
-//     },
-//     selectEmpty: {
-//       marginTop: theme.spacing(2),
-//     },
-//   }),
-// );
-
-// const styles = theme => ({
-//   textField: {
-//     display: 'flex',
-//     margin: theme.spacing.unit,
-//     width: '50%'
-//   },
-//   button: {
-//     margin: theme.spacing.unit
-//   }
-// })
-// const handleChange = (event) => {
-//   const {name, value, type, checked} = event.target
-//   this.setState({ [name]: value })
-// }
-// const [province] = React.useState('');
-
-// const SignUpAddressForm = (props) => (
-
-//   <form className="signUp-address-form">
-//     <FormControl variant="outlined"
-//     // className={classes.formControl}
-//     >
-//         <InputLabel id="outlined-label-province">Province</InputLabel>
-//         <Select
-//           labelId="outlined-label-province"
-//           id="select-outlined-province"
-//           // value={province}
-//           onChange={handleChange}
-//           label="Province"
-//         >
-//           <MenuItem value="">
-//             <em>None</em>
-//           </MenuItem>
-//           <MenuItem value={"British Columbia"}>British Columbia</MenuItem>
-//           <MenuItem value={"Alberta"}>Alberta</MenuItem>
-//           <MenuItem value={"Ontario"}>Ontario</MenuItem>
-//         </Select>
-//       </FormControl>
-
-//     <TextField
-//     //   className={props.classes.textField}
-//       label='Phone Number'
-//       margin='normal'
-//       name='phone-number'
-//       type='number'
-//       variant='outlined'
-//       InputLabelProps={{
-//         required: true,
-//         shrink: true
-//       }}
-//     />
-//     <TextField
-//     //   className={props.classes.textField}
-//       label='Restaurant Description'
-//       margin='normal'
-//       name='restaurant-description'
-//       type='text'
-//       multiline
-//       rows={4}
-//       variant='outlined'
-//       InputLabelProps={{
-//         required: true,
-//         shrink: true
-//       }}
-//     />
-//     <Button
-//     //   className={props.classes.button}
-//       color='primary'
-//       type='submit'
-//       variant='contained'
-//     >
-//       Next
-//     </Button>
-//   </form>
-// )
-
-// export default withStyles(styles)(SignUpAddressForm)
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { getJwtToken } from "../../getJwt";
+import axios from "axios"
 
 ////////////Using hooks
 
 const initialFValues = {
-  id: 0,
   address: "",
   postcode: "",
   provinceNameId: "",
@@ -107,87 +19,137 @@ const initialFValues = {
 };
 
 export default function SignUpAddressForm() {
-  const validate = (fieldValues = values) => {
-    let temp = { ...errors };
-    if ("address" in fieldValues)
-      temp.address = fieldValues.address ? "" : "This field is required.";
-    if ("postcode" in fieldValues)
-      temp.postcode = fieldValues.postcode ? "" : "This field is required.";
-    if ("provinceNameId" in fieldValues)
-      temp.provinceNameId =
-        fieldValues.provinceNameId.length != 0 ? "" : "This field is required.";
-    if ("cityNameId" in fieldValues)
-      temp.cityNameId =
-        fieldValues.cityNameId.length != 0 ? "" : "This field is required.";
+  const history = useHistory();
+let province = {
+    
+      1: 'British Columbia',
+      2: 'Alberta',
+      3: 'Ontario',
+      4: 'Schatchwan'
+  
+}
+let city = {
+    
+  1: 'Vancouver',
+  2: 'Richmond',
+  3: 'Surrey',
+  4: 'Burnaby'
 
-    setErrors({
-      ...temp,
-    });
+}
+  // const validate = (fieldValues = values) => {
+  //   let temp = { ...errors };
+  //   if ("address" in fieldValues)
+  //     temp.address = fieldValues.address ? "" : "This field is required.";
+  //   if ("postcode" in fieldValues)
+  //     temp.postcode = fieldValues.postcode ? "" : "This field is required.";
+  //   if ("provinceNameId" in fieldValues)
+  //     temp.provinceNameId =
+  //       fieldValues.provinceNameId.length !== 0 ? "" : "This field is required.";
+  //   if ("cityNameId" in fieldValues)
+  //     temp.cityNameId =
+  //       fieldValues.cityNameId.length !== 0 ? "" : "This field is required.";
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
-  };
- 
+  //   setErrors({
+  //     ...temp,
+  //   });
+
+  //   if (fieldValues === values) return Object.values(temp).every((x) => x === "");
+  // };
+
   const {
     values,
     setValues,
-    errors,
-    setErrors,
+    // errors,
+    // setErrors,
     handleInputChange,
     resetForm,
-  } = useForm(initialFValues, true, validate);
+  } = useForm(
+    initialFValues
+    // , true, validate
+  );
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        if (validate()){
-            // provinceService.insertEmployee(values)
-            window.alert("done")
-            resetForm()
-        }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // if (validate()){
+
+    const jwt = getJwtToken();
+    if (!jwt) {
+      history.push("/signIn");
     }
+    const elements = {
+      address: values.address,
+      postcode: values.postcode,
+      provinceName: values.provinceNameId,
+      cityName: values.cityNameId
+    };
+    axios
+      .post("http://localhost:5000/api/restaurants/address", elements, {
+        headers: { 'Authorization': `${jwt}` },
+      })
+      .then((res) => {
+        console.log("done in address");
+        // console.log(props);
+        history.push("/welcome");
+      })
+      .catch((err) => {
+        console.log(err);
+        localStorage.removeItem("jwt-token");
+        history.push("/signIn");
+      });
+    window.alert("done");
+    resetForm();
+    // }
+  };
 
   return (
-    <Form
-      onSubmit={handleSubmit}
-    >
+    <Form onSubmit={handleSubmit}>
       <Grid container>
         <Grid item xs={12}>
           <Controls.SelectControl
             name="provinceNameId"
             label="Province"
-            value={values.provinceNameId}
+            value={province[values.provinceNameId]}
             onChange={handleInputChange}
             options={provinceService.getProvinceCollection()}
-            error={errors.provinceNameId}
+            inputlabelprops={{
+              required: true,
+            }}
+            // error={errors.provinceNameId}
           />
           <Controls.SelectControl
             name="cityNameId"
             label="City"
-            value={values.cityNameId}
+            value={city[values.cityNameId]}
             onChange={handleInputChange}
             options={cityService.getCityCollection()}
-            error={errors.cityNameId}
+            inputlabelprops={{
+              required: true,
+            }}
+            // error={errors.cityNameId}
           />
           <Controls.TextFieldControl
             name="address"
             label="Address"
             value={values.address}
             onChange={handleInputChange}
-            error={errors.address}
+            inputlabelprops={{
+              required: true,
+            }}
+            // error={errors.address}
           />
           <Controls.TextFieldControl
             label="Postal Code"
             name="postcode"
             value={values.postcode}
             onChange={handleInputChange}
-            error={errors.postcode}
+            inputlabelprops={{
+              required: true,
+            }}
+            // error={errors.postcode}
           />
 
           <div>
             <Controls.ButtonControl type="submit" text="Submit" />
-            {/* <Controls.ButtonControl
-                          text="Reset"
-                          color="default"
-                          onClick={resetForm} /> */}
           </div>
         </Grid>
       </Grid>

@@ -2,7 +2,7 @@ import React from 'react';
 import HamburgerButton from './Hamburger'
 import { NavLink } from 'react-router-dom'
 
-// import LogoImage from '../../../img/lair-logo.png'
+// import LogoImage from '../../../img/Logo.svg'
 import {Link} from 'react-scroll'
 
 // const ScrollLink = Scroll.ScrollLink
@@ -15,8 +15,8 @@ const toolbar = props => (
     <header className="toolbar">
         <nav className="toolbar-nav">
             <div onClick={refreshPage} className="site-logo">
-                {/*<Link><img alt="Logo-Image" /></Link>*/}
-                <img alt="Logo" />
+                <Link to="/"><img alt="Logo" /></Link>
+                
             </div>
             
             <div>

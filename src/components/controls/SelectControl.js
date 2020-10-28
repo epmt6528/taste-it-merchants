@@ -3,7 +3,7 @@ import { FormControl, InputLabel, Select, MenuItem, FormHelperText } from '@mate
 
 const SelectControl = (props) => {
     
-    const { name, label, value,error=null, onChange, options } = props;
+    const { name, label, value,error=null, onChange, options, ...other } = props;
     
     return (
         <FormControl variant="outlined"
@@ -13,7 +13,9 @@ const SelectControl = (props) => {
                 label={label}
                 name={name}
                 value={value}
-                onChange={onChange}>
+                onChange={onChange}
+                {...other}
+                >
                 <MenuItem value="">None</MenuItem>
                 {
                     options.map(

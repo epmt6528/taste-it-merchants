@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import SignUpForm from "./SignUpForm";
+import "./signUp.css"
 
 class SignUp extends Component {
   render() {
     return (
-      <div className="signUp-main">
-        <Grid container spacing={0}>
+      <div className="signUp-wrapper">
+        <Grid container spacing={0} className="signUp-main">
           <Grid item xs={12} className="image-container">
             <img alt="logo" />
           </Grid>

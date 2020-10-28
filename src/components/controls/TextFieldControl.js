@@ -3,7 +3,7 @@ import { TextField } from '@material-ui/core';
 
 export default function TextFieldControl(props) {
 
-    const { name, label, value,error=null, onChange } = props;
+    const { name, label, value,error=null, onChange, ...other } = props;
     return (
         <TextField
             variant="outlined"
@@ -12,6 +12,7 @@ export default function TextFieldControl(props) {
             value={value}
             onChange={onChange}
             {...(error && {error:true,helperText:error})}
+            {...other}
         />
     )
 }

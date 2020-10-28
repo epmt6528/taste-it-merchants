@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import SignInForm from "./SignInForm";
 import { Link } from "react-router-dom";
+import "./signIn.css"
 
 class SignIn extends Component {
   render() {
     return (
-      <div className="signIn-main">
-        <Grid container spacing={0}>
+      <div className="signIn-wrapper">
+        <Grid container spacing={0} className="signIn-main">
           <Grid item xs={12} className="image-container">
             <img alt="logo"  />
           </Grid>
