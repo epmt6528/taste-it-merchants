@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import {Link as Scroll} from 'react-scroll'
 import { NavLink } from 'react-router-dom'
 // import { render } from '@testing-library/react'
+// import SiteLogo from "../../img/Logo.svg"
 
 const MobileMenu = props => {
 
@@ -22,9 +23,10 @@ const MobileMenu = props => {
     return (
         <div className={mobileMenuClasses}>
             <div className="mobile-menu-head">
-                {/* <Logo /> */}
+                 {/* <SiteLogo />  */}
                 Logo
             </div>
+            
             <nav className="mobile-menu-nav">
                 <ul>
                     <li onClick={refreshPage}><Link to="/">Home</Link></li>

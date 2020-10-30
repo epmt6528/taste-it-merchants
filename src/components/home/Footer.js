@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Footer.css"
 
 class Footer extends Component {
   render() {
@@ -8,9 +9,9 @@ class Footer extends Component {
                 <Link to="/"><img src={LogoImage} alt="Logo"/></Link>
                 </div> */}
 
-        <div className="footer-content1">
+
           <img alt="Logo" />
-        </div>
+
         <div className="footer-content2">
           <h2>About Us</h2>
           <p>
@@ -21,19 +22,18 @@ class Footer extends Component {
         </div>
         <div className="footer-content3">
           <ul className="content3-list">
-            <li>
-              <h2>Design Assets</h2>
-            </li>
+
+              <h3>Design Assets</h3>
+
             <li>Marketing Materials</li>
             <li>Promotional Videos</li>
             <li>Project Proposal</li>
           </ul>
-        </div>
-        <div className="footer-content4">
+
           <ul className="content4-list">
-            <li>
-              <h2>Development Assets</h2>
-            </li>
+
+              <h3>Development Assets</h3>
+
             <li>Tech Stacks</li>
             <li>GitHub Repository</li>
           </ul>

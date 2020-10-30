@@ -1,13 +1,15 @@
 import React, {Component} from 'react'
+import SquareImage from "../../img/ForEverySquareImages.png"
+import "./TeamCard.css"
 // import {Link} from "react-router-dom";
 
 class TeamCard extends Component {
     render() {
         return (
             <div className="team-card">
-                <div className="team-card-image">
-                    <img alt="Team Card"/>
-                </div>
+
+                    <img src={SquareImage} alt="Team Card"/>
+
                 <div className="team-card-name">
                     <h1>{this.props.about.name}</h1>
                 </div>

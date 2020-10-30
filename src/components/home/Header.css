@@ -1,0 +1,6 @@
+.mobile-menu {
+    display: flex;
+    max-width: 90%;
+    justify-content: space-between;
+    margin: auto;
+}
