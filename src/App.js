@@ -12,6 +12,7 @@ import Welcome from "./components/restaurants/welcome/Welcome";
 import AuthenticationComp from "./components/AuthenticationComp";
 
 import Menus from "./components/restaurants/menus/Menus";
+import MenuDetail from "./components/restaurants/menus/MenuDetail";
 
 function App() {
   return (
@@ -27,7 +28,9 @@ function App() {
             <Route path="/signUpAddress" component={SignUpAddress} />
             <Route path="/signUpAbout" exact component={SignUpAbout} />
             <Route path="/welcome" component={Welcome} />
+
             <Route path="/menus" exact component={Menus} />
+            <Route path="/menus/detail" exact component={MenuDetail} />
           </AuthenticationComp>
           
 

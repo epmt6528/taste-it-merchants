@@ -95,13 +95,14 @@ class Menus extends Component {
         {
           this.state.menus.map(
             menu => {
-              const {menuID, menuName, pictureURI} = menu
+              const {menuID, menuName, pictureURI, menuDescription, price} = menu
               return (
                 <MenuCard 
                   key={menuID}
                   id={menuID}
                   name={menuName}
-                  imgURI={pictureURI}
+                  menuDescription={menuDescription}
+                  price={price}
                 />
               )
             }
