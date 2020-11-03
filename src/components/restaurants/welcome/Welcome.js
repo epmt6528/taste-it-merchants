@@ -55,7 +55,7 @@ class Welcome extends Component {
         <Container fixed className="welcome-main">
           <img alt="logo" />
           <h2>{items.restaurantName}</h2>
-          <h1>Welcome Abroad!</h1>
+          <h1>Welcome Aboard!</h1>
           <p>Ready to do e-commerce your way?</p>
           <p>
             Tackle the complexity of growing your business and selling
