@@ -11,6 +11,8 @@ import SignUpAddress from "./components/restaurants/signUpAddress/SignUpAddress"
 import Welcome from "./components/restaurants/welcome/Welcome";
 import AuthenticationComp from "./components/AuthenticationComp";
 
+import Menus from "./components/restaurants/menus/Menus";
+
 function App() {
   return (
     <Router>
@@ -20,14 +22,13 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/signIn" component={SignIn} />
           <Route path="/signUp" exact component={SignUp} />
-
           
           <AuthenticationComp>
-          <Route path="/signUpAddress" component={SignUpAddress} />
+            <Route path="/signUpAddress" component={SignUpAddress} />
             <Route path="/signUpAbout" exact component={SignUpAbout} />
             <Route path="/welcome" component={Welcome} />
+            <Route path="/menus" exact component={Menus} />
           </AuthenticationComp>
-          
           
 
           {/* <Route path="" component={NotFound} />

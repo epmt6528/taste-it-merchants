@@ -29,8 +29,8 @@ class AuthenticationComp extends Component {
         console.log("here in auth comp");
       })
       .catch((err) => {
-        localStorage.removeItem("jwt-token");
-        this.props.history.push("/signIn");
+        // localStorage.removeItem("jwt-token");
+        // this.props.history.push("/signIn");
       });
   }
 
