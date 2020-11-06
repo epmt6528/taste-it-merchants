@@ -10,9 +10,7 @@ import SignUpAbout from "./components/restaurants/signUpAbout/SignUpAbout";
 import SignUpAddress from "./components/restaurants/signUpAddress/SignUpAddress";
 import Welcome from "./components/restaurants/welcome/Welcome";
 import AuthenticationComp from "./components/AuthenticationComp";
-
-import Menus from "./components/restaurants/menus/Menus";
-import MenuDetail from "./components/restaurants/menus/MenuDetail";
+import Navigation from "./components/restaurants/navigation/Navigation";
 
 function App() {
   return (
@@ -28,11 +26,8 @@ function App() {
             <Route path="/signUpAddress" component={SignUpAddress} />
             <Route path="/signUpAbout" exact component={SignUpAbout} />
             <Route path="/welcome" component={Welcome} />
-
-            <Route path="/menus" exact component={Menus} />
-            <Route path="/menus/detail" exact component={MenuDetail} />
+            <Route path="/restaurant/activeOrders" component={Navigation} />
           </AuthenticationComp>
-          
 
           {/* <Route path="" component={NotFound} />
           <Route path="*" component={NotFound} />

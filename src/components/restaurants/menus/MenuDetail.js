@@ -5,9 +5,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Button } from '@material-ui/core';
 
+import {Link} from 'react-router-dom';
 
 import {makeStyles} from '@material-ui/core/styles'
-import ChoiceContainer from "./ChoiceContainer";
+import ChoiceContainer from "./components/ChoiceContainer";
 
 const getStyles = makeStyles(theme => ({
   media: {
@@ -19,12 +20,17 @@ const getStyles = makeStyles(theme => ({
 
 const MenuDetail = props =>{
   const classes = getStyles()
-
-  const {id, name, description, price} = props.location.state
+  const {id, name, description, price, rName} = props.location.state
+  
+  // Number => dollar currency format
+  const formatter = new Intl.NumberFormat('ja-JP', {
+    style: 'currency',
+    currency: 'USD'
+  });
 
   return(
-    <>
-      <p>Hi Anh and Chi, let's customize your menu now</p>
+    <div>
+      <Typography>Hi {rName}, let's customize your menu now</Typography>
       <Typography>Dish Detail</Typography>
 
       <Card>
@@ -39,13 +45,28 @@ const MenuDetail = props =>{
               {description}
             </Typography>
             <Typography>Price</Typography>
-            <Typography>{price}</Typography>
+            <Typography>{formatter.format(price)}</Typography>
           </CardContent>
+          
         <ChoiceContainer menuId={id} />
-        <Button>Edit Dish</Button>
+
+        <Link 
+          to={{
+            pathname:`/restaurant/menus/edit/${id}`,
+            state: {
+              id: id,
+              dishName: name,
+              dishDescription: description,
+              dishPrice: price,
+              rName: rName
+            }}}
+        >
+          <Button>Edit Dish</Button>
+        </Link>
+        
         <Button>Remove Dish</Button>
       </Card>
-    </>
+    </div>
   )
 };
 

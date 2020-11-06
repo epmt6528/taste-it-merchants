@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 
 const TabPanel = (props) => {
@@ -26,9 +28,17 @@ const TabPanel = (props) => {
           {
             props.choices.map(
               choice => {
-                const {choiceDescription} = choice
+                const {choiceDescription, checked} = choice
                 return (
-                  <ListItem>{choiceDescription}</ListItem>
+                  <ListItem>
+                    <FormControlLabel
+                      checked={checked}
+                      value={choiceDescription}
+                      control={<Checkbox color="primary" />}
+                      label={choiceDescription}
+                      labelPlacement="start"
+                    />
+                  </ListItem>
                 )
               }
             )

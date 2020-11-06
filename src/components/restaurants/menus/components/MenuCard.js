@@ -19,21 +19,22 @@ const getStyles = makeStyles(theme => ({
 
 const MenuCard = props =>{
   const classes = getStyles()
-  const {id, name, menuDescription, price} = props
+  const {id, name, menuDescription, price, rName} = props
 
   return(
     <Link 
       to={{
-        pathname:`/menus/detail`,
+        pathname:`/restaurant/menus/detail/${id}`,
         state: {
           id: id,
           name: name,
           description: menuDescription,
-          price: price 
+          price: price ,
+          rName: rName
         }
       }}>
       <Card key={id}>
-        <CardMedia image={`http://localhost:5000/api/menus/image/${id}`} className={classes.media}/>
+        <CardMedia image={`http://localhost:5000/api/menus/image/${id}`} className={classes.media} />
         <CardHeader title={name}/>
       </Card>
     </Link>

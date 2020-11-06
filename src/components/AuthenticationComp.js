@@ -3,6 +3,8 @@ import { getJwtToken } from "./getJwt";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
+import Navigation from './restaurants/navigation/Navigation'
+
 class AuthenticationComp extends Component {
   constructor(props) {
     super(props);
@@ -43,7 +45,11 @@ class AuthenticationComp extends Component {
       );
     }
 
-    return <div>{this.props.children}</div>;
+    return (
+      <>
+        <div>{this.props.children}</div>
+      </>
+    )
   }
 }
 

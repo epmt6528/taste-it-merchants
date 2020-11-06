@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import MenuCard from "./MenuCard";
+import MenuCard from "./components/MenuCard";
 
 import Grid from "@material-ui/core/Grid";
 import { Button } from '@material-ui/core';
@@ -95,7 +95,7 @@ class Menus extends Component {
         {
           this.state.menus.map(
             menu => {
-              const {menuID, menuName, pictureURI, menuDescription, price} = menu
+              const {menuID, menuName, menuDescription, price} = menu
               return (
                 <MenuCard 
                   key={menuID}
@@ -103,6 +103,7 @@ class Menus extends Component {
                   name={menuName}
                   menuDescription={menuDescription}
                   price={price}
+                  rName={rName}
                 />
               )
             }
