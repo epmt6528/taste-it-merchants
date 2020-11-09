@@ -2,26 +2,26 @@ import React from "react";
 import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles'
 
-import MenuEditor from "./components/MenuEditor";
+import MenuCreator from "./components/MenuCreator";
 
 // const getStyles = makeStyles(theme => ({
 //   root: {},
 // }))
 
 
-const EditDish = props =>{
+const AddDish = props =>{
   // const classes = getStyles()
-  const {id, dishName, dishDescription, dishPrice, rName} = props.location.state
+  const {rName} = props.location.state
 
   return(
     <>
       <Typography>Hi {rName}, let's customize your menu now</Typography>
-      <Typography>Edit Dish</Typography>
+      <h1>Add New Dish</h1>
 
-      <MenuEditor id={id} dishName={dishName} dishDescription={dishDescription} dishPrice={dishPrice}/>
+      <MenuCreator />
     </>
   )
 };
 
 
-export default EditDish;
+export default AddDish;

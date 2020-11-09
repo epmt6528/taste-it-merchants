@@ -26,7 +26,7 @@ function App() {
             <Route path="/signUpAddress" component={SignUpAddress} />
             <Route path="/signUpAbout" exact component={SignUpAbout} />
             <Route path="/welcome" component={Welcome} />
-            <Route path="/restaurant/activeOrders" component={Navigation} />
+            <Route path="/restaurant" component={Navigation} />
           </AuthenticationComp>
 
           {/* <Route path="" component={NotFound} />

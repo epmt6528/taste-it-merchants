@@ -11,8 +11,6 @@ const ChoiceTabs = props =>{
 
   const { cuisineType, allergy, dietType, spicyLevel } = props;
 
-  console.log(cuisineType)
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

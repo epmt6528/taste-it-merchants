@@ -9,6 +9,7 @@ import { TextField } from "@material-ui/core";
 import axios from 'axios';
 
 import { getJwtToken } from "../../getJwt";
+import { Link } from 'react-router-dom';
 
 class Menus extends Component {
   state = {
@@ -32,7 +33,6 @@ class Menus extends Component {
           restaurant: res.data[0],
           isLoading: false
         })
-        console.log(this.state)
       })
       .catch((err) => {
         // localStorage.removeItem("jwt-token");
@@ -49,7 +49,6 @@ class Menus extends Component {
           menus: res.data,
           isLoading: false
         })
-        console.log(this.state)
       })
       .catch((err) => {
         // localStorage.removeItem("jwt-token");
@@ -78,16 +77,24 @@ class Menus extends Component {
       <div className="menus-wrapper">
         <p>Hi {rName}, let's customize your menu now</p>
         <h1>Menu</h1>
-        <Button>Add New Dishes</Button>
+
+
+        <Link to={{
+            pathname:`/restaurant/menus/add`,
+            state: {
+              rName: rName
+            }}}>
+          <Button>Add New Dishes</Button>
+        </Link>
         <TextField 
           select
           value={sortByOptions}
         >
-          {sortByOptions.map((option) => (
+          {/* {sortByOptions.map((option) => (
             <sortByOptions key={option.value} value={option.value}>
               {option.label}
             </sortByOptions>
-          ))}
+          ))} */}
         </TextField>
         <TextField />
 

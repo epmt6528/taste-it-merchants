@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
@@ -10,7 +9,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
@@ -87,7 +85,7 @@ function Row(props) {
                 </TableHead>
                 <TableBody>
                   {row.customerInfo.map((customerInfoRow) => (
-                    <TableRow >
+                    <TableRow key={customerInfoRow.customerName}>
                       <TableCell component="th" scope="row">
                         {customerInfoRow.customerName}
                       </TableCell>
@@ -115,7 +113,6 @@ export default function OrderTable(props) {
 
   for(let i=0; i<orders.length; i++){
     const newData = createData(orders[i].orderID, i+1, orders[i].menuName, orders[i].forHowManyPeople, orders[i].orderStatusID, `${orders[i].firstName} ${orders[i].lastName}`, `${orders[i].address} ${orders[i].postcode} `, orders[i].phoneNumber,  orders[i].instructions, orders[i].createdAt)
-    console.log(newData)
     rows[i] = (newData)
   }
 
@@ -133,7 +130,7 @@ export default function OrderTable(props) {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <Row row={row} onStatusChange={onStatusChange}/>
+            <Row row={row} key={row.orderNo} onStatusChange={onStatusChange}/>
           ))}
         </TableBody>
       </Table>

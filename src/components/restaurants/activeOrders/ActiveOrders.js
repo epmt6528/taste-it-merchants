@@ -30,7 +30,6 @@ class ActiveOrders extends Component {
         this.setState({
           rName: res.data[0].restaurantName
         })
-        console.log(res)
       })
       .catch((err) => {
         // localStorage.removeItem("jwt-token");
@@ -70,9 +69,6 @@ class ActiveOrders extends Component {
         orderStatusID: orderStatusID
       }, {headers: { Authorization: `${jwt}` }}
       )
-      .then((res) => {
-        console.log(res)
-      })
       .catch((err) => {
         // localStorage.removeItem("jwt-token");
         // this.props.history.push("/signIn");

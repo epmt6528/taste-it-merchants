@@ -28,7 +28,6 @@ class AuthenticationComp extends Component {
         this.setState({
           user: res.data,
         });
-        console.log("here in auth comp");
       })
       .catch((err) => {
         // localStorage.removeItem("jwt-token");

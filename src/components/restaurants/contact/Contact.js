@@ -98,7 +98,7 @@ class Contact extends Component {
         <h1>Contact</h1>
 
         <div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2605.732168014052!2d-123.1108751841337!3d49.22460628280447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5486746f412563f7%3A0x36606d221509fdfe!2sLangara%20College!5e0!3m2!1sen!2sca!4v1604615828263!5m2!1sen!2sca" width="600" height="450" frameBorder="0"  allowFullScreen="" aria-hidden="false" tabIndex="0"/>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2605.732168014052!2d-123.1108751841337!3d49.22460628280447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5486746f412563f7%3A0x36606d221509fdfe!2sLangara%20College!5e0!3m2!1sen!2sca!4v1604615828263!5m2!1sen!2sca" width="600" height="450" frameBorder="0"  allowFullScreen="" aria-hidden="false" tabIndex="0" title='map'/>
           <p>100 West 49th Avenue, Vancouver, BC, V5Y 2Z6</p>
           <p>(604)323-5511</p>
         </div>

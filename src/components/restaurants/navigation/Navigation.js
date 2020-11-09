@@ -1,20 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
 import Menus from '../menus/Menus'
 import {Switch, Route, Link, BrowserRouter } from 'react-router-dom';
 import MenuDetail from '../menus/MenuDetail';
 import EditDish from '../menus/EditDish'
+import AddDish from '../menus/AddDish'
 import ActiveOrders from '../activeOrders/ActiveOrders'
 import OrderHistory from '../orderHistory/OrderHistory'
 import Contact from '../contact/Contact'
 import Account from '../account/Account'
-import RestaurantInfoEditor from '../account/components/RestaurantInfoEditor';
+// import RestaurantInfoEditor from '../account/components/RestaurantInfoEditor';
 
 
 function TabPanel(props) {
@@ -80,15 +79,17 @@ export default function Navigation() {
         </Tabs>
         
         <TabPanel value={value} index={0} className={classes.tabPanels}>
-          <Switch>
-            <Route path="/restaurant/activeOrders" exact component={ActiveOrders} />
-          </Switch>
+          {/* <Switch>
+            <Route path="/restaurant" exact component={ActiveOrders} />
+          </Switch> */}
+          <ActiveOrders />
         </TabPanel>
         <TabPanel value={value} index={1} className={classes.tabPanels}>
           <Switch>
             <Route path="/restaurant/menus" exact component={Menus} />
             <Route path="/restaurant/menus/detail/:id" component={MenuDetail} />
             <Route path="/restaurant/menus/edit/:id"  component={EditDish} />
+            <Route path="/restaurant/menus/add"  component={AddDish} />
           </Switch>
         </TabPanel>
         <TabPanel value={value} index={2} className={classes.tabPanels}>
