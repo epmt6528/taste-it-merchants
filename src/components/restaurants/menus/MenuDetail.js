@@ -1,14 +1,21 @@
-import React from "react";
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import { Button } from '@material-ui/core';
+// Libraries
+import React from "react"
+import {Link} from 'react-router-dom'
 
-import {Link} from 'react-router-dom';
-
+// MaterialUI
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Typography from '@material-ui/core/Typography'
+import { Button } from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
-import ChoiceContainer from "./components/ChoiceContainer";
+
+// Components
+import ChoiceContainer from "./components/ChoiceContainer"
+
+// Other
+import {BASE_URL} from "../../../config/config"
+
 
 const getStyles = makeStyles(theme => ({
   media: {
@@ -26,7 +33,7 @@ const MenuDetail = props =>{
   const formatter = new Intl.NumberFormat('ja-JP', {
     style: 'currency',
     currency: 'USD'
-  });
+  })
 
   return(
     <div>
@@ -34,7 +41,7 @@ const MenuDetail = props =>{
       <Typography>Dish Detail</Typography>
 
       <Card>
-        <CardMedia image={`http://localhost:5000/api/menus/image/${id}`}  className={classes.media} />
+        <CardMedia image={`${BASE_URL}/menus/image/${id}`}  className={classes.media} />
         <CardContent>
             <Typography>Dish Name</Typography>
             <Typography gutterBottom variant="h5" component="h2">
@@ -68,7 +75,7 @@ const MenuDetail = props =>{
       </Card>
     </div>
   )
-};
+}
 
 
-export default MenuDetail;
+export default MenuDetail

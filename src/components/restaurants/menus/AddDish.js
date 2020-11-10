@@ -1,16 +1,23 @@
-import React from "react";
-import Typography from '@material-ui/core/Typography';
+// Libraries
+import React from "react"
+
+// MaterialUI
+import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
 
-import MenuCreator from "./components/MenuCreator";
+// Components
+import MenuCreator from "./components/MenuCreator"
 
-// const getStyles = makeStyles(theme => ({
-//   root: {},
-// }))
+
+const getStyles = makeStyles(theme => ({
+  root: {},
+}))
 
 
 const AddDish = props =>{
-  // const classes = getStyles()
+
+  const classes = getStyles()
+
   const {rName} = props.location.state
 
   return(
@@ -21,7 +28,7 @@ const AddDish = props =>{
       <MenuCreator />
     </>
   )
-};
+}
 
 
 export default AddDish;

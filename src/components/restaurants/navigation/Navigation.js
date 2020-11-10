@@ -1,11 +1,15 @@
+// Libraries
 import React from 'react';
+import {Switch, Route, Link, BrowserRouter } from 'react-router-dom';
+
+// MaterialUI
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 
+// Components
 import Menus from '../menus/Menus'
-import {Switch, Route, Link, BrowserRouter } from 'react-router-dom';
 import MenuDetail from '../menus/MenuDetail';
 import EditDish from '../menus/EditDish'
 import AddDish from '../menus/AddDish'
@@ -13,7 +17,6 @@ import ActiveOrders from '../activeOrders/ActiveOrders'
 import OrderHistory from '../orderHistory/OrderHistory'
 import Contact from '../contact/Contact'
 import Account from '../account/Account'
-// import RestaurantInfoEditor from '../account/components/RestaurantInfoEditor';
 
 
 function TabPanel(props) {
@@ -37,7 +40,6 @@ function TabPanel(props) {
 }
 
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -54,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 export default function Navigation() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -65,6 +68,7 @@ export default function Navigation() {
   return (
     <BrowserRouter>
       <div className={classes.root}>
+        {/* Navigation Menu */}
         <Tabs
           orientation="vertical"
           value={value}
@@ -78,38 +82,35 @@ export default function Navigation() {
           <Tab label="Contact" to="/restaurant/contact" component={Link} />
         </Tabs>
         
+        {/* Active Order panel */}
         <TabPanel value={value} index={0} className={classes.tabPanels}>
-          {/* <Switch>
-            <Route path="/restaurant" exact component={ActiveOrders} />
-          </Switch> */}
           <ActiveOrders />
         </TabPanel>
+
+        {/* Menu panel */}
         <TabPanel value={value} index={1} className={classes.tabPanels}>
           <Switch>
-            <Route path="/restaurant/menus" exact component={Menus} />
+            <Route path="/restaurant/menus" component={Menus} />
             <Route path="/restaurant/menus/detail/:id" component={MenuDetail} />
             <Route path="/restaurant/menus/edit/:id"  component={EditDish} />
             <Route path="/restaurant/menus/add"  component={AddDish} />
           </Switch>
         </TabPanel>
+
+        {/* Order History panel */}
         <TabPanel value={value} index={2} className={classes.tabPanels}>
-          <Switch>
-            <Route path="/restaurant/orderHistory" exact component={OrderHistory} />
-          </Switch>
+            <Route path="/restaurant/orderHistory" component={OrderHistory} />
         </TabPanel>
+
+        {/* Account panel */}
         <TabPanel value={value} index={3} className={classes.tabPanels}>
-          {/* <Switch>
-            <Route path="/restaurant/account" exact component={Account} />
-            <Route path="/restaurant/account/edit" exact component={RestaurantInfoEditor} />
-          </Switch> */}
           <Account />
         </TabPanel>
+
+        {/* Contact panel */}
         <TabPanel value={value} index={4} className={classes.tabPanels}>
-          <Switch>
-            <Route path="/restaurant/contact" exact component={Contact} />
-          </Switch>
+            <Route path="/restaurant/contact" component={Contact} />
         </TabPanel>
-        
       </div>
     </BrowserRouter>
     

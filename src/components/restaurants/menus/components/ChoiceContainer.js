@@ -1,12 +1,17 @@
-import React, {Component} from "react";
+// Libraries
+import React, {Component} from "react"
+import axios from 'axios'
 
-import ChoiceTabs from './ChoiceTabs';
+// Components
+import ChoiceTabs from './ChoiceTabs'
 
-import axios from 'axios';
+// Other
+import {BASE_URL} from "../../../../config/config"
+import { getJwtToken } from "../../../getJwt"
 
-import { getJwtToken } from "../../../getJwt";
 
 class ChoiceContainer extends Component {
+
   state = {
     cuisineType: [],
     allergy: [],
@@ -16,9 +21,9 @@ class ChoiceContainer extends Component {
   }
 
   componentDidMount() {
-    const jwt = getJwtToken();
+    const jwt = getJwtToken()
     if (!jwt) {
-      this.props.history.push("/signIn");
+      this.props.history.push("/signIn")
     }
 
     const cuisineOptions = [
@@ -51,12 +56,13 @@ class ChoiceContainer extends Component {
       
     
     axios
-      .get(`http://localhost:5000/api/menus/choices/${this.props.menuId}`, {
+      .get(`${BASE_URL}/menus/choices/${this.props.menuId}`, {
         headers: { Authorization: `${jwt}` },
       })
       .then((res) => {
+        // Cuisine
         const selectedCuisineType = res.data.filter( function( choice ) {
-          return choice.category == "Cuisines";
+          return choice.category == "Cuisines"
         })
 
         for (let i = 0; i < selectedCuisineType.length; i++) {
@@ -67,8 +73,9 @@ class ChoiceContainer extends Component {
           }
         }
 
+        // Allergy
         const selectedAllergy = res.data.filter( function( choice ) {
-          return choice.category == "Allergens";
+          return choice.category == "Allergens"
         })
 
         for (let i = 0; i < selectedAllergy.length; i++) {
@@ -79,8 +86,9 @@ class ChoiceContainer extends Component {
           }
         }
 
+        // Diet Type
         const selectedDietType = res.data.filter( function( choice ) {
-          return choice.category == "Diet Types";
+          return choice.category == "Diet Types"
         })
 
         for (let i = 0; i < selectedDietType.length; i++) {
@@ -91,8 +99,9 @@ class ChoiceContainer extends Component {
           }
         }
 
+        // Spicy Level
         const selectedSpicyLevel = res.data.filter( function( choice ) {
-          return choice.category == "Spiciness";
+          return choice.category == "Spiciness"
         })
 
         for (let i = 0; i < selectedSpicyLevel.length; i++) {
@@ -117,7 +126,7 @@ class ChoiceContainer extends Component {
         // localStorage.removeItem("jwt-token");
         // this.props.history.push("/signIn");
         console.log(err)
-      });
+      })
   }
 
   
@@ -132,8 +141,8 @@ class ChoiceContainer extends Component {
           spicyLevel={this.state.spicyLevel}
         />
       </div>
-    );
+    )
   }
 }
 
-export default ChoiceContainer;
+export default ChoiceContainer

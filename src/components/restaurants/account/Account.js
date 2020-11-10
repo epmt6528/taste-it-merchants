@@ -1,14 +1,19 @@
-import React, { Component } from "react";
+// Libraries
+import React, { Component } from "react"
+import {Switch, Router, Route, BrowserRouter, Link} from 'react-router-dom'
+import axios from 'axios'
 
-import axios from 'axios';
-import { getJwtToken } from "../../getJwt";
-
+// Components
 import RestaurantInfo from './components/RestaurantInfo'
 import RestaurantInfoEditor from './components/RestaurantInfoEditor'
 
-import {Switch, Router, Route, BrowserRouter, Link} from 'react-router-dom'
+// Other
+import { getJwtToken } from "../../getJwt"
+import {BASE_URL} from "../../../config/config"
+
 
 class Contact extends Component {
+
   state = {
     rName: '',
     phoneNumber: '',
@@ -22,13 +27,14 @@ class Contact extends Component {
   }
 
   componentDidMount() {
-    const jwt = getJwtToken();
-    if (!jwt) {
-      this.props.history.push("/signIn");
-    }
+
+    const jwt = getJwtToken()
+    // if (!jwt) {
+    //   this.props.history.push("/signIn")
+    // }
 
     axios
-      .get("http://localhost:5000/api/restaurants", {headers: { Authorization: `${jwt}` }}
+      .get(`${BASE_URL}/restaurants`, {headers: { Authorization: `${jwt}` }}
       )
       .then((res) => {
         this.setState({
@@ -39,13 +45,12 @@ class Contact extends Component {
         })
       })
       .catch((err) => {
-        // localStorage.removeItem("jwt-token");
-        // this.props.history.push("/signIn");
-        console.log(err)
-      });
+        localStorage.removeItem("jwt-token")
+        this.props.history.push("/signIn")
+      })
 
     axios
-      .get("http://localhost:5000/api/restaurants/address", {headers: { Authorization: `${jwt}` }}
+      .get(`${BASE_URL}/restaurants/address`, {headers: { Authorization: `${jwt}` }}
       )
       .then((res) => {
         this.setState({
@@ -57,58 +62,53 @@ class Contact extends Component {
         })
       })
       .catch((err) => {
-        // localStorage.removeItem("jwt-token");
-        // this.props.history.push("/signIn");
-        console.log(err)
-      });
+        // localStorage.removeItem("jwt-token")
+        // this.props.history.push("/signIn")
+      })
   }
 
+
+  // Update Restaurant Account Info
   saveInfo = (e) => {
-    const {rName, phoneNumber, password, description, province, city, address, postcode } = this.state;
-    const jwt = getJwtToken();
+
+    const {rName, phoneNumber, password, description, province, city, address, postcode } = this.state
+
+    const jwt = getJwtToken()
     if (!jwt) {
-      this.props.history.push("/signIn");
+      this.props.history.push("/signIn")
     }
 
-    console.log(description)
     e.preventDefault()
 
     axios
-      .put("http://localhost:5000/api/restaurants", {
+      .put(`${BASE_URL}/restaurants`, {
         restaurantName: rName,
         restaurantDescription: description,
         phoneNumber: phoneNumber,
         password: password
       }, {headers: { Authorization: `${jwt}` }}
       )
-      .then((res) => {
-        console.log(res)
-      })
       .catch((err) => {
-        // localStorage.removeItem("jwt-token");
-        // this.props.history.push("/signIn");
-        console.log(err)
-      });
+        localStorage.removeItem("jwt-token")
+        this.props.history.push("/signIn")
+      })
 
     axios
-      .put("http://localhost:5000/api/restaurants/address", {
+      .put(`${BASE_URL}/restaurants/address`, {
         provinceName: province,
         cityName: city,
         address: address,
         postcode: postcode
       }, {headers: { Authorization: `${jwt}` }}
       )
-      .then((res) => {
-        console.log(res)
-      })
       .catch((err) => {
-        // localStorage.removeItem("jwt-token");
-        // this.props.history.push("/signIn");
-        console.log(err)
-      });
+        localStorage.removeItem("jwt-token")
+        this.props.history.push("/signIn")
+      })
   }
 
 
+  // Input Change Handlers
   handleNameInputChange = input => {
     this.setState({
       rName: input
@@ -159,7 +159,9 @@ class Contact extends Component {
 
 
   render() {
+
     const {rName, phoneNumber, password, description, addressSet} = this.state
+
     return (
         <div>
           <p>Hi {rName}, keep your restaurant info updated.</p>
@@ -186,7 +188,8 @@ class Contact extends Component {
                 />
             </Route>
         </div>
-    );
-  }
-}
-export default Contact;
+    )
+  }}
+
+
+export default Contact

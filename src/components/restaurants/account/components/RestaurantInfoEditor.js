@@ -1,8 +1,11 @@
-import React from "react";
+// Libraries
+import React from "react"
 
-import Button from '@material-ui/core/Button';
-import TextField  from "@material-ui/core/TextField";
-import MenuItem from '@material-ui/core/MenuItem';
+// MaterialUI
+import Button from '@material-ui/core/Button'
+import TextField  from "@material-ui/core/TextField"
+import MenuItem from '@material-ui/core/MenuItem'
+
 
 const RestaurantInfoEditor = props =>{
   
@@ -25,6 +28,7 @@ const RestaurantInfoEditor = props =>{
     <form>
       <div>
         <h2>Account Information</h2>
+
         <TextField  fullWidth label="Restaurant Name" defaultValue={rName} variant="outlined" onChange={e => handleNameInputChange(e.target.value)}/>
         <TextField  fullWidth label="Phone Number" defaultValue={phoneNumber} variant="outlined" onChange={e => handlePhoneNumberInputChange(e.target.value)} />
         {/* <TextField  label="Email" value={} /> */}
@@ -38,9 +42,11 @@ const RestaurantInfoEditor = props =>{
           multiline
           rows={4}
         />
+
       </div>
       
       <div>
+
         <h2>Location</h2>
         <TextField
         select
@@ -75,6 +81,6 @@ const RestaurantInfoEditor = props =>{
       <Button onClick={saveInfo}>Save New Change</Button>
     </form>
   )
-};
+}
 
-export default RestaurantInfoEditor;
+export default RestaurantInfoEditor

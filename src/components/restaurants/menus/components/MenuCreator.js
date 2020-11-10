@@ -1,19 +1,20 @@
-import React, {Component} from "react";
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import CardMedia from '@material-ui/core/CardMedia';
+// Libraries
+import React, {Component} from "react"
+import axios from "axios"
+import {getJwtToken} from "../../../getJwt"
 
-import {makeStyles} from '@material-ui/core/styles'
+// MaterialUI
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
+import InputAdornment from '@material-ui/core/InputAdornment'
 
-import ChoiceContainer from "./ChoiceContainer";
+// Components
+import ChoiceContainer from "./ChoiceContainer"
 
-import axios from "axios";
-import {getJwtToken} from "../../../getJwt";
+// Other
+import {BASE_URL} from "../../../../config/config"
 
 
 class MenuCreator extends Component{
@@ -49,26 +50,24 @@ class MenuCreator extends Component{
   }
 
   saveInfo = e => {
-    const {dishName, dishPrice, description, allergy, dietType, spicyLevel} = this.state;
+    const {dishName, dishPrice, description, allergy, dietType, spicyLevel} = this.state
 
-    const bodyFormData = new FormData();
-    bodyFormData.append('menuName', dishName);
-    bodyFormData.append('price', dishPrice);
-    bodyFormData.append('menuDescription', description);
-    bodyFormData.append('image', '1234');
-
-    console.log(this.state)
+    const bodyFormData = new FormData()
+    bodyFormData.append('menuName', dishName)
+    bodyFormData.append('price', dishPrice)
+    bodyFormData.append('menuDescription', description)
+    bodyFormData.append('image', '1234')
 
     e.preventDefault()
 
-    const jwt = getJwtToken();
+    const jwt = getJwtToken()
     if (!jwt) {
-      this.props.history.push("/signIn");
+      this.props.history.push("/signIn")
     }
 
     axios({
       method: 'post',
-      url: `http://localhost:5000/api/menus`,
+      url: `${BASE_URL}/menus`,
       data: bodyFormData,
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -79,17 +78,17 @@ class MenuCreator extends Component{
       })
       .catch((err) => {
         console.log(err)
-      });
+      })
 
     //   axios
-    //   .post(`http://localhost:5000/api/menus`,{
+    //   .post(`${BASE_URL}/menus`,{
     //     menuName: dishName,
     //     menuDescription: description,
     //     price: dishPrice,
     //     pictureURI: '1234'
     // }, {headers: { Authorization: `${jwt}` }})
     // axios
-    //   .get("http://localhost:5000/api/menus/all", {
+    //   .get("${BASE_URL}/menus/all", {
     //     headers: { Authorization: `${jwt}` },
     //   })
     //   .then((res) => {
@@ -100,10 +99,10 @@ class MenuCreator extends Component{
     //     console.log(this.state)
     //   })
     //   .catch((err) => {
-    //     // localStorage.removeItem("jwt-token");
-    //     // this.props.history.push("/signIn");
+    //     // localStorage.removeItem("jwt-token")
+    //     // this.props.history.push("/signIn")
     //     console.log(err)
-    //   });
+    //   })
   }
 
   render(){
@@ -140,7 +139,7 @@ class MenuCreator extends Component{
         </form>
       </>
     )}
-};
+}
 
 
-export default MenuCreator;
+export default MenuCreator

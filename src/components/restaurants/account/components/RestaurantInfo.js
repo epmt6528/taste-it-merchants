@@ -1,9 +1,11 @@
-import React from "react";
-
-import { Button } from '@material-ui/core';
-import TextField  from "@material-ui/core/TextField";
-
+// Libraries
+import React from "react"
 import {Link} from 'react-router-dom'
+
+// MaterialUI
+import { Button } from '@material-ui/core'
+import TextField  from "@material-ui/core/TextField"
+
 
 const RestaurantInfo = props =>{
 
@@ -34,6 +36,6 @@ const RestaurantInfo = props =>{
       <Button>Log Out</Button>
     </div>
   )
-};
+}
 
-export default RestaurantInfo;
+export default RestaurantInfo

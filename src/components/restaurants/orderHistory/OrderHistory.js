@@ -1,15 +1,22 @@
-import React, { Component } from "react";
+// Libraries
+import React, { Component } from "react"
+import axios from 'axios'
 
-import { Button } from '@material-ui/core';
-import { TextField } from "@material-ui/core";
+// MaterialUI
+import { Button } from '@material-ui/core'
+import { TextField } from "@material-ui/core"
 
-import axios from 'axios';
-
-import { getJwtToken } from "../../getJwt";
-
+// Components
 import DateWrapper from "./components/DateWrapper"
+import Loading from "../../Loading"
+
+// Other
+import { getJwtToken } from "../../getJwt"
+import {BASE_URL} from "../../../config/config"
+
 
 class ActiveOrders extends Component {
+
   state = {
     rName: '',
     orders: [],
@@ -17,17 +24,19 @@ class ActiveOrders extends Component {
   }
 
   async componentDidMount() {
-    const jwt = getJwtToken();
+
+    const jwt = getJwtToken()
     if (!jwt) {
-      this.props.history.push("/signIn");
+      this.props.history.push("/signIn")
     }
 
     this.setState({
       isLoading: true
     })
 
+    // GET restaurant info(name)
     await axios
-      .get("http://localhost:5000/api/restaurants", {
+      .get(`${BASE_URL}/restaurants`, {
         headers: { Authorization: `${jwt}` },
       })
       .then((res) => {
@@ -37,17 +46,19 @@ class ActiveOrders extends Component {
         })
       })
       .catch((err) => {
-        // localStorage.removeItem("jwt-token");
-        // this.props.history.push("/signIn");
+        // localStorage.removeItem("jwt-token")
+        // this.props.history.push("/signIn")
         console.log(err)
-      });
+      })
 
+
+    // GET orders and select only completed orders
     await axios
-      .get("http://localhost:5000/api/orders/restaurant", {headers: { Authorization: jwt }
+      .get(`${BASE_URL}/orders/restaurant`, {headers: { Authorization: jwt }
     })
       .then((res) => {
         const completedOrders = res.data.filter((item) => {
-          return item.orderStatusID == 4 || item.orderStatusID == 5;
+          return item.orderStatusID == 4 || item.orderStatusID == 5
         })
 
         this.setState({
@@ -56,20 +67,19 @@ class ActiveOrders extends Component {
         })
       })
       .catch((err) => {
-        // localStorage.removeItem("jwt-token");
-        // this.props.history.push("/signIn");
+        // localStorage.removeItem("jwt-token")
+        // this.props.history.push("/signIn")
         console.log(err.response)
-    });
+    })
   }
 
 
 
   render() {
-    const {rName, orders} = this.state
+    const {rName, orders, isLoading} = this.state
     
-
-    // const dt = new Date();
-    // const thisMonth = dt.getMonth()+1;
+    // const dt = new Date()
+    // const thisMonth = dt.getMonth()+1
     // console.log(completedOrders)
     // const LastMonthOrders = orders.filter((item) => {
     //   return item.updatedAt.getMonth()
@@ -93,13 +103,14 @@ class ActiveOrders extends Component {
             <p>Increase 12% compared to September</p>
           </div>
 
-
-          {/* map date wrapper */}
-          <DateWrapper orders={orders}/>
-
+          {
+            isLoading ? <Loading /> :
+            <DateWrapper orders={orders}/>
+          }
+          
           <Button>Load More</Button>
         </div>
-    );
+    )
   }
 }
-export default ActiveOrders;
+export default ActiveOrders

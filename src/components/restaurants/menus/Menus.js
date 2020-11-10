@@ -1,15 +1,20 @@
-import React, { Component } from "react";
+// Libraries
+import React, { Component } from "react"
+import axios from 'axios'
+import { getJwtToken } from "../../getJwt"
+import { Link } from 'react-router-dom'
 
-import MenuCard from "./components/MenuCard";
+// MaterialUI
+import Grid from "@material-ui/core/Grid"
+import { Button } from '@material-ui/core'
+import { TextField } from "@material-ui/core"
 
-import Grid from "@material-ui/core/Grid";
-import { Button } from '@material-ui/core';
-import { TextField } from "@material-ui/core";
+// Components
+import MenuCard from "./components/MenuCard"
 
-import axios from 'axios';
+// Other
+import {BASE_URL} from "../../../config/config"
 
-import { getJwtToken } from "../../getJwt";
-import { Link } from 'react-router-dom';
 
 class Menus extends Component {
   state = {
@@ -19,14 +24,18 @@ class Menus extends Component {
   }
 
   componentDidMount() {
-    const jwt = getJwtToken();
+    const jwt = getJwtToken()
     if (!jwt) {
-      this.props.history.push("/signIn");
+      this.props.history.push("/signIn")
     }
 
+    this.setState({
+      isLoading: true
+    })
+
     axios
-      .get("http://localhost:5000/api/restaurants", {
-        headers: { Authorization: `${jwt}` },
+      .get(`${BASE_URL}/restaurants`, {
+        headers: { Authorization: `${jwt}` }
       })
       .then((res) => {
         this.setState({
@@ -35,14 +44,13 @@ class Menus extends Component {
         })
       })
       .catch((err) => {
-        // localStorage.removeItem("jwt-token");
-        // this.props.history.push("/signIn");
-        console.log(err)
-      });
+        // localStorage.removeItem("jwt-token")
+        // this.props.history.push("/signIn")
+      })
 
     axios
-      .get("http://localhost:5000/api/menus/all", {
-        headers: { Authorization: `${jwt}` },
+      .get(`${BASE_URL}/menus/all`, {
+        headers: { Authorization: `${jwt}` }
       })
       .then((res) => {
         this.setState({
@@ -51,22 +59,24 @@ class Menus extends Component {
         })
       })
       .catch((err) => {
-        // localStorage.removeItem("jwt-token");
-        // this.props.history.push("/signIn");
-        console.log(err)
-      });
+        // localStorage.removeItem("jwt-token")
+        // this.props.history.push("/signIn")
+      })
   }
 
 
   render() {
     const sortByOptions = [
       {
+        id: 1,
         label: 'Sort By: Latest'
       },
       {
+        id: 2,
         label: 'Sort By: Oldest'
       },
       {
+        id: 3,
         label: 'Sort By: ABC'
       },
     ]
@@ -78,7 +88,7 @@ class Menus extends Component {
         <p>Hi {rName}, let's customize your menu now</p>
         <h1>Menu</h1>
 
-
+        {/* "Add New Dish "Button */}
         <Link to={{
             pathname:`/restaurant/menus/add`,
             state: {
@@ -86,41 +96,45 @@ class Menus extends Component {
             }}}>
           <Button>Add New Dishes</Button>
         </Link>
+
+        {/* "Sort By" Drop downs */}
         <TextField 
           select
           value={sortByOptions}
         >
-          {/* {sortByOptions.map((option) => (
-            <sortByOptions key={option.value} value={option.value}>
+          {sortByOptions.map((option) => (
+            <sortByOptions key={option.id} value={option.value}>
               {option.label}
             </sortByOptions>
-          ))} */}
+          ))}
         </TextField>
+
+        {/* Search Field */}
         <TextField />
 
+        {/* Menu Cards */}
         <Grid>
-        {
-          this.state.menus.map(
-            menu => {
-              const {menuID, menuName, menuDescription, price} = menu
-              return (
-                <MenuCard 
-                  key={menuID}
-                  id={menuID}
-                  name={menuName}
-                  menuDescription={menuDescription}
-                  price={price}
-                  rName={rName}
-                />
-              )
-            }
-          )
-        }
+          {this.state.menus.map(
+              menu => {
+                const {menuID, menuName, menuDescription, price} = menu
+                return (
+                  <MenuCard 
+                    key={menuID}
+                    id={menuID}
+                    name={menuName}
+                    menuDescription={menuDescription}
+                    price={price}
+                    rName={rName}
+                  />
+                )
+              }
+            )}
         </Grid>
 
         <Button>Load More</Button>
+
       </div>
-    );
+    )
   }
 }
-export default Menus;
+export default Menus

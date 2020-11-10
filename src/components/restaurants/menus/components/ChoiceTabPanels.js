@@ -1,19 +1,22 @@
-import React from "react";
-import PropTypes from 'prop-types';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+// Libraries
+import React from "react"
+import PropTypes from 'prop-types'
+
+// MaterialUI
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
 
 
 const TabPanel = (props) => {
-  const { value, index, choices, ...other } = props;
+  const { value, index, choices, ...other } = props
 
   TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.any.isRequired,
     value: PropTypes.any.isRequired,
-  };
+  }
 
   return (
     <div
@@ -46,8 +49,8 @@ const TabPanel = (props) => {
         </List>
       )}
     </div>
-  );
+  )
 }
 
 
-export default TabPanel;
+export default TabPanel

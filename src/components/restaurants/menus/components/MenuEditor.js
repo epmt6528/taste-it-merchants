@@ -1,27 +1,34 @@
-import React, {Component} from "react";
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import CardMedia from '@material-ui/core/CardMedia';
+// Libraries
+import React, {Component} from "react"
+import axios from "axios"
 
+// MaterialUI
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import CardMedia from '@material-ui/core/CardMedia'
 import {makeStyles} from '@material-ui/core/styles'
 
-import ChoiceContainer from "./ChoiceContainer";
+// Components
+import ChoiceContainer from "./ChoiceContainer"
 
-import axios from "axios";
-import {getJwtToken} from "../../../getJwt";
+// Other
+import {getJwtToken} from "../../../getJwt"
+import {BASE_URL} from "../../../../config/config"
 
 
 class MenuEditor extends Component{
+
   state={
     id: this.props.id,
     name: this.props.dishName,
     price: this.props.dishPrice,
-    description: this.props.dishDescription
+    description: this.props.dishDescription,
+    isLoading: false
   }
 
   handleNameInputChange = input => {
@@ -46,19 +53,21 @@ class MenuEditor extends Component{
   }
 
   saveInfo = e => {
-    const {id, name, price, description} = this.state;
-
-    console.log(this.state)
+    const {id, name, price, description} = this.state
 
     e.preventDefault()
 
-    const jwt = getJwtToken();
+    const jwt = getJwtToken()
     if (!jwt) {
-      this.props.history.push("/signIn");
+      this.props.history.push("/signIn")
     }
 
+    // this.setState({
+    //   isLoading: true
+    // })
+
     axios
-      .put(`http://localhost:5000/api/menus/${id}`,{
+      .put(`${BASE_URL}/menus/${id}`,{
         menuName: name,
         menuDescription: description,
         price: price
@@ -68,10 +77,10 @@ class MenuEditor extends Component{
       })
       .catch((err) => {
         console.log(err)
-      });
+      })
 
     // axios
-    //   .get("http://localhost:5000/api/menus/all", {
+    //   .get(`${BASE_URL}/menus/all`, {
     //     headers: { Authorization: `${jwt}` },
     //   })
     //   .then((res) => {
@@ -82,10 +91,10 @@ class MenuEditor extends Component{
     //     console.log(this.state)
     //   })
     //   .catch((err) => {
-    //     // localStorage.removeItem("jwt-token");
-    //     // this.props.history.push("/signIn");
+    //     // localStorage.removeItem("jwt-token")
+    //     // this.props.history.push("/signIn")
     //     console.log(err)
-    //   });
+    //   })
   }
 
   render(){
@@ -124,7 +133,7 @@ class MenuEditor extends Component{
         </form>
       </>
     )}
-};
+}
 
 
-export default MenuEditor;
+export default MenuEditor

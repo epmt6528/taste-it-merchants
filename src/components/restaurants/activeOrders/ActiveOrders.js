@@ -1,13 +1,18 @@
-import React, { Component } from "react";
-
-import { Button } from '@material-ui/core';
-import { TextField } from "@material-ui/core";
-
+// Libraries
+import React, { Component } from "react"
 import axios from 'axios';
+import { getJwtToken } from "../../getJwt"
 
-import { getJwtToken } from "../../getJwt";
+// MaterialUI
+import { Button } from '@material-ui/core'
 
+// Components
 import DateWrapper from "./components/DateWrapper"
+import Loading from "../../Loading"
+
+// Other
+import {BASE_URL} from "../../../config/config"
+
 
 class ActiveOrders extends Component {
   state = {
@@ -17,32 +22,40 @@ class ActiveOrders extends Component {
   }
 
   async componentDidMount() {
-    const jwt = getJwtToken();
+    const jwt = getJwtToken()
     if (!jwt) {
       this.props.history.push("/signIn");
     }
 
+    this.setState({
+      isLoading: true
+    })
+
+    // GET restaurant info
     axios
-      .get("http://localhost:5000/api/restaurants", {
-        headers: { Authorization: `${jwt}` },
-      })
+      .get(`${BASE_URL}/restaurants`, 
+        {headers: { Authorization: `${jwt}` }}
+      )
       .then((res) => {
         this.setState({
-          rName: res.data[0].restaurantName
+          rName: res.data[0].restaurantName,
+          isLoading: false
         })
       })
       .catch((err) => {
-        // localStorage.removeItem("jwt-token");
-        // this.props.history.push("/signIn");
-        console.log(err)
-      });
+        // localStorage.removeItem("jwt-token")
+        // this.props.history.push("/signIn")
+      })
 
+    // GET orders
     axios
-      .get("http://localhost:5000/api/orders/restaurant", {headers: { authorization: `${jwt}` }}
+      .get(`${BASE_URL}/orders/restaurant`, 
+        {headers: { authorization: `${jwt}` }}
       )
       .then((res) => {
+        // Filter out only active orders from response
         const activeOrders = res.data.filter((item) => {
-          return item.orderStatusID == 1 || item.orderStatusID == 2 || item.orderStatusID == 3;
+          return item.orderStatusID == 1 || item.orderStatusID == 2 || item.orderStatusID == 3
         })
 
         this.setState({
@@ -51,34 +64,35 @@ class ActiveOrders extends Component {
         })
       })
       .catch((err) => {
-        // localStorage.removeItem("jwt-token");
-        // this.props.history.push("/signIn");
-        console.log(err)
-      });
+        // localStorage.removeItem("jwt-token")
+        // this.props.history.push("/signIn")
+      })
   }
 
+
+  // Update orders' status
   onStatusChange = (orderID, orderStatusID) =>{
-    const jwt = getJwtToken();
+    const jwt = getJwtToken()
     if (!jwt) {
-      this.props.history.push("/signIn");
+      this.props.history.push("/signIn")
     }
 
     axios
-      .put("http://localhost:5000/api/orders", {
+      .put(`${BASE_URL}/orders`, {
         orderID: orderID,
         orderStatusID: orderStatusID
       }, {headers: { Authorization: `${jwt}` }}
       )
       .catch((err) => {
-        // localStorage.removeItem("jwt-token");
-        // this.props.history.push("/signIn");
-        console.log(err)
-      });
+        // localStorage.removeItem("jwt-token")
+        // this.props.history.push("/signIn")
+      })
   }
 
 
   render() {
-    const {rName, orders} = this.state
+    const {rName, orders, isLoading} = this.state
+
     return (
       <div>
         <p>Hi {rName}, welcome back!</p>
@@ -90,9 +104,11 @@ class ActiveOrders extends Component {
           <Button>Go Offline</Button>
         </div>
 
-        {/* map date wrapper */}
-        <DateWrapper orders={orders} onStatusChange={this.onStatusChange} />
-
+        {
+          isLoading ? <Loading /> :
+          <DateWrapper orders={orders} onStatusChange={this.onStatusChange} />
+        }
+        
         <Button>Load More</Button>
       </div>
     );

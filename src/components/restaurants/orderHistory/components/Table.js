@@ -1,19 +1,23 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import TextField  from "@material-ui/core/TextField";
-import MenuItem from '@material-ui/core/MenuItem';
+// Libraries
+import React from 'react'
+
+// MaterialUI
+import { makeStyles } from '@material-ui/core/styles'
+import Box from '@material-ui/core/Box'
+import Collapse from '@material-ui/core/Collapse'
+import IconButton from '@material-ui/core/IconButton'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import Paper from '@material-ui/core/Paper'
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
+import TextField  from "@material-ui/core/TextField"
+import MenuItem from '@material-ui/core/MenuItem'
+
 
 const useRowStyles = makeStyles({
   root: {
@@ -21,7 +25,7 @@ const useRowStyles = makeStyles({
       borderBottom: 'unset',
     },
   },
-});
+})
 
 function createData(orderNo, product, quantity, status, customerName, review, feedback ) {
   return {
@@ -32,13 +36,13 @@ function createData(orderNo, product, quantity, status, customerName, review, fe
     customerInfo: [
       { customerName: customerName, review: review, feedback: feedback },
     ],
-  };
+  }
 }
 
 function Row(props) {
-  const { row } = props;
-  const [open, setOpen] = React.useState(false);
-  const classes = useRowStyles();
+  const { row } = props
+  const [open, setOpen] = React.useState(false)
+  const classes = useRowStyles()
 
   return (
     <React.Fragment>
@@ -98,13 +102,12 @@ function Row(props) {
         </TableCell>
       </TableRow>
     </React.Fragment>
-  );
+  )
 }
 
 
-
 export default function OrderTable(props) {
-  const rows = [];
+  const rows = []
   const orders = props.orders
   
   for(let i=0; i<orders.length; i++){
@@ -131,5 +134,5 @@ export default function OrderTable(props) {
         </TableBody>
       </Table>
     </TableContainer>
-  );
+  )
 }

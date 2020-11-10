@@ -1,12 +1,18 @@
-import React, { Component } from "react";
+// Libraries
+import React, { Component } from "react"
+import axios from 'axios'
 
-import { Button } from '@material-ui/core';
-import TextField  from "@material-ui/core/TextField";
+// MaterialUI
+import { Button } from '@material-ui/core'
+import TextField  from "@material-ui/core/TextField"
 
-import axios from 'axios';
-import { getJwtToken } from "../../getJwt";
+// Other
+import { getJwtToken } from "../../getJwt"
+import {BASE_URL} from "../../../config/config"
+
 
 class Contact extends Component {
+
   state = {
     name: '',
     phoneNumber: '',
@@ -15,13 +21,14 @@ class Contact extends Component {
   }
 
   componentDidMount() {
-    const jwt = getJwtToken();
+
+    const jwt = getJwtToken()
     if (!jwt) {
-      this.props.history.push("/signIn");
+      // this.props.history.push("/signIn")
     }
 
     axios
-      .get("http://localhost:5000/api/restaurants", {headers: { Authorization: `${jwt}` }}
+      .get(`${BASE_URL}/api/restaurants`, {headers: { Authorization: `${jwt}` }}
       )
       .then((res) => {
         this.setState({
@@ -29,41 +36,36 @@ class Contact extends Component {
         })
       })
       .catch((err) => {
-        // localStorage.removeItem("jwt-token");
-        // this.props.history.push("/signIn");
-        console.log(err)
-      });
+        // localStorage.removeItem("jwt-token")
+        // this.props.history.push("/signIn")
+      })
   }
+
 
   sendMessage = e => {
     const {name, phoneNumber, email, body} = this.state
 
     e.preventDefault()
 
-    console.log(this.state)
-
-    const jwt = getJwtToken();
+    const jwt = getJwtToken()
     if (!jwt) {
-      this.props.history.push("/signIn");
+      // this.props.history.push("/signIn")
     }
 
     axios
-      .post(`http://localhost:5000/api/inquiries`, {
+      .post(`${BASE_URL}/api/inquiries`, {
         name: name,
         phoneNumber: phoneNumber,
         email: email,
         subject: "Inquiry",
         body: body
       }, {headers: { Authorization: `${jwt}` }})
-    .then((res) => {
-      console.log(res)
-    })
     .catch((err) => {
-      // localStorage.removeItem("jwt-token");
-      // this.props.history.push("/signIn");
-      console.log(err)
-    });
+      // localStorage.removeItem("jwt-token")
+      // this.props.history.push("/signIn")
+    })
   }
+
 
   handleNameInputChange = input => {
     this.setState({
@@ -89,6 +91,7 @@ class Contact extends Component {
     })
   }
 
+  
   render() {
     const rName = this.state.rName
 
@@ -123,7 +126,7 @@ class Contact extends Component {
           </form>
         </div>
       </div>
-    );
+    )
   }
 }
-export default Contact;
+export default Contact
