@@ -2,7 +2,8 @@
 import React, { Component } from "react"
 import axios from 'axios'
 import { getJwtToken } from "../../getJwt"
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+import {Switch, Route, Link, BrowserRouter } from 'react-router-dom';
 
 // MaterialUI
 import Grid from "@material-ui/core/Grid"
@@ -12,6 +13,9 @@ import MenuItem from '@material-ui/core/MenuItem'
 
 // Components
 import MenuCard from "./components/MenuCard"
+import MenuDetail from './MenuDetail';
+import EditDish from './EditDish'
+import AddDish from './AddDish'
 
 // Other
 import {BASE_URL} from "../../../config/config"
@@ -136,6 +140,7 @@ class Menus extends Component {
 
     return (
       <div className="menus-wrapper">
+      <Route exact path="/restaurant/menus">
         <p>Hi {rName}, let's customize your menu now</p>
         <h1>Menu</h1>
 
@@ -147,6 +152,7 @@ class Menus extends Component {
             }}}>
           <Button>Add New Dishes</Button>
         </Link>
+        
 
         {/* "Sort By" Drop downs */}
         <TextField 
@@ -183,6 +189,10 @@ class Menus extends Component {
 
         <Button>Load More</Button>
 
+        </Route>
+        <Route path="/restaurant/menus/detail/:id" component={MenuDetail} />
+        <Route path="/restaurant/menus/edit/:id"  component={EditDish} />
+        <Route path="/restaurant/menus/add"  component={AddDish} />
       </div>
     )
   }

@@ -16,6 +16,7 @@ import ChoiceContainer from "./ChoiceContainer"
 // Other
 import {BASE_URL} from "../../../../config/config"
 
+var createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
 
 class MenuCreator extends Component{
   state={
@@ -26,6 +27,7 @@ class MenuCreator extends Component{
     allergy: [],
     dietType: [],
     spicyLevel:  [],
+    uploadImageSrc: ''
   }
 
   handleNameInputChange = input => {
@@ -47,6 +49,19 @@ class MenuCreator extends Component{
     this.setState({
       description: input
     })
+  }
+
+  handleChangeFile(e) {
+    var files = e.target.files;
+    var image_url = files.length===0 ? "" : createObjectURL(files[0]);
+    this.setState({
+      file: e.target.files[0],
+      uploadImageSrc: image_url});
+  }
+
+  deleteFile(e) {
+    this.setState({uploadImageSrc: ''});
+    console.log(this.state.uploadImageSrc)
   }
 
   saveInfo = e => {
@@ -80,29 +95,27 @@ class MenuCreator extends Component{
         console.log(err)
       })
 
-    //   axios
-    //   .post(`${BASE_URL}/menus`,{
-    //     menuName: dishName,
-    //     menuDescription: description,
-    //     price: dishPrice,
-    //     pictureURI: '1234'
-    // }, {headers: { Authorization: `${jwt}` }})
-    // axios
-    //   .get("${BASE_URL}/menus/all", {
-    //     headers: { Authorization: `${jwt}` },
-    //   })
-    //   .then((res) => {
-    //     this.setState({
-    //       menus: res.data,
-    //       isLoading: false
-    //     })
-    //     console.log(this.state)
-    //   })
-    //   .catch((err) => {
-    //     // localStorage.removeItem("jwt-token")
-    //     // this.props.history.push("/signIn")
-    //     console.log(err)
-    //   })
+    const params = new FormData();
+
+    // Upload image
+    params.append('image', this.state.file);
+    axios
+      .post(
+        `${BASE_URL}/menus/`,
+        params,
+        {
+          headers: {
+            'content-type': 'multipart/form-data',
+            Authorization: `${jwt}`
+          },
+        }
+      )
+      .catch(() => {
+        console.log('upload failed...');
+        this.setState({
+          isLoading: false
+        });
+      });
   }
 
   render(){
@@ -128,10 +141,18 @@ class MenuCreator extends Component{
             onChange={e => this.handleDescriptionInputChange(e.target.value)}
           />
 
-          {/* <img src={} /> */}
+          <img src={this.state.uploadImageSrc} />
 
-          <Button>Add</Button>
-          <Button>Delete</Button>
+          <div>
+              <input accept="image/*" multiple type="file" className="input" id="upload-img"  onChange={e => this.handleChangeFile(e)} style={{display:'none'}}/>
+              <label htmlFor="upload-img">
+                  <Button variant="contained" component="span">
+                        Add
+                  </Button>
+              </label>
+
+              <Button variant="contained" onClick={e => this.deleteFile(e.target)}>Delete</Button>
+          </div>
 
           <ChoiceContainer menuId={this.state.id} />
 

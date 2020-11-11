@@ -20,6 +20,7 @@ import ChoiceContainer from "./ChoiceContainer"
 import {getJwtToken} from "../../../getJwt"
 import {BASE_URL} from "../../../../config/config"
 
+var createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
 
 class MenuEditor extends Component{
 
@@ -28,6 +29,7 @@ class MenuEditor extends Component{
     name: this.props.dishName,
     price: this.props.dishPrice,
     description: this.props.dishDescription,
+    uploadImageSrc: `http://localhost:5000/api/menus/image/${this.props.id}`,
     isLoading: false
   }
 
@@ -50,6 +52,19 @@ class MenuEditor extends Component{
     this.setState({
       description: input
     })
+  }
+
+  handleChangeFile(e) {
+    var files = e.target.files;
+    var image_url = files.length===0 ? "" : createObjectURL(files[0]);
+    this.setState({
+      file: e.target.files[0],
+      uploadImageSrc: image_url});
+  }
+
+  deleteFile(e) {
+    this.setState({uploadImageSrc: ''});
+    console.log(this.state.uploadImageSrc)
   }
 
   saveInfo = e => {
@@ -79,22 +94,27 @@ class MenuEditor extends Component{
         console.log(err)
       })
 
-    // axios
-    //   .get(`${BASE_URL}/menus/all`, {
-    //     headers: { Authorization: `${jwt}` },
-    //   })
-    //   .then((res) => {
-    //     this.setState({
-    //       menus: res.data,
-    //       isLoading: false
-    //     })
-    //     console.log(this.state)
-    //   })
-    //   .catch((err) => {
-    //     // localStorage.removeItem("jwt-token")
-    //     // this.props.history.push("/signIn")
-    //     console.log(err)
-    //   })
+    const params = new FormData();
+
+    // Upload image
+    params.append('image', this.state.file);
+    axios
+      .put(
+        `${BASE_URL}/menus/${id}`,
+        params,
+        {
+          headers: {
+            'content-type': 'multipart/form-data',
+            Authorization: `${jwt}`
+          },
+        }
+      )
+      .catch(() => {
+        console.log('upload failed...');
+        this.setState({
+          isLoading: false
+        });
+      });
   }
 
   render(){
@@ -122,10 +142,18 @@ class MenuEditor extends Component{
             onChange={e => this.handleDescriptionInputChange(e.target.value)}
           />
 
-          <img src={`http://localhost:5000/api/menus/image/${this.state.id}`} />
+          <img src={this.state.uploadImageSrc} />
 
-          <Button>Add</Button>
-          <Button>Delete</Button>
+          <div>
+              <input accept="image/*" multiple type="file" className="input" id="upload-img"  onChange={e => this.handleChangeFile(e)} style={{display:'none'}}/>
+              <label htmlFor="upload-img">
+                  <Button variant="contained" component="span">
+                        Add
+                  </Button>
+              </label>
+
+              <Button variant="contained" onClick={e => this.deleteFile(e.target)}>Delete</Button>
+          </div>
 
           <ChoiceContainer menuId={this.state.id} />
 

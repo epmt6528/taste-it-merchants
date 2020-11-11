@@ -119,8 +119,6 @@ class ChoiceContainer extends Component {
           spicyLevel: spicyLevelOptions,
           isLoading: true
         })
-
-        console.log(this.state)
       })
       .catch((err) => {
         // localStorage.removeItem("jwt-token");
