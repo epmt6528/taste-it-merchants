@@ -27,14 +27,28 @@ const useRowStyles = makeStyles({
   },
 })
 
-function createData(orderNo, product, quantity, status, customerName, review, feedback ) {
+// Order No. Formatter
+const orderNoFormatter = new Intl.NumberFormat('en', {
+  minimumIntegerDigits: 3, 
+  useGrouping: false
+});
+
+// Quantity Formatter
+const quantityFormatter = new Intl.NumberFormat('en', {
+  minimumIntegerDigits: 2, 
+  useGrouping: false
+});
+
+function createData(orderNo, product, quantity, status, customerName, review, feedback, date ) {
+  const reviewStars = "★"
+  
   return {
     orderNo,
     product,
     quantity,
     status,
     customerInfo: [
-      { customerName: customerName, review: review, feedback: feedback },
+      { customerName: customerName, review: reviewStars.repeat(review), feedback: feedback },
     ],
   }
 }
@@ -53,11 +67,11 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.orderNo}
+          {orderNoFormatter.format(row.orderNo)}
         </TableCell>
-        <TableCell align="right">{row.product}</TableCell>
-        <TableCell align="right">{row.quantity}</TableCell>
-        <TableCell align="right">
+        <TableCell>{row.product}</TableCell>
+        <TableCell>{quantityFormatter.format(row.quantity)}</TableCell>
+        <TableCell>
           <TextField
           select
           variant="outlined"
@@ -82,7 +96,7 @@ function Row(props) {
                   <TableRow>
                     <TableCell>Customer's name</TableCell>
                     <TableCell>Review</TableCell>
-                    <TableCell align="right">feedback</TableCell>
+                    <TableCell>feedback</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -91,8 +105,8 @@ function Row(props) {
                       <TableCell component="th" scope="row">
                         {customerInfoRow.customerName}
                       </TableCell>
-                      <TableCell>{customerInfoRow.review}</TableCell>
-                      <TableCell align="right">{customerInfoRow.feedback}</TableCell>
+                      <TableCell>{customerInfoRow.review ? customerInfoRow.review : 'Not reviewed yet'}</TableCell>
+                      <TableCell>{customerInfoRow.feedback ? customerInfoRow.feedback: 'Not reviewed yet'}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -111,7 +125,7 @@ export default function OrderTable(props) {
   const orders = props.orders
   
   for(let i=0; i<orders.length; i++){
-    const newData = createData(i+1, orders[i].menuName, orders[i].forHowManyPeople, orders[i].orderStatusID, `${orders[i].firstName} ${orders[i].lastName}`, orders[i].rate, orders[i].review,)
+    const newData = createData(i+1, orders[i].menuName, orders[i].forHowManyPeople, orders[i].orderStatusID, `${orders[i].firstName} ${orders[i].lastName}`, orders[i].rate, orders[i].review, orders[i].createdAt)
     rows[i]=(newData)
   }
 
@@ -122,9 +136,9 @@ export default function OrderTable(props) {
           <TableRow>
             <TableCell />
             <TableCell>Order No.</TableCell>
-            <TableCell align="right">Product</TableCell>
-            <TableCell align="right">Quantity</TableCell>
-            <TableCell align="right">Status</TableCell>
+            <TableCell>Product</TableCell>
+            <TableCell>Quantity</TableCell>
+            <TableCell>Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

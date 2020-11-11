@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import Grid from "@material-ui/core/Grid"
 import { Button } from '@material-ui/core'
 import { TextField } from "@material-ui/core"
+import MenuItem from '@material-ui/core/MenuItem'
 
 // Components
 import MenuCard from "./components/MenuCard"
@@ -20,9 +21,11 @@ class Menus extends Component {
   state = {
     restaurant: [],
     menus: [],
+    originalArray: [], // This array is used for keyword search
+    sortBy: 1,
     isLoading: false
   }
-
+  
   componentDidMount() {
     const jwt = getJwtToken()
     if (!jwt) {
@@ -55,6 +58,7 @@ class Menus extends Component {
       .then((res) => {
         this.setState({
           menus: res.data,
+          originalArray: res.data,
           isLoading: false
         })
       })
@@ -65,23 +69,70 @@ class Menus extends Component {
   }
 
 
-  render() {
-    const sortByOptions = [
-      {
-        id: 1,
-        label: 'Sort By: Latest'
-      },
-      {
-        id: 2,
-        label: 'Sort By: Oldest'
-      },
-      {
-        id: 3,
-        label: 'Sort By: ABC'
-      },
-    ]
+  // Sorting Menus
+  onSortingChange = (input) => {
+    this.setState({
+      sortBy: input
+    })
 
+    if (input==1){
+      // Sort By: Latest
+      const newArray = this.state.menus.sort(function(a, b) {
+        var dateA = new Date(a.createdAt)
+        var dateB = new Date(b.createdAt)
+        console.log(dateA)
+        return dateA - dateB
+      })
+
+      this.setState({
+          menus: newArray
+      })
+
+    }else if(input==2){
+      // Sort By: Oldest
+      const newArray = this.state.menus.sort(function(a, b) {
+        var dateA = new Date(a.createdAt)
+        var dateB = new Date(b.createdAt)
+        console.log(dateA)
+        return dateB - dateA
+      })
+
+      this.setState({
+          menus: newArray
+      })
+
+    }else if(input==3){
+      // Sort By: ABC
+      const newArray = this.state.menus.sort(function(a, b) {
+        if (a.menuName < b.menuName) {
+            return -1
+        } else {
+            return 1
+        }
+      })
+
+      this.setState({
+          menus: newArray
+      })
+    }
+  }
+
+
+  //  Key word Search
+  keyWordSearch = (keyword) =>{
+    var newArray = this.state.originalArray.filter(function(item){
+      if ((item.menuName).indexOf(keyword) >= 0) return true
+    })
+
+    this.setState({
+      menus: newArray
+    })
+  }
+
+
+  render() {
     const rName = this.state.restaurant.restaurantName
+    const sortBy = this.state.sortBy
 
     return (
       <div className="menus-wrapper">
@@ -100,17 +151,16 @@ class Menus extends Component {
         {/* "Sort By" Drop downs */}
         <TextField 
           select
-          value={sortByOptions}
+          value={sortBy}
+          onChange={e => this.onSortingChange(e.target.value)}
         >
-          {sortByOptions.map((option) => (
-            <sortByOptions key={option.id} value={option.value}>
-              {option.label}
-            </sortByOptions>
-          ))}
+          <MenuItem key='1' value='1'>Sort By: Latest</MenuItem>
+          <MenuItem key='2' value='2'>Sort By: Oldest</MenuItem>
+          <MenuItem key='3' value='3'>Sort By: ABC</MenuItem>
         </TextField>
 
         {/* Search Field */}
-        <TextField />
+        <TextField onChange={e => this.keyWordSearch(e.target.value)}/>
 
         {/* Menu Cards */}
         <Grid>

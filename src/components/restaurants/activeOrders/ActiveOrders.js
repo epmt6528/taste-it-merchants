@@ -1,6 +1,6 @@
 // Libraries
 import React, { Component } from "react"
-import axios from 'axios';
+import axios from 'axios'
 import { getJwtToken } from "../../getJwt"
 
 // MaterialUI
@@ -39,6 +39,7 @@ class ActiveOrders extends Component {
       .then((res) => {
         this.setState({
           rName: res.data[0].restaurantName,
+          isActive: res.data[0].isActive,
           isLoading: false
         })
       })
@@ -90,26 +91,65 @@ class ActiveOrders extends Component {
   }
 
 
+  // Update restaurant's isActive status
+  onActiveStatusChange = () =>{
+
+    const jwt = getJwtToken()
+    if (!jwt) {
+      // this.props.history.push("/signIn")
+    }
+
+    this.setState({
+      isActive: this.state.isActive ? false : true
+    })
+
+    axios
+      .put(`${BASE_URL}/restaurants`, {
+        isActive: this.state.isActive
+      }, {headers: { Authorization: `${jwt}` }}
+      )
+      .then((res)=>{
+        console.log(res)
+        console.log(this.state.isActive)
+      })
+      .catch((err) => {
+        // localStorage.removeItem("jwt-token")
+        // this.props.history.push("/signIn")
+        console.log(err)
+      })
+  }
+
+
   render() {
-    const {rName, orders, isLoading} = this.state
+    const {rName, orders, isActive ,isLoading} = this.state
 
     return (
       <div>
         <p>Hi {rName}, welcome back!</p>
         <h1>Active Orders</h1>
 
-        <div>
-          <h3>Take A Break</h3>
-          <p>You can deactivate your restaurant to stop receieving orders.</p>
-          <Button>Go Offline</Button>
-        </div>
+        {
+          isActive ? 
+                    <div>
+                      <h3>Take A Break</h3>
+                      <p>You can deactivate your restaurant to stop receieving orders.</p>
+                      <Button onClick={this.onActiveStatusChange} >Go Offline</Button>
+                    </div>
+                   :
+                    <div>
+                      <h3>Let's Get Started</h3>
+                      <p>Please activate your restaurant to start receieving orders.</p>
+                      <Button onClick={this.onActiveStatusChange} >Activate</Button>
+                    </div>
+        }
 
         {
-          isLoading ? <Loading /> :
-          <DateWrapper orders={orders} onStatusChange={this.onStatusChange} />
+          isLoading ? 
+                      <Loading /> 
+                    :
+                      <DateWrapper orders={orders} onStatusChange={this.onStatusChange} />
         }
         
-        <Button>Load More</Button>
       </div>
     );
   }

@@ -5,6 +5,11 @@ import React from "react"
 import Button from '@material-ui/core/Button'
 import TextField  from "@material-ui/core/TextField"
 import MenuItem from '@material-ui/core/MenuItem'
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import Input from '@material-ui/core/Input';
 
 
 const RestaurantInfoEditor = props =>{
@@ -24,6 +29,19 @@ const RestaurantInfoEditor = props =>{
           handlePostalCodeInputChange,
           saveInfo} = props
 
+    const handleClickShowPassword = () => {
+      setValues({ ...values, showPassword: !values.showPassword });
+    }
+    
+    const handleMouseDownPassword = (event) => {
+      event.preventDefault()
+    }
+          
+    const [values, setValues] = React.useState({
+      password: password,
+      showPassword: false,
+    });
+
   return(
     <form>
       <div>
@@ -31,8 +49,14 @@ const RestaurantInfoEditor = props =>{
 
         <TextField  fullWidth label="Restaurant Name" defaultValue={rName} variant="outlined" onChange={e => handleNameInputChange(e.target.value)}/>
         <TextField  fullWidth label="Phone Number" defaultValue={phoneNumber} variant="outlined" onChange={e => handlePhoneNumberInputChange(e.target.value)} />
-        {/* <TextField  label="Email" value={} /> */}
-        <TextField  fullWidth label="Password" type="password" defaultValue={password} variant="outlined" onChange={e => handlePasswordInputChange(e.target.value)} />
+        <TextField
+          fullWidth 
+          label="Password" 
+          type="password" 
+          value={password} 
+          variant="outlined" 
+          onClick={e => e.target.value = ''}
+          onChange={e => handlePasswordInputChange(e.target.value)} />
         <TextField
           fullWidth
           label="Description"
@@ -75,7 +99,7 @@ const RestaurantInfoEditor = props =>{
 
         <TextField  fullWidth label="Address" defaultValue={address.address} variant="outlined" onChange={e => handleAddressInputChange(e.target.value)} />
 
-        <TextField  fullWidth label="Postal Code" defaultValue={address.postcode} variant="outlined" onChange={e => handlePostalCodeInputChange(e.target.value)} />
+        <TextField fullWidth label="Postal Code" defaultValue={address.postcode} variant="outlined" onChange={e => handlePostalCodeInputChange(e.target.value)} />
       </div>
 
       <Button onClick={saveInfo}>Save New Change</Button>

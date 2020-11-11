@@ -14,10 +14,19 @@ const getStyles = makeStyles(theme => ({
 
 
 const DateWrapper = props =>{
+
   const classes = getStyles()
+  const {orders, onStatusChange} = props
+
   return(
     <div>
-      <OrderTable orders={props.orders} onStatusChange={props.onStatusChange}/>
+      {
+        orders.length ?
+                        <OrderTable orders={orders} onStatusChange={onStatusChange}/>
+                      :
+                        <p>You don't have any active orders currently.</p>
+      }
+      
     </div>
   )
 };

@@ -1,5 +1,6 @@
 // Libraries
 import React from 'react'
+import moment from 'moment'
 
 // MaterialUI
 import { makeStyles } from '@material-ui/core/styles'
@@ -27,8 +28,22 @@ const useRowStyles = makeStyles({
   },
 })
 
+// Order No. Formatter
+const orderNoFormatter = new Intl.NumberFormat('en', {
+  minimumIntegerDigits: 3, 
+  useGrouping: false
+});
+
+// Quantity Formatter
+const quantityFormatter = new Intl.NumberFormat('en', {
+  minimumIntegerDigits: 2, 
+  useGrouping: false
+});
+
 
 function createData(orderID, orderNo, product, quantity, status, customerName, address, phoneNumber, instructions, dateTime) {
+  const formattedDate = moment(dateTime).format('MMM Do - h:mm a')
+
   return {
     orderID,
     orderNo,
@@ -36,7 +51,7 @@ function createData(orderID, orderNo, product, quantity, status, customerName, a
     quantity,
     status,
     customerInfo: [
-      { customerName: customerName, address: address, phoneNumber: phoneNumber, instructions: instructions, dateTime },
+      { customerName: customerName, address: address, phoneNumber: phoneNumber, instructions: instructions, dateTime: formattedDate },
     ],
   }
 }
@@ -56,10 +71,10 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.orderNo}
+          {orderNoFormatter.format(row.orderNo)}
         </TableCell>
         <TableCell>{row.product}</TableCell>
-        <TableCell>{row.quantity}</TableCell>
+        <TableCell>{quantityFormatter.format(row.quantity)}</TableCell>
         <TableCell>
           <TextField
           select
@@ -71,7 +86,6 @@ function Row(props) {
             <MenuItem key='1' value='2'>Being Prepared</MenuItem>
             <MenuItem key='2' value='3'>Being Delivered</MenuItem>
             <MenuItem key='3' value='4'>Delivered</MenuItem>
-            <MenuItem key='4' value='5'>Reviewed</MenuItem>
           </TextField>
         </TableCell>
       </TableRow>
