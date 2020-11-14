@@ -73,6 +73,7 @@ class ActiveOrders extends Component {
 
   // Update orders' status
   onStatusChange = (orderID, orderStatusID) =>{
+    console.log(orderID, orderStatusID)
     const jwt = getJwtToken()
     if (!jwt) {
       this.props.history.push("/signIn")
@@ -87,13 +88,13 @@ class ActiveOrders extends Component {
       .catch((err) => {
         // localStorage.removeItem("jwt-token")
         // this.props.history.push("/signIn")
+        console.log(err)
       })
   }
 
 
   // Update restaurant's isActive status
   onActiveStatusChange = () =>{
-
     const jwt = getJwtToken()
     if (!jwt) {
       // this.props.history.push("/signIn")

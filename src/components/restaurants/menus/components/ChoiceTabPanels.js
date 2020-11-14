@@ -1,5 +1,5 @@
 // Libraries
-import React from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from 'prop-types'
 
 // MaterialUI
@@ -10,7 +10,8 @@ import Checkbox from '@material-ui/core/Checkbox'
 
 
 const TabPanel = (props) => {
-  const { value, index, choices, ...other } = props
+  const { value, index, choices, handleChange,...other } = props
+  console.log(choices)
 
   TabPanel.propTypes = {
     children: PropTypes.node,
@@ -29,17 +30,20 @@ const TabPanel = (props) => {
       {value === index && (
         <List>
           {
-            props.choices.map(
-              choice => {
-                const {choiceDescription, checked} = choice
+            choices.map(
+              (choice) => {
+                const {choiceDescription, checked, index} = choice
+                console.log(index)
                 return (
                   <ListItem>
                     <FormControlLabel
-                      checked={checked}
+                      index={index}
+                      label={choiceDescription}
                       value={choiceDescription}
                       control={<Checkbox color="primary" />}
-                      label={choiceDescription}
                       labelPlacement="start"
+                      onChange={e => handleChange(e.target.value)}
+                      checked={checked}
                     />
                   </ListItem>
                 )

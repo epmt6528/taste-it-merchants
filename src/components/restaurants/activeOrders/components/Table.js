@@ -132,6 +132,7 @@ export default function OrderTable(props) {
   const {orders, onStatusChange} = props
 
   for(let i=0; i<orders.length; i++){
+    console.log(orders[i])
     const newData = createData(orders[i].orderID, i+1, orders[i].menuName, orders[i].forHowManyPeople, orders[i].orderStatusID, `${orders[i].firstName} ${orders[i].lastName}`, `${orders[i].address} ${orders[i].postcode} `, orders[i].phoneNumber,  orders[i].instructions, orders[i].createdAt)
     rows[i] = (newData)
   }

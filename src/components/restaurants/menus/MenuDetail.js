@@ -1,6 +1,8 @@
 // Libraries
-import React from "react"
+import React, {Component}  from "react"
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+import { getJwtToken } from "../../getJwt"
 
 // MaterialUI
 import Card from '@material-ui/core/Card'
@@ -16,7 +18,6 @@ import ChoiceContainer from "./components/ChoiceContainer"
 // Other
 import {BASE_URL} from "../../../config/config"
 
-
 const getStyles = makeStyles(theme => ({
   media: {
     'height': '0',
@@ -24,16 +25,149 @@ const getStyles = makeStyles(theme => ({
   },
 }))
 
+// Delete menu
+const deleteMenu = (menuID) =>{
+  const jwt = getJwtToken()
+  if (!jwt) {
+    // this.props.history.push("/signIn")
+  }
+
+  axios
+    .put(`${BASE_URL}/menus/${menuID}`,{
+      isActive: "false"
+    }, {
+      headers: { Authorization: `${jwt}` }
+    })
+    .then((res)=>{
+      console.log(res)
+    })
+    .catch((err) => {
+      // localStorage.removeItem("jwt-token")
+      // this.props.history.push("/signIn")
+      console.log(err)
+    })
+}
+
+
+const getChoices = (menuID) =>{
+  const jwt = getJwtToken()
+    // if (!jwt) {
+    //   this.props.history.push("/signIn")
+    // }
+
+    // this.setState({
+    //   isLoading: true
+    // })
+
+    const choices = []
+
+    const cuisineOptions = [
+      { choiceDescription: 'Indian', checked: false},
+      { choiceDescription: 'Vietnamese', checked: false},
+      { choiceDescription: 'Japanese', checked: false},
+      { choiceDescription: 'French', checked: false},
+    ]
+
+    const allergyOptions = [
+      { choiceDescription: 'No Allergens', checked: false},
+      { choiceDescription: 'Milk', checked: false},
+      { choiceDescription: 'Crustacean shellfish', checked: false},
+      { choiceDescription: 'Tree nuts', checked: false},
+      { choiceDescription: 'Fish', checked: false},
+    ]
+      
+    const dietTypeOptions = [
+      { choiceDescription: 'Anything', checked: false},
+      { choiceDescription: 'Vegetarian', checked: false},
+      { choiceDescription: 'Gluten-Free', checked: false}
+    ]
+      
+    const spicyLevelOptions = [
+      { choiceDescription: 'Very High', checked: false},
+      { choiceDescription: 'High', checked: false},
+      { choiceDescription: 'Moderate', checked: false},
+      { choiceDescription: 'Not Spicy', checked: false},
+    ]
+    
+
+    axios
+      .get(`${BASE_URL}/menus/choices/${menuID}`, {
+        headers: { Authorization: `${jwt}` },
+      })
+      .then((res) => {
+        // Cuisine
+        const selectedCuisineType = res.data.filter( function( choice ) {
+          return choice.category == "Cuisines"
+        })
+
+        for (let i = 0; i < selectedCuisineType.length; i++) {
+          const index = cuisineOptions.findIndex(option => option.choiceDescription == selectedCuisineType[i].choiceDescription)
+
+          if(index != -1){
+            cuisineOptions[index].checked = true
+          }
+        }
+
+        // Allergy
+        const selectedAllergy = res.data.filter( function( choice ) {
+          return choice.category == "Allergens"
+        })
+
+        for (let i = 0; i < selectedAllergy.length; i++) {
+          const index = allergyOptions.findIndex(option => option.choiceDescription == selectedAllergy[i].choiceDescription)
+
+          if(index != -1){
+            allergyOptions[index].checked = true
+          }
+        }
+
+        // Diet Type
+        const selectedDietType = res.data.filter( function( choice ) {
+          return choice.category == "Diet Types"
+        })
+
+        for (let i = 0; i < selectedDietType.length; i++) {
+          const index = dietTypeOptions.findIndex(option => option.choiceDescription == selectedDietType[i].choiceDescription)
+
+          if(index != -1){
+            dietTypeOptions[index].checked = true
+          }
+        }
+
+        // Spicy Level
+        const selectedSpicyLevel = res.data.filter( function( choice ) {
+          return choice.category == "Spiciness"
+        })
+
+        for (let i = 0; i < selectedSpicyLevel.length; i++) {
+          const index = spicyLevelOptions.findIndex(option => option.choiceDescription == selectedSpicyLevel[i].choiceDescription)
+
+          if(index != -1){
+            spicyLevelOptions[index].checked = true
+          }
+        }
+      })
+      .catch((err) => {
+        // localStorage.removeItem("jwt-token");
+        // this.props.history.push("/signIn");
+        console.log(err)
+      })
+}
+
 
 const MenuDetail = props =>{
   const classes = getStyles()
+
   const {id, name, description, price, rName} = props.location.state
+
+  getChoices(id)
   
   // Number => dollar currency format
   const formatter = new Intl.NumberFormat('ja-JP', {
     style: 'currency',
     currency: 'USD'
   })
+
 
   return(
     <div>
@@ -55,7 +189,7 @@ const MenuDetail = props =>{
             <Typography>{formatter.format(price)}</Typography>
           </CardContent>
           
-        <ChoiceContainer menuId={id} />
+        {/* <ChoiceContainer choices={choices} /> */}
 
         <Link 
           to={{
@@ -71,7 +205,7 @@ const MenuDetail = props =>{
           <Button>Edit Dish</Button>
         </Link>
         
-        <Button>Remove Dish</Button>
+        <Button onClick={() => deleteMenu(id)}>Remove Dish</Button>
       </Card>
     </div>
   )

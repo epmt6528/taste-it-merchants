@@ -1,6 +1,25 @@
 .mobile-menu {
     display: flex;
-    max-width: 90%;
     justify-content: space-between;
     margin: auto;
+    padding: 20px;
+}
+
+.mobile-menu__logo{
+    width: 50px;
+    height: auto;
+}
+
+.mobile-menu-nav__button{
+    width: 40px;
+    height: auto;
+}
+
+.toolbar{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 10;
 }

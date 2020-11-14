@@ -10,7 +10,7 @@ import {BASE_URL} from "../../../../config/config"
 import { getJwtToken } from "../../../getJwt"
 
 
-const ChoiceContainer =(props)=>{
+const ChoiceContainer = props =>{
     return (
       <div>
         <ChoiceTabs 
@@ -25,6 +25,6 @@ const ChoiceContainer =(props)=>{
         />
       </div>
     )
-}
+  }
 
 export default ChoiceContainer

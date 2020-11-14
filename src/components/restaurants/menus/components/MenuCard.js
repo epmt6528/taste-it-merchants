@@ -13,11 +13,16 @@ import {BASE_URL} from "../../../../config/config"
 
 
 const getStyles = makeStyles(theme => ({
+  root: {
+    maxWidth: 345,
+  },
   media: {
+    'maxWidth': '100%',
     'height': '0',
     'paddingTop': '56.25%' // 16:9
   },
 }))
+
 
 
 const MenuCard = props =>{
@@ -32,11 +37,11 @@ const MenuCard = props =>{
           id: id,
           name: name,
           description: menuDescription,
-          price: price ,
+          price: price,
           rName: rName
         }
       }}>
-      <Card key={id}>
+      <Card key={id} className={classes.root}>
         <CardMedia image={`${BASE_URL}/menus/image/${id}`} className={classes.media} />
         <CardHeader title={name}/>
       </Card>

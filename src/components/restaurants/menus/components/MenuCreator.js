@@ -11,7 +11,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput'
 import InputAdornment from '@material-ui/core/InputAdornment'
 
 // Components
-import ChoiceContainer from "./ChoiceContainer"
+import ChoiceCreator from "./ChoiceCreator"
 
 // Other
 import {BASE_URL} from "../../../../config/config"
@@ -23,29 +23,87 @@ class MenuCreator extends Component{
     dishName: '',
     dishPrice: '',
     description: '',
-    cusisineType: [],
-    allergy: [],
-    dietType: [],
-    spicyLevel:  [],
+    cuisineType: [
+      { choiceDescription: 'Indian', checked: false},
+      { choiceDescription: 'Vietnamese', checked: false},
+      { choiceDescription: 'Japanese', checked: false},
+      { choiceDescription: 'French', checked: false},
+    ],
+    allergy: [
+      { choiceDescription: 'No Allergens', checked: false},
+      { choiceDescription: 'Milk', checked: false},
+      { choiceDescription: 'Crustacean shellfish', checked: false},
+      { choiceDescription: 'Tree nuts', checked: false},
+      { choiceDescription: 'Fish', checked: false},
+    ],
+    dietType: [
+      { choiceDescription: 'Anything', checked: false},
+      { choiceDescription: 'Vegetarian', checked: false},
+      { choiceDescription: 'Gluten-Free', checked: false}
+    ],
+    spicyLevel:  [
+      { choiceDescription: 'Very High', checked: false},
+      { choiceDescription: 'High', checked: false},
+      { choiceDescription: 'Moderate', checked: false},
+      { choiceDescription: 'Not Spicy', checked: false},
+    ],
     uploadImageSrc: ''
   }
 
+  handleCusineTypeChange= choiceDescription =>{
+    const target = this.state.cuisineType.map(function(e) { return e.choiceDescription }).indexOf(choiceDescription)
+    let newChoices = JSON.parse(JSON.stringify(this.state.cuisineType))
+    newChoices[target].checked = !newChoices[target].checked
+
+    this.setState({
+      cuisineType: newChoices
+    })
+  }
+
+  handleAllergyChange= choiceDescription =>{
+    const target = this.state.allergy.map(function(e) { return e.choiceDescription }).indexOf(choiceDescription)
+    let newChoices = JSON.parse(JSON.stringify(this.state.allergy))
+    newChoices[target].checked = !newChoices[target].checked
+
+    this.setState({
+      allergy: newChoices
+    })
+  }
+
+  handleSpicyLevelChange= choiceDescription =>{
+    const target = this.state.spicyLevel.map(function(e) { return e.choiceDescription}).indexOf(choiceDescription)
+    
+    let newChoices = JSON.parse(JSON.stringify(this.state.spicyLevel))
+    newChoices[target].checked = !newChoices[target].checked
+
+    this.setState({
+      spicyLevel: newChoices
+    })
+  }
+
+  handleDietTypeChange= choiceDescription =>{
+    const target = this.state.dietType.map(function(e) { return e.choiceDescription }).indexOf(choiceDescription)
+    let newChoices = JSON.parse(JSON.stringify(this.state.dietType))
+    newChoices[target].checked = !newChoices[target].checked
+
+    this.setState({
+      dietType: newChoices
+    })
+  }
+  
   handleNameInputChange = input => {
-    console.log(input)
     this.setState({
       dishName: input
     })
   }
 
   handlePriceInputChange = input => {
-    console.log(input)
     this.setState({
       dishPrice: input
     })
   }
 
   handleDescriptionInputChange = input => {
-    console.log(input)
     this.setState({
       description: input
     })
@@ -65,13 +123,39 @@ class MenuCreator extends Component{
   }
 
   saveInfo = e => {
-    const {dishName, dishPrice, description, allergy, dietType, spicyLevel} = this.state
+    const {dishName, dishPrice, description, file, cuisineType, allergy, dietType, spicyLevel} = this.state
 
     const bodyFormData = new FormData()
     bodyFormData.append('menuName', dishName)
     bodyFormData.append('price', dishPrice)
     bodyFormData.append('menuDescription', description)
-    bodyFormData.append('image', '1234')
+    bodyFormData.append('image', file)
+
+    const newChoices = []
+
+    for(let i = 0; i<cuisineType.length; i++){
+      if(cuisineType[i].checked){
+        newChoices.push(cuisineType[i].choiceDescription)
+      }
+    }
+
+    for(let i = 0; i<allergy.length; i++){
+      if(allergy[i].checked){
+        newChoices.push(allergy[i].choiceDescription)
+      }
+    }
+
+    for(let i = 0; i<dietType.length; i++){
+      if(dietType[i].checked){
+        newChoices.push(dietType[i].choiceDescription)
+      }
+    }
+
+    for(let i = 0; i<spicyLevel.length; i++){
+      if(spicyLevel[i].checked){
+        newChoices.push(spicyLevel[i].choiceDescription)
+      }
+    }
 
     e.preventDefault()
 
@@ -80,6 +164,7 @@ class MenuCreator extends Component{
       this.props.history.push("/signIn")
     }
 
+    // Upload dishName, dishPrice, description
     axios({
       method: 'post',
       url: `${BASE_URL}/menus`,
@@ -89,33 +174,38 @@ class MenuCreator extends Component{
         'Authorization': `${jwt}` 
        }})
       .then((res)=>{
-        console.log(res)
+        // Deactivate all choices
+        axios
+        .put(
+          `${BASE_URL}/menus/choices/deactivateChoices`,{
+            menuID: res.data.menuID
+          },{
+            headers: {
+              Authorization: `${jwt}`
+            }
+          }
+        )
+        .then(()=>{
+          for(let i = 0; i<newChoices.length; i++){
+            // Upload choices
+            axios
+            .post(
+              `${BASE_URL}/menus/choices`,{
+                menuID: res.data.menuID,
+                choiceDescription: newChoices[i]
+              },{
+                headers: {
+                  Authorization: `${jwt}`
+                }
+              }
+            )
+          }
+        })
       })
       .catch((err) => {
         console.log(err)
       })
 
-    const params = new FormData();
-
-    // Upload image
-    params.append('image', this.state.file);
-    axios
-      .post(
-        `${BASE_URL}/menus/`,
-        params,
-        {
-          headers: {
-            'content-type': 'multipart/form-data',
-            Authorization: `${jwt}`
-          },
-        }
-      )
-      .catch(() => {
-        console.log('upload failed...');
-        this.setState({
-          isLoading: false
-        });
-      });
   }
 
   render(){
@@ -154,7 +244,16 @@ class MenuCreator extends Component{
               <Button variant="contained" onClick={e => this.deleteFile(e.target)}>Delete</Button>
           </div>
 
-          <ChoiceContainer menuId={this.state.id} />
+          <ChoiceCreator 
+            cuisineType={this.state.cuisineType} 
+            allergy={this.state.allergy} 
+            dietType={this.state.dietType} 
+            spicyLevel={this.state.spicyLevel}
+            handleCusineTypeChange={this.handleCusineTypeChange} 
+            handleAllergyChange={this.handleAllergyChange} 
+            handleSpicyLevelChange={this.handleSpicyLevelChange} 
+            handleDietTypeChange={this.handleDietTypeChange} 
+          />
 
           <Button onClick={this.saveInfo}>Save Dish</Button>
         </form>

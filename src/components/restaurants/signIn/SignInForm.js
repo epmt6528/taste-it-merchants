@@ -53,19 +53,13 @@ export default function SignInForm() {
         email: values.email,
         password: values.password
       }).then(res => {
-        
         // console.log(res.data.token);
         localStorage.setItem('jwt-token', res.data.token);
         // console.log(props);
 
-       
-        history.push('/welcome');
+        history.push('/restaurant');
       });
       
-
-
-
-      window.alert("done");
       resetForm();
     // }
   };

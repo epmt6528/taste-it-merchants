@@ -1,5 +1,5 @@
 // Libraries
-import React from "react"
+import React, { useState, useEffect } from "react"
 
 // MaterialUI
 import AppBar from '@material-ui/core/AppBar'
@@ -12,12 +12,14 @@ import TabPanel from './ChoiceTabPanels'
 
 const ChoiceTabs = props =>{
   const [value, setValue] = React.useState(0)
+  const [checkedItems, setCheckedItems] = useState({})
+  const { cuisineType, allergy, dietType, spicyLevel, handleCusineTypeChange, handleAllergyChange, handleSpicyLevelChange, handleDietTypeChange } = props
 
-  const { cuisineType, allergy, dietType, spicyLevel } = props
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
+
 
   return(
     <div>
@@ -30,10 +32,10 @@ const ChoiceTabs = props =>{
         </Tabs>
       </AppBar>
       
-      <TabPanel index={0} value={value} choices ={cuisineType} />
-      <TabPanel index={1} value={value} choices ={allergy} />
-      <TabPanel index={2} value={value} choices ={dietType} />
-      <TabPanel index={3} value={value} choices ={spicyLevel} />
+      <TabPanel index={0} value={value} choices ={cuisineType} handleChange={handleCusineTypeChange}/>
+      <TabPanel index={1} value={value} choices ={allergy} handleChange={handleAllergyChange}/>
+      <TabPanel index={2} value={value} choices ={dietType} handleChange={handleDietTypeChange}/>
+      <TabPanel index={3} value={value} choices ={spicyLevel} handleChange={handleSpicyLevelChange}/>
     </div>
   )
 }

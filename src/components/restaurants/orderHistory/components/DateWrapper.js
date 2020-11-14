@@ -18,13 +18,14 @@ const getStyles = makeStyles(theme => ({
 // Grouping Orders By The Date
 // ordersGroupedByDate = [ {date: date, orders: []}]
 const ordersGroupedByDate = []
+const today = moment().format('MMM Do, YYYY')
+const yesterday = moment().subtract(1, 'days').format('MMM Do, YYYY')
+
 const ordersGrouper = (props) =>{
   ordersGroupedByDate.length = 0
   props.orders.map((element) => {
     let formattedDate = moment(element.createdAt).format('MMM Do, YYYY')
-
-    const today = moment().format('MMM Do, YYYY')
-    const yesterday = moment().subtract(1, 'days').format('MMM Do, YYYY')
+    console.log(element)
 
     if(formattedDate == today){
       formattedDate = "Today"
@@ -37,7 +38,7 @@ const ordersGrouper = (props) =>{
     if(groupNum >= 0){
       ordersGroupedByDate[groupNum].orders.push(element)
     }else{
-      ordersGroupedByDate.push({date: formattedDate, orders: [element]})
+      ordersGroupedByDate.unshift({date: formattedDate, orders: [element]})
     }
   })
 }
