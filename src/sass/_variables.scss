@@ -1,0 +1,98 @@
+// Color Palette
+
+$primary: #632DF1;
+$primaryVariant1: #3E315A;
+$primaryVariant2: #D4CDE3;
+$secondary: #FFC400;
+$secondaryVariant: #FFFCF5;
+$background: #ffffff;
+
+$maxWidth: 1680px;
+
+// Font Variables
+@font-face {
+  font-family: 'NexaRegular';
+  src: local('Nexa'), url(../fonts/Nexa/NexaRegular.otf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NexaXBold';
+  src: local('Nexa'), url(../fonts/Nexa/NexaXBold.otf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NexaBold';
+  src: local('Nexa'), url(../fonts/Nexa/NexaBold.otf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NexaLight';
+  src: local('Nexa'), url(../fonts/Nexa/NexaLight.otf) format('truetype');
+}
+
+%headings{
+  font-family: 'NexaXBold';
+  font-size: 38px;
+  color: $primary;
+  line-height: 48px;
+
+  @include desktop{
+    font-size: 60px;
+    line-height: 80px;
+  }
+}
+
+%sub_headings{
+  font-family: 'NexaRegular';
+  font-size: 16px;
+
+  @include desktop{
+    font-size: 32px;
+  }
+}
+
+%title{
+  font-family: 'NexaLight';
+  font-size: 24px;
+
+  @include desktop{
+    font-size: 24pt;
+  }
+}
+
+%buttons{
+  font-family: 'NexaXBold';
+  font-size: 16px;
+
+  @include desktop{
+    font-size: 16pt;
+  }
+}
+
+%body{
+  font-family: 'NexaLight';
+  font-size: 16px;
+  line-height: 24px;
+
+  @include desktop{
+    font-size: 24px;
+    line-height: 36px;
+  }
+}
+
+// Button
+button{
+  border: none;
+  @extend %buttons;
+  color: #ffffff;
+  background-color: $primary;
+  padding: 18px 64px;
+  border-radius: 20px;
+
+  @include desktop{
+    padding: 25px 44px;
+    width: 277px;
+    height: 80px;
+  }
+}
+

@@ -32,17 +32,8 @@ const MobileMenu = props => {
             </span>
 
             {
-                menu ? <Toolbar /> : ''
+                menu ? <Toolbar setMenu={setMenu} /> : ''
             }
-            {/* <nav className="mobile-menu-nav">
-                <ul>
-                    <li onClick={refreshPage}><Link to="/">Home</Link></li>
-                    <li><Scroll activeClass="active" className="howItWorks" to = "section1-content3" smooth={true} duration={1000} onSetActive={props.close}>How It Works</Scroll></li>
-                    <li><Scroll activeClass="active" className="features" to = "home-section2" smooth={true} duration={1000} onSetActive={props.close}>Features</Scroll></li>
-                    <li><Scroll activeClass="active" className="team" to = "home-section3" smooth={true} duration={1000} onSetActive={props.close}>Team</Scroll></li>
-                    <li><NavLink activeClassName="active" to="/signIn" className="forRestaurants" onClick={props.close}>For Restaurants</NavLink></li>
-                </ul>
-            </nav> */}
         </div>
     )
 

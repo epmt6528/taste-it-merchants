@@ -1,6 +1,7 @@
 .mobile-menu {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: auto;
     padding: 20px;
 }
@@ -13,13 +14,4 @@
 .mobile-menu-nav__button{
     width: 40px;
     height: auto;
-}
-
-.toolbar{
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: 10;
 }

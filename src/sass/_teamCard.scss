@@ -1,0 +1,41 @@
+.team-card{
+  background-color: $secondaryVariant;
+  margin-bottom: 50px;
+  padding: 20px;
+  text-align: center;
+
+  // @include tablet {
+  //   width: 45%;
+  //   flex-grow: 1;
+  //   margin: 10px;
+  // }
+
+  @include desktop{
+    margin: 10px;
+  }
+
+  h1{
+    font-size: 24px;
+    margin: 0;
+  }
+
+  p{
+    margin: 0;
+
+    @include desktop {
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+
+  ul{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+
+    img{
+      width: 25px;
+      margin: 0 10px;
+    }
+  }
+}
