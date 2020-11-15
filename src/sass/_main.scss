@@ -1,14 +1,6 @@
 .site-home-main{
   margin: 0 auto;
 
-  h1{
-    @extend %headings;
-
-    @include desktop {
-      line-height: 80px;
-    }
-  }
-
   .subtitle{
     @extend %sub_headings;
   }

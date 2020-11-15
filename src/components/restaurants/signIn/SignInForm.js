@@ -75,6 +75,7 @@ export default function SignInForm() {
             InputLabelProps={{
               required: true,
             }}
+            className="input"
             // error={errors.email}
           />
           <Controls.TextFieldControl
@@ -87,9 +88,10 @@ export default function SignInForm() {
             InputLabelProps={{
               required: true,
             }}
+            className="input"
           />
           <div>
-            <Controls.ButtonControl type="submit" text="Sign In" />
+            <button type="submit">Sign In</button>
           </div>
         </Grid>
       </Grid>

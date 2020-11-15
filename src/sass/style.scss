@@ -30,6 +30,14 @@ img{
   height: auto;
 }
 
+h1{
+  @extend %headings;
+
+  @include desktop {
+    line-height: 80px;
+  }
+}
+
 
 @import 'headerHome';
 @import 'toolbar';
@@ -37,3 +45,4 @@ img{
 @import 'teamCard';
 @import 'footer';
 @import 'desktopMenu';
+@import 'signIn';
