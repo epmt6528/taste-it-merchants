@@ -1,0 +1,92 @@
+.welcome{
+  padding: 20px 20px;
+  max-width: $maxWidth;
+
+  &_wrapper{
+    height: 100vh;
+  }
+
+  @include desktop{
+    margin: 0 auto;
+    position: relative;
+    max-height: 100vh;
+    height: 100%;
+  }
+
+  .MuiContainer-root{
+    @include desktop{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 0;
+      height: 100%;
+    }
+  }
+  
+  h2{
+    font-family: 'NexaBold';
+    font-size: 16px;
+  }
+
+  &__logo{
+    width: 47px;
+
+    @include desktop{
+      width: 131px;
+      position: absolute;
+      top: 57px;
+    }
+  }
+
+  &__heroPicMobile{
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  &__heroPicDesktop{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__main{
+    margin-top: 54px;
+    max-width: 520px !important;
+    padding: 0 !important;
+    text-align: center;
+    display: flex;
+    align-items: center;
+
+    h2{
+      @include desktop{
+        font-size: 24px;
+      }
+    }
+
+    h1{
+      font-size: 36px;
+      margin-bottom: 0;
+
+      @include desktop{
+        margin: 0;
+        font-size: 60px;
+      }
+    }
+
+    p{
+      margin-top: 10px;
+    }
+
+    button{
+      margin-top: 30px;
+
+      @include desktop{
+        margin-top: 50px;
+      }
+    }
+
+  }
+}

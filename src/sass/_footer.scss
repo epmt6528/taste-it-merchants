@@ -1,0 +1,80 @@
+.site-footer{
+  @extend %body;
+  font-size: 10px;
+  line-height: 18px;
+  padding: 50px 0;
+
+  @include desktop {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  &__upper{
+    @include desktop {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-content2{
+
+      @include desktop {
+        width: 480px;
+      }
+    }
+
+    .footer-content3{
+      @include desktop {
+        width: 600px;
+      }
+    }
+  }
+
+  &__logo{
+    width: 132px;
+    margin-bottom: 60px;
+
+    @include desktop {
+      width: 108px;
+    }
+  }
+
+  h3{
+    @extend %buttons;
+    color: $primary;
+    white-space: nowrap;
+
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
+  li{
+    margin-bottom: 20px;
+
+    @include desktop {
+      margin-bottom: 30px;
+    }
+  }
+
+  ul{
+
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
+  .footer-content5{
+    text-align: center;
+    padding-top: 30px;
+
+    @include desktop {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .content5-text1{
+      order: 1;
+    }
+  }
+}

@@ -53,19 +53,13 @@ export default function SignInForm() {
         email: values.email,
         password: values.password
       }).then(res => {
-        
         // console.log(res.data.token);
         localStorage.setItem('jwt-token', res.data.token);
         // console.log(props);
 
-       
-        history.push('/welcome');
+        history.push('/restaurant');
       });
       
-
-
-
-      window.alert("done");
       resetForm();
     // }
   };
@@ -81,6 +75,7 @@ export default function SignInForm() {
             InputLabelProps={{
               required: true,
             }}
+            className="input"
             // error={errors.email}
           />
           <Controls.TextFieldControl
@@ -93,9 +88,10 @@ export default function SignInForm() {
             InputLabelProps={{
               required: true,
             }}
+            className="input"
           />
           <div>
-            <Controls.ButtonControl type="submit" text="Sign In" />
+            <button type="submit">Sign In</button>
           </div>
         </Grid>
       </Grid>

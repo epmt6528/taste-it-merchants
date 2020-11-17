@@ -60,16 +60,14 @@ export default function SignUpForm() {
 
         history.push("/signUpAbout");
       });
-
-    window.alert("done");
+      
     resetForm();
     // }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Grid container>
-        <Grid item xs={12}>
+      <div className="signUp">
           <Controls.TextFieldControl
             name="email"
             label="Email"
@@ -104,10 +102,9 @@ export default function SignUpForm() {
           />
 
           <div>
-            <Controls.ButtonControl type="submit" text="Sign Up" />
+            <button type="submit">Sign Up</button>
           </div>
-        </Grid>
-      </Grid>
+       </div>
     </Form>
   );
 }

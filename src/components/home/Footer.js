@@ -1,44 +1,44 @@
 import React, { Component } from "react";
+import Logo from "../../img/logo.svg"
+import "./Footer.css"
 
 class Footer extends Component {
   render() {
     return (
       <footer className="site-footer">
-        {/* <div onClick={refreshPage} className="site-logo">
-                <Link to="/"><img src={LogoImage} alt="Logo"/></Link>
-                </div> */}
+        <div className="site-footer__upper">
+          <img src={Logo} alt="Taste It Logo" className="site-footer__logo" />
 
-        <div className="footer-content1">
-          <img alt="Logo" />
+          <div className="footer-content2">
+            <h3>About Us</h3>
+            <p>
+              Taste It is an online food delivery platform that provides you with
+              new food experiences through mystery dishes that are tailored to
+              suit your preferences.
+            </p>
+          </div>
+          <div className="footer-content3">
+            <ul className="content3-list">
+
+                <h3>Design Assets</h3>
+
+              <li>Marketing Materials</li>
+              <li>Promotional Videos</li>
+              <li>Project Proposal</li>
+            </ul>
+
+            <ul className="content4-list">
+
+                <h3>Development Assets</h3>
+
+              <li>Tech Stacks</li>
+              <li>GitHub Repository</li>
+            </ul>
+          </div>
         </div>
-        <div className="footer-content2">
-          <h2>About Us</h2>
-          <p>
-            Taste It is an online food delivery platform that provides you with
-            new food experiences through mystery dishes that are tailored to
-            suit your preferences.
-          </p>
-        </div>
-        <div className="footer-content3">
-          <ul className="content3-list">
-            <li>
-              <h2>Design Assets</h2>
-            </li>
-            <li>Marketing Materials</li>
-            <li>Promotional Videos</li>
-            <li>Project Proposal</li>
-          </ul>
-        </div>
-        <div className="footer-content4">
-          <ul className="content4-list">
-            <li>
-              <h2>Development Assets</h2>
-            </li>
-            <li>Tech Stacks</li>
-            <li>GitHub Repository</li>
-          </ul>
-        </div>
+
         <hr />
+      
         <div className="footer-content5">
           <div className="content5-text1">
             <p>Made with love remotely from Vancouver, BC.</p>

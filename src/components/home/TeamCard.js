@@ -1,25 +1,27 @@
 import React, {Component} from 'react'
 // import {Link} from "react-router-dom";
+import LinkedIn from '../../img/icons/linkedin.svg'
+import Github from '../../img/icons/gitHub.svg'
+import Behance from '../../img/icons/behance.svg'
 
 class TeamCard extends Component {
     render() {
         return (
             <div className="team-card">
-                <div className="team-card-image">
-                    <img alt="Team Card"/>
-                </div>
+
+                <img src={this.props.about.imgUrl} alt="{this.props.about.name}" className="team-card__face"/>
+
                 <div className="team-card-name">
                     <h1>{this.props.about.name}</h1>
                 </div>
                 <div className="team-card-role">
                     <p>{this.props.about.role}</p>
                 </div>
-                <div className="aboutUs-card-social">
-                    {/* <Link to={{ pathname: `${this.props.about.socialLink1}` }} target="_blank">
-                        <img src={this.props.about.socialIcon1} alt="Social Links 1"/></Link>
-                        <Link to={{ pathname: `${this.props.about.socailLink2}` }} target="_blank">
-                            <img src={this.props.about.socialIcon2} alt="Social Links 2"/></Link> */}
-                </div>
+                <ul>
+                    {this.props.about.linkedIn ? <li><a href={this.props.about.linkedIn}><img src={LinkedIn} alt="linkedIn Link"/></a></li> : ''}
+                    {this.props.about.github ? <li><a href={this.props.about.github}><img src={Github} alt="githubLink"/></a></li> : ''}
+                    {this.props.about.behance ? <li><a href={this.props.about.behance}><img src={Behance} alt="behance Link"/></a></li> : ''}
+                </ul>
             </div>
         )
     }

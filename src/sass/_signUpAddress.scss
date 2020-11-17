@@ -1,0 +1,88 @@
+.signUp-address{
+  padding: 0 20px;
+  max-width: $maxWidth;
+  margin: 0 auto;
+
+  &__wrapper{
+    position: relative;
+    .croissant{
+      @include desktop{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+    }
+  }
+
+  &__logo{
+    width: 47px;
+    margin-top: 20px;
+
+    @include desktop{
+      margin-top:57px;
+      width: 131px;
+    }
+  }
+
+  &__main{
+    margin-top: 54px;
+    padding: 0 !important;
+    max-width: 639px !important;
+
+    h1{
+      font-size: 32px;
+      margin-bottom: 0;
+
+      @include desktop{
+        text-align: center;
+        margin: 0;
+        line-height: 48px;
+      }
+    }
+
+    p{
+      margin-top: 10px;
+
+      @include desktop{
+        text-align: center;
+        margin-bottom: 50px;
+      }
+    }
+
+    button{
+      margin-top: 50px;
+
+      @include desktop{
+        width: 215px;
+        margin: 40px 0 160px;
+      }
+    }
+  }
+
+  &__form{
+    @include desktop{
+      display: flex !important;
+      flex-direction: column;
+      align-items: center !important;
+    }
+
+    .smallInput{
+      
+      @include desktop{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .MuiFormControl-root{
+        .MuiInputBase-root{
+          @include desktop{
+            width: 95% !important;
+          }
+        
+      }
+    }
+  }
+}
+}

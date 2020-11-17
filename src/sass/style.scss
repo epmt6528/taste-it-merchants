@@ -1,0 +1,100 @@
+@import 'mediaQuery';
+
+// variables
+@import 'variables';
+
+*{
+  box-sizing: border-box;
+}
+
+body {
+  @extend %body;
+  color: #3E315A;
+  max-width: 100%;
+  margin: 0 !important;
+}
+
+
+ul{
+  list-style: none;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+h1{
+  @extend %headings;
+
+  @include desktop {
+    line-height: 80px;
+  }
+}
+
+
+// Form Input
+.makeStyles-root-1 .MuiFormControl-root{
+  margin: 20px 0 !important;
+  width: 100% !important;
+
+  @include desktop{
+    margin-bottom: 30px !important;
+  }
+}
+
+.PrivateNotchedOutline-root-2,
+.MuiInputBase-formControl{
+  border-radius: 20px !important;
+  border-width: 2px !important;
+
+  @include desktop{
+    height: 80px !important;
+  }
+}
+
+.MuiInputBase-root, 
+.MuiInputLabel-outlined,
+.MuiInputBase-formControl{
+  font-family: 'NexaRegular' !important;
+
+  @include desktop{
+    font-size: 24px !important;
+  }
+}
+
+.MuiInputBase-input{
+  @include desktop{
+    height: 40px !important;
+  }
+}
+
+
+
+
+@import 'headerHome';
+@import 'toolbar';
+@import 'main';
+@import 'teamCard';
+@import 'footer';
+@import 'desktopMenu';
+@import 'signIn';
+@import 'signUp';
+@import 'signUpAbout';
+@import 'signUpAddress';
+@import 'welcome';
+@import 'navigation';
+@import 'mobileMenu';
+@import 'activeOrders';
+@import 'table';
+@import 'contact';
+@import 'account';
+@import 'orderHistory';
+@import 'menu';
+@import 'menuCard';

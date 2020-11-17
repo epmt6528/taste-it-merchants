@@ -1,0 +1,72 @@
+.signIn{
+    max-width: 1680px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__logo{
+      width: 37px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    &__main{
+      @include desktop{
+        display: flex;
+      }
+
+      img{
+        @include desktop{
+          height: 100vh;
+        }
+      }
+    }
+
+    &__container{
+      padding: 79px 16px 56px;
+
+      @include desktop{
+        padding: 110px 50px 110px 110px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1{
+        font-size: 32px;
+        margin: 0;
+
+        @include desktop{
+          font-size: 60px;
+          margin-top: 60px;
+        }
+      }
+
+      p{
+        margin: 8px 0 20px;
+      }
+    }
+
+    &__cta{
+      font-family: 'NexaBold';
+
+      @include desktop{
+        order: -1;
+      }
+
+      span{
+        text-decoration: underline;
+        color: $primary;
+      }
+    }
+
+    button{
+      margin: 30px 0 20px;
+
+      @include desktop{
+        width: 435px;
+      }
+    }
+
+}

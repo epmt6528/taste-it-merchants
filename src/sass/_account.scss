@@ -1,0 +1,118 @@
+.account{
+
+  &__title{
+    padding: 20px;
+    background-color: white;
+
+    @include desktop{
+      padding: 60px;
+      background-color: $secondaryVariant;
+    }
+
+    p{
+      font-size: 12px;
+
+      @include desktop{
+        font-size: 24px;
+      }
+    }
+
+    h1{
+      font-size: 32px;
+      margin: 0;
+
+      @include desktop{
+        font-size: 60px;
+      }
+    }
+  }
+
+  
+  &__restaurantInfo{
+    margin: 20px;
+    padding: 40px 20px;
+    border: 1px solid $primaryVariant2;
+    border-radius: 20px;
+    background-color: white;
+
+    @include desktop{
+      margin: 0 60px 60px;
+      padding: 40px 60px;
+    }
+
+    .MuiInputLabel-root{
+      @extend %buttons;
+      color: $primaryVariant1;
+      font-size: 20px;
+
+      @include desktop{
+        font-size: 30px;
+      }
+    }
+
+    .MuiInputBase-input{
+      padding: 12px 0;
+    }
+
+    button{
+      margin-top: 26px;
+      width: 227px;
+    }
+  }
+
+  &__wrap1,
+  &__wrap2,
+  &__editorWrap1,
+  &__editorWrap2{
+    &>div:first-child{
+      @include desktop{
+        padding-right: 20px;
+      }
+    }
+
+    &>div:last-child{
+      @include desktop{
+        padding-left: 20px;
+      }
+    }
+
+    @include desktop{
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__buttonWrap{
+    margin: 30px 0 50px;
+  }
+
+  &__logOutButton{
+    background-color: white;
+    color: $primary;
+    border: 2px solid $primary;
+
+    @include desktop{
+      margin-left: 40px;
+    }
+  }
+
+  &__editorWrap{
+    button{
+      margin: 30px 20px 80px;
+    }
+  }
+
+  &__infoEditor,
+  &__locationEditor{
+    margin: 50px 20px 20px;
+    padding: 40px 20px;
+    border: 1px solid $primaryVariant2;
+    border-radius: 20px;
+    background-color: white;
+
+    h2{
+      @extend %headings;
+      font-size: 24px;
+    }
+  }
+}

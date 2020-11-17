@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg"  style="display: none;" viewBox="0 0 36.86 46.02">
+
+<!-- Active Orders Icon -->
+<symbol id="icon-activeOrders" viewBox="0 0 40.39 44.25">
+  <defs><style>.cls-1{fill:none;stroke:#3e315a;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><g id="Menu_-_Outlined" data-name="Menu - Outlined"><g id="Document-5"><path id="Stroke_1-8" data-name="Stroke 1-8" class="cls-1" d="M28.34,31.69H12.18"/><path id="Stroke_2-4" data-name="Stroke 2-4" class="cls-1" d="M28.34,22.32H12.18"/><path id="Stroke_3-8" data-name="Stroke 3-8" class="cls-1" d="M18.35,13H12.18"/><path id="Stroke_4-4" data-name="Stroke 4-4" class="cls-1" d="M28.77,1.52H11.53a9.51,9.51,0,0,0-10,9h0c0,.45,0,.89,0,1.34V32.43a9.54,9.54,0,0,0,8.71,10.29h0a8.18,8.18,0,0,0,1.4,0h17.2a9.57,9.57,0,0,0,10-9.1,9.45,9.45,0,0,0,0-1.19V11.85A9.48,9.48,0,0,0,30.26,1.54,9.25,9.25,0,0,0,28.77,1.52Z"/></g></g></g></g>
+</symbol>
+
+<!-- Menu Icon -->
+<symbol id="icon-menu" viewBox="0 0 50 40.5">
+  <defs><style>.cls-1{fill:none;stroke:#3e315a;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><g id="Active_Order_-_Outlined" data-name="Active Order - Outlined"><circle id="Ellipse_9" data-name="Ellipse 9" class="cls-1" cx="25" cy="5" r="3.5"/><path id="Rectangle_858" data-name="Rectangle 858" class="cls-1" d="M5.5,31h39a4,4,0,0,1,4,4h0a4,4,0,0,1-4,4H5.5a4,4,0,0,1-4-4h0A4,4,0,0,1,5.5,31Z"/><path id="Path_20" data-name="Path 20" class="cls-1" d="M44,31a17.7,17.7,0,0,0,.3-3.25A19.25,19.25,0,1,0,6,31Z"/></g></g></g>
+</symbol>
+
+<!-- Order History Icon -->
+<symbol id="icon-orderHistory" viewBox="0 0 50.99 47.64">
+  <defs><style>.cls-1{fill:none;stroke:#3e315a;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><g id="Order_History_-_Outlined" data-name="Order History - Outlined"><g id="UI_Kit-13" data-name="UI Kit-13"><line id="Line_14" data-name="Line 14" class="cls-1" x1="25.49" y1="2.62" x2="25.49" y2="12.66"/><path id="Path_23" data-name="Path 23" class="cls-1" d="M48.91,17.27,44.4,5.73A6.71,6.71,0,0,0,38.16,1.5H12.78A6.69,6.69,0,0,0,6.51,5.8L2.08,17.5"/><rect id="Rectangle_859" data-name="Rectangle 859" class="cls-1" x="1.5" y="12.66" width="47.99" height="33.48" rx="7"/><line id="Line_15" data-name="Line 15" class="cls-1" x1="19.09" y1="22.47" x2="31.37" y2="22.47"/></g></g></g></g>
+</symbol>
+
+<!-- Account Icon -->
+<symbol id="icon-account" class="accountIcon" viewBox="0 0 36.86 46.02">
+  <defs><style>.cls-1{fill:none;stroke:#3e315a;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;}</style></defs>
+  <g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><g id="Profile_-_Outlined" data-name="Profile - Outlined"><g id="Profile-5"><circle id="Ellipse_736-2" data-name="Ellipse 736-2" class="cls-1" cx="18.46" cy="12.19" r="10.69"/><path id="Path_33945-2" data-name="Path 33945-2" class="cls-1" d="M1.5,37.75A5.1,5.1,0,0,1,2,35.58,9,9,0,0,1,8.3,32a36.36,36.36,0,0,1,5.2-.73,55.53,55.53,0,0,1,9.82,0,37.13,37.13,0,0,1,5.24.74c2.39.49,5.28,1.47,6.31,3.62a5.12,5.12,0,0,1,0,4.36c-1,2.15-3.92,3.14-6.31,3.61a35.58,35.58,0,0,1-5.24.76,57.72,57.72,0,0,1-8,.11,9.23,9.23,0,0,1-1.82-.12,35.31,35.31,0,0,1-5.22-.76C5.85,43.09,3,42.1,1.94,40A5.34,5.34,0,0,1,1.5,37.75Z"/></g></g></g></g>
+</symbol>
+
+<!-- Support Icon -->
+<symbol id="icon-support" viewBox="0 0 47.23 47.23">
+  <defs><style>.cls-1,.cls-4{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:#3e315a;}.cls-4{stroke:#3e315a;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;}</style><clipPath id="clip-path" transform="translate(-4.26 -17.54)"><rect class="cls-1" x="9.94" y="10.28" width="49.16" height="48.47" transform="translate(-14.3 34.52) rotate(-45)"/></clipPath></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><g class="cls-2"><g id="Group_1167" data-name="Group 1167"><g id="Path_37" data-name="Path 37"><path class="cls-1" d="M38.35,61.71l12.9-39.56a3.36,3.36,0,0,0-1.89-4.37,3.4,3.4,0,0,0-2.47,0L7.33,30.68c-3.51,1.15-4.21,5.9-1.06,7.18l16.45,6.69a3.15,3.15,0,0,1,1.75,1.76l6.7,16.46C32.45,65.92,37.21,65.22,38.35,61.71Z" transform="translate(-4.26 -17.54)"/><path class="cls-3" d="M34,61.73a.7.7,0,0,0,.47,0,1.45,1.45,0,0,0,1-1L48.4,21.21a.56.56,0,0,0,0-.56c-.09-.1-.3-.1-.56,0L8.26,33.53a1.45,1.45,0,0,0-1,1,.67.67,0,0,0,0,.48l.09,0,16.44,6.69a6.22,6.22,0,0,1,2.06,1.36,6,6,0,0,1,1.35,2L34,61.64c0,.07,0,.09.06.09m-2.13,2.12a3.33,3.33,0,0,1-.71-1.08l-6.7-16.46a3.19,3.19,0,0,0-.69-1.06,3.32,3.32,0,0,0-1.06-.7L6.27,37.86a3.32,3.32,0,0,1-1.09-.71c-1.81-1.81-.87-5.48,2.15-6.47l39.56-12.9a3.36,3.36,0,0,1,4.36,4.37L38.35,61.71C37.37,64.73,33.7,65.67,31.88,63.85Z" transform="translate(-4.26 -17.54)"/></g><path id="Path_38" data-name="Path 38" class="cls-4" d="M33.55,35.49,25.74,43.3" transform="translate(-4.26 -17.54)"/></g></g></g></g>
+</symbol>
+
+</svg>

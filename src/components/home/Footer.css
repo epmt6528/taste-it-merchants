@@ -1,0 +1,24 @@
+.site-footer {
+    max-width: 1600px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.footer-content1, .footer-content2, .footer-content3, .footer-content4 {
+    text-align: left;
+}
+
+.footer-content3 {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+}
+
+.footer-content3 li {
+    list-style-type: none;
+}
+
+.content3-list, .content4-list {
+    padding: 0;
+    max-width: 45%;
+}

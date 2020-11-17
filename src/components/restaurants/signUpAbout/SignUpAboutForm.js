@@ -73,16 +73,14 @@ export default function SignUpAboutForm() {
         localStorage.removeItem("jwt-token");
         history.push("/signIn");
       });
-
-    window.alert("done");
+      
     resetForm();
     // }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Grid container>
-        <Grid item xs={12}>
+        <div className="signUp-about__form">
           <Controls.TextFieldControl
             name="restaurantName"
             label="Restaurant Name"
@@ -104,6 +102,7 @@ export default function SignUpAboutForm() {
             }}
           />
           <Controls.TextFieldControl
+            className="signUp-about__descriptionInput"
             name="restaurantDescription"
             label="Restaurant Description"
             value={values.restaurantDescription}
@@ -116,11 +115,9 @@ export default function SignUpAboutForm() {
             }}
           />
 
-          <div>
-            <Controls.ButtonControl type="submit" text="Next" />
-          </div>
-        </Grid>
-      </Grid>
+          <button type="submit">Next</button>
+        </div>
+      <div/>
     </Form>
   );
 }

@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import Container from "@material-ui/core/Container";
+import { Link } from "react-router-dom";
 import Controls from "../../controls/Controls";
-import "./welcome.css"
 import axios from "axios";
 import { getJwtToken } from "../../getJwt";
+import Logo from "../../../img/logo.svg";
+import HeroPicMobile from "../../../img/dishes/welcomeMobileView.png"
+import HeroPicDesktop from "../../../img/dishes/welcome.png"
+import MediaQuery from 'react-responsive';
 
 
 class Welcome extends Component {
@@ -49,24 +53,36 @@ class Welcome extends Component {
         </div>
       );
     }
+
     console.log(items);
     return (
-      <div className="welcome-wrapper">
-        <Container fixed className="welcome-main">
-          <img alt="logo" />
-          <h2>{items.restaurantName}</h2>
-          <h1>Welcome Abroad!</h1>
-          <p>Ready to do e-commerce your way?</p>
-          <p>
-            Tackle the complexity of growing your business and selling
-            online—with a platform designed to make it simple at any stage.
-          </p>
-          <Controls.ButtonControl
-            text="Get Started"
-            //  component={Link}
-            //  to="/Welcome"
-          />
-        </Container>
+      <div className="welcome_wrapper">
+        <MediaQuery minDeviceWidth={1001}>
+          <img src={HeroPicDesktop} alt="A glasss of champagne" className="welcome__hero" className="welcome__heroPicDesktop"/>
+        </MediaQuery>
+
+        <div className="welcome">
+          <Link to="/" >
+            <img src={Logo} alt="logo" className="welcome__logo"/>
+          </Link>
+
+          <Container fixed className="welcome__main">
+            <MediaQuery maxDeviceWidth={1000}>
+              <img src={HeroPicMobile} alt="A glasss of champagne" className="welcome__heroPicMobile"/>
+            </MediaQuery>
+
+            
+            
+            <h2>Hi {items.restaurantName} !</h2>
+            <h1>Welcome Aboard!</h1>
+            <p>Ready to do e-commerce your way?</p>
+            <p>
+              Tackle the complexity of growing your business and selling
+              online—with a platform designed to make it simple at any stage.
+            </p>
+            <Link to="/restaurant" ><button>Get Started</button></Link>
+          </Container>
+          </div>
       </div>
     );
   }

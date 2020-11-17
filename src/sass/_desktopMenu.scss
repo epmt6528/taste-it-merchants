@@ -1,0 +1,28 @@
+.desktopMenu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: $maxWidth;
+  padding: 0 20px;
+  margin: 0 auto;
+  
+
+  ul{
+    display: flex;
+    color: $primaryVariant1;
+
+    li{
+      padding-right: 110px;
+    }
+  }
+
+  &__wrapper{
+    padding: 30px 20px;
+  }
+
+  &__logo{
+    width: 131px;
+  }
+
+}

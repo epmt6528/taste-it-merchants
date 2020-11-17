@@ -1,0 +1,25 @@
+.menuCard{
+  margin: 50px 0;
+
+  @include desktop{
+    margin: 0;
+  }
+
+  &__img{
+    width: 100%;
+    padding-top : 100% ;
+  }
+
+  &__dishName{
+    padding: 25px 25px 25px 0 !important;
+
+    @include desktop{
+      padding: 25px 25px 0 0 !important;
+    }
+
+    .MuiTypography-h5{
+      @extend %buttons;
+    }
+    
+  }
+}

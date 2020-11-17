@@ -3,6 +3,8 @@ import { getJwtToken } from "./getJwt";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
+import Navigation from './restaurants/navigation/Navigation'
+
 class AuthenticationComp extends Component {
   constructor(props) {
     super(props);
@@ -26,11 +28,10 @@ class AuthenticationComp extends Component {
         this.setState({
           user: res.data,
         });
-        console.log("here in auth comp");
       })
       .catch((err) => {
-        localStorage.removeItem("jwt-token");
-        this.props.history.push("/signIn");
+        // localStorage.removeItem("jwt-token");
+        // this.props.history.push("/signIn");
       });
   }
 
@@ -43,7 +44,11 @@ class AuthenticationComp extends Component {
       );
     }
 
-    return <div>{this.props.children}</div>;
+    return (
+      <>
+        <div>{this.props.children}</div>
+      </>
+    )
   }
 }
 
