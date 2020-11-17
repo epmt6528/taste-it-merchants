@@ -1,6 +1,8 @@
 // Libraries
 import React from 'react';
 import {Switch, Route, Link, BrowserRouter } from 'react-router-dom';
+import MediaQuery from 'react-responsive';
+
 
 // MaterialUI
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,6 +16,10 @@ import ActiveOrders from '../activeOrders/ActiveOrders'
 import OrderHistory from '../orderHistory/OrderHistory'
 import Contact from '../contact/Contact'
 import Account from '../account/Account'
+import MobileMenu from "./MobileMenu";
+
+import SiteLogo from "../../../img/logo.svg"
+import Icon from "../../Icon"
 
 
 function TabPanel(props) {
@@ -45,11 +51,9 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
     width: '100%'
   },
-  tabs: {
-    borderRight: `1px solid ${theme.palette.divider}`,
-  },
   tabPanels: {
-    width: '100%'
+    width: '100%',
+    backgroundColor: '#FFFCF5'
   }
 }));
 
@@ -64,21 +68,33 @@ export default function Navigation() {
 
   return (
     <BrowserRouter>
-      <div className={classes.root}>
-        {/* Navigation Menu */}
-        <Tabs
-          orientation="vertical"
-          value={value}
-          onChange={handleChange}
-          className={classes.tabs}
-        >
-          <Tab label="Active Orders" to="/restaurant/activeOrders" component={Link} />
-          <Tab label="Menu"　to="/restaurant/menus" component={Link} />
-          <Tab label="Order History" to="/restaurant/orderHistory" component={Link} />
-          <Tab label="Account" to="/restaurant/account" component={Link}  />
-          <Tab label="Contact" to="/restaurant/contact" component={Link} />
-        </Tabs>
+      <div className={classes.root} >
+
+      <MediaQuery maxDeviceWidth={1000}>
+        <MobileMenu handleChange={handleChange} value={value}/>
+      </MediaQuery>
+
+      <MediaQuery minDeviceWidth={1001}>
+        <div className="navigation__wrapper">
+          <img src={SiteLogo} alt="tasteIt Logo" className="navigation__logo"/>
+          {/* Navigation Menu */}
+          <Tabs
+            orientation="vertical"
+            value={value}
+            onChange={handleChange}
+            className="navigation"
+          >
+            <Tab label="Active Orders" icon={<Icon name="activeOrders" />} to="/restaurant/activeOrders" component={Link} />
+            <Tab label="Menu" icon={ <Icon name="menu" />} to="/restaurant/menus" component={Link} />
+            <Tab label="Order History" icon={<Icon name="orderHistory" />} to="/restaurant/orderHistory" component={Link} /> 
+            <Tab label="Account" icon={<Icon name="account" />} to="/restaurant/account" component={Link} />
+            <Tab label="Support" icon={<Icon name="support" />} to="/restaurant/contact" component={Link} />
+          </Tabs>
+        </div>
+      </MediaQuery>
+          
         
+
         {/* Active Order panel */}
         <TabPanel value={value} index={0} className={classes.tabPanels}>
           <ActiveOrders />
@@ -86,12 +102,14 @@ export default function Navigation() {
 
         {/* Menu panel */}
         <TabPanel value={value} index={1} className={classes.tabPanels}>
-            <Route path="/restaurant/menus" component={Menus} />
+          {/* <Route path="/restaurant/menus" component={Menus} /> */}
+          <Menus />
         </TabPanel>
 
         {/* Order History panel */}
         <TabPanel value={value} index={2} className={classes.tabPanels}>
-            <Route path="/restaurant/orderHistory" component={OrderHistory} />
+          {/* <Route path="/restaurant/orderHistory" component={OrderHistory} /> */}
+          <OrderHistory />
         </TabPanel>
 
         {/* Account panel */}
@@ -101,7 +119,8 @@ export default function Navigation() {
 
         {/* Contact panel */}
         <TabPanel value={value} index={4} className={classes.tabPanels}>
-            <Route path="/restaurant/contact" component={Contact} />
+          {/* <Route path="/restaurant/contact" component={Contact} /> */}
+          <Contact />
         </TabPanel>
       </div>
     </BrowserRouter>

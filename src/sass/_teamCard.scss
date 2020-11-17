@@ -17,6 +17,10 @@
   h1{
     font-size: 24px;
     margin: 0;
+
+    @include desktop{
+      line-height: 36px;
+    }
   }
 
   p{

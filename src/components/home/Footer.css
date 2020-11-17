@@ -1,6 +1,7 @@
 .site-footer {
-    max-width: 90%;
+    max-width: 1600px;
     margin: auto;
+    padding: 0 20px;
 }
 
 .footer-content1, .footer-content2, .footer-content3, .footer-content4 {

@@ -10,14 +10,16 @@ import  Mouse  from "../../img/mouse.png";
 import  TomatoSoup  from "../../img/tomatoSoup.png";
 import  Sushi  from "../../img/sushi.png";
 import  Cooking  from "../../img/cooking.png";
+import MediaQuery from 'react-responsive';
 
 class Main extends Component {
   render() {
     return (
       <main className="site-home-main">
         <section className="home-section1">
+          <img src={Banner} alt="Hamburger, Fries, Drink and Egg" className="site-home-main__hero"/>
+        
           <div className="hero">
-            <img src={Banner} alt="Hamburger, Fries, Drink and Egg" />
             <div className="hero__textWrapper">
               <h1>Tailored for Your New Food Experiences.</h1>
               <p>

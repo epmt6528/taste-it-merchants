@@ -12,6 +12,7 @@ import Loading from "../../Loading"
 
 // Other
 import {BASE_URL} from "../../../config/config"
+import Nacho from "../../../img/dishes/nacho.png"
 
 
 class ActiveOrders extends Component {
@@ -125,22 +126,27 @@ class ActiveOrders extends Component {
     const {rName, orders, isActive ,isLoading} = this.state
 
     return (
-      <div>
-        <p>Hi {rName}, welcome back!</p>
-        <h1>Active Orders</h1>
+      <div className="activeOrders">
+        <div className="activeOrders__titleWrap">
+          <p>Hi {rName}, welcome back!</p>
+          <h1>Active Orders</h1>
+        </div>
+        
 
         {
           isActive ? 
-                    <div>
+                    <div className="activeOrders__onOffWrap">
+                      <img src={Nacho} alt="Nachos and Chips" />
                       <h3>Take A Break</h3>
                       <p>You can deactivate your restaurant to stop receieving orders.</p>
-                      <Button onClick={this.onActiveStatusChange} >Go Offline</Button>
+                      <button onClick={this.onActiveStatusChange} >Go Offline</button>
                     </div>
                    :
-                    <div>
+                    <div  className="activeOrders__onOffWrap">
+                      <img src={Nacho} alt="Nachos and Chips" />
                       <h3>Let's Get Started</h3>
                       <p>Please activate your restaurant to start receieving orders.</p>
-                      <Button onClick={this.onActiveStatusChange} >Activate</Button>
+                      <button onClick={this.onActiveStatusChange} >Activate</button>
                     </div>
         }
 

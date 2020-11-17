@@ -96,15 +96,15 @@ let city = {
         localStorage.removeItem("jwt-token");
         history.push("/signIn");
       });
-    window.alert("done");
     resetForm();
     // }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Grid container>
-        <Grid item xs={12}>
+      <div className="signUp-address__form">
+
+        <div className="smallInput">
           <Controls.SelectControl
             name="provinceNameId"
             label="Province"
@@ -127,32 +127,31 @@ let city = {
             }}
             // error={errors.cityNameId}
           />
-          <Controls.TextFieldControl
-            name="address"
-            label="Address"
-            value={values.address}
-            onChange={handleInputChange}
-            inputlabelprops={{
-              required: true,
-            }}
-            // error={errors.address}
-          />
-          <Controls.TextFieldControl
-            label="Postal Code"
-            name="postcode"
-            value={values.postcode}
-            onChange={handleInputChange}
-            inputlabelprops={{
-              required: true,
-            }}
-            // error={errors.postcode}
-          />
+        </div>
 
-          <div>
-            <Controls.ButtonControl type="submit" text="Submit" />
-          </div>
-        </Grid>
-      </Grid>
+        <Controls.TextFieldControl
+          name="address"
+          label="Address"
+          value={values.address}
+          onChange={handleInputChange}
+          inputlabelprops={{
+            required: true,
+          }}
+          // error={errors.address}
+        />
+        <Controls.TextFieldControl
+          label="Postal Code"
+          name="postcode"
+          value={values.postcode}
+          onChange={handleInputChange}
+          inputlabelprops={{
+            required: true,
+          }}
+          // error={errors.postcode}
+        />
+
+        <button type="submit">Done</button>
+       </div>
     </Form>
   );
 }

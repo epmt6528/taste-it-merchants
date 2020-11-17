@@ -1,0 +1,97 @@
+// mobile menu
+  .mobile-menu{
+    margin: 0 !important;
+    padding: 20px 16px;
+    border-bottom: 1px solid $primaryVariant2;
+
+    &__logo{
+      width: 48px;
+    }
+
+    &-nav__button{
+      width: 24px;
+    }
+  }
+
+  // toolbar
+  .toolbar{
+    background-color: white;
+    padding: 20px 16px;
+
+    &__menu{
+      padding-top: 50px;
+    }
+
+    // Tabs
+    .MuiTab-textColorInherit{
+      opacity: 1 !important;
+      color: $primaryVariant1;
+    }
+
+    .MuiTab-root{
+      font-family: 'NexaRegular';
+      font-size: 24px;
+      text-transform: none;
+      max-width: none;
+      padding: 0;
+      height: 82px;
+      border-radius: 16px;
+
+      // Icon Size Adjustment
+      .toolbar__icon-activeOrders{
+        padding: 3px;
+      }
+
+      .toolbar__icon-account{
+        padding: 5px;
+      }
+
+      .toolbar__icon-support{
+        padding: 4px;
+      }
+    }
+
+    .MuiTab-textColorInherit.Mui-selected{
+      background-color: $primary;
+      color: white;
+
+      // icons
+      svg{
+        width: 36px;
+        margin: 0 56px 0 36px;
+        fill:none;
+        stroke:white;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+        stroke-width:3px;
+      }
+    }
+
+    // Tabs Content
+    .MuiTab-wrapper{
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: flex-start;
+
+      // icons
+      svg{
+        width: 36px;
+        margin: 0 56px 0 36px;
+        fill:none;
+        stroke:#3e315a;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+        stroke-width:3px;
+      }
+
+    }
+
+    &__header{
+      padding: 0;
+    }
+
+    &__menu{
+      color: black !important;
+    }
+  }

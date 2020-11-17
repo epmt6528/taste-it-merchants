@@ -14,12 +14,17 @@ const RestaurantInfo = props =>{
   const addressString = `${address.address}, ${address.cityDescription}, ${address.provinceDescription}  ${address.postcode}`
 
   return(
-    <div>
-      <TextField InputProps={{readOnly: true}} fullWidth label="Restaurant Name" value={rName} />
-      <TextField InputProps={{readOnly: true}} fullWidth label="Phone Number" value={phoneNumber} />
-      {/* <TextField InputProps={{readOnly: true}} label="Email" value={} /> */}
-      <TextField InputProps={{readOnly: true}} fullWidth label="Password" type="password" value={password} />
-      <TextField InputProps={{readOnly: true}} fullWidth label="Location"  value={addressString}/>
+    <div className="account__restaurantInfo">
+      <div className="account__wrap1">
+        <TextField InputProps={{readOnly: true}} fullWidth label="Restaurant Name" value={rName} />
+        <TextField InputProps={{readOnly: true}} fullWidth label="Phone Number" value={phoneNumber} />
+      </div>
+
+      <div className="account__wrap2">
+        <TextField InputProps={{readOnly: true}} fullWidth label="Password" type="password" value={password} />
+        <TextField InputProps={{readOnly: true}} fullWidth label="Location"  value={addressString}/>
+      </div>
+      
       <TextField
         InputProps={{readOnly: true}}
         fullWidth
@@ -29,11 +34,13 @@ const RestaurantInfo = props =>{
         rows={4}
       />
 
-      <Link to='/restaurant/accountEdit'>
-        <Button>Edit Account</Button>
-      </Link>
-
-      <Button>Log Out</Button>
+      <div className="account__buttonWrap">
+        <Link to='/restaurant/accountEdit'>
+          <button>Edit Account</button>
+        </Link>
+        <button className="account__logOutButton" >Log Out</button>
+      </div>
+      
     </div>
   )
 }

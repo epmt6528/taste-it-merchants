@@ -53,7 +53,7 @@ const DateWrapper = props =>{
   return(
     <div>
       {ordersGroupedByDate.map((ordersGroup) => (
-          <div>
+          <div　className="ordersTable__tableWrap">
             <h2>{ordersGroup.date}</h2>
             <OrderTable orders={ordersGroup.orders} />
           </div>

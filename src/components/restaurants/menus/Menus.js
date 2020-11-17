@@ -10,6 +10,7 @@ import Grid from "@material-ui/core/Grid"
 import { Button } from '@material-ui/core'
 import { TextField } from "@material-ui/core"
 import MenuItem from '@material-ui/core/MenuItem'
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 // Components
 import MenuCard from "./components/MenuCard"
@@ -19,6 +20,9 @@ import AddDish from './AddDish'
 
 // Other
 import {BASE_URL} from "../../../config/config"
+
+import Sort from "../../../img/icons/sort.svg"
+import Search from "../../../img/icons/search.svg"
 
 
 class Menus extends Component {
@@ -139,61 +143,91 @@ class Menus extends Component {
     const sortBy = this.state.sortBy
 
     return (
-      <div className="menus-wrapper">
+      <div className="menus">
       <Route exact path="/restaurant/menus">
-        <p>Hi {rName}, let's customize your menu now</p>
-        <h1>Menu</h1>
+        <div className="menus__titleWrap">
+          <p>Hi {rName}, let's customize your menu now</p>
+          <h1>Menu</h1>
+        </div>
 
-        {/* "Add New Dish "Button */}
-        <Link to={{
-            pathname:`/restaurant/menus/add`,
-            state: {
-              rName: rName
-            }}}>
-          <Button>Add New Dishes</Button>
-        </Link>
-        
+        <div  className="menus__menuListWrap">
+          <div  className="menus__functionsWrap">
+          {/* Search Field */}
+          <TextField 
+            className="menus__searchInput"
+            onChange={e => this.keyWordSearch(e.target.value)}
+            variant="outlined"
+            label="Search"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <img src={Search} className="menus__searchIcon"/>
+                </InputAdornment>
+              ),
+            }}
+          />
 
-        {/* "Sort By" Drop downs */}
-        <TextField 
-          select
-          value={sortBy}
-          onChange={e => this.onSortingChange(e.target.value)}
-        >
-          <MenuItem key='1' value='1'>Sort By: Latest</MenuItem>
-          <MenuItem key='2' value='2'>Sort By: Oldest</MenuItem>
-          <MenuItem key='3' value='3'>Sort By: ABC</MenuItem>
-        </TextField>
+          {/* "Sort By" Drop downs */}
+          <TextField 
+            className="menus__sortOptions"
+            select
+            value={sortBy}
+            onChange={e => this.onSortingChange(e.target.value)}
+            variant="outlined"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <img src={Sort} alt="Arrow Icon" className="menus__arrowIcon"/>
+                </InputAdornment>
+              ),
+            }}
+          >
+            <MenuItem key='1' value='1'>Sort By: Latest</MenuItem>
+            <MenuItem key='2' value='2'>Sort By: Oldest</MenuItem>
+            <MenuItem key='3' value='3'>Sort By: ABC</MenuItem>
+          </TextField>
 
-        {/* Search Field */}
-        <TextField onChange={e => this.keyWordSearch(e.target.value)}/>
 
-        {/* Menu Cards */}
-        <Grid>
-          {this.state.menus.map(
-              menu => {
-                const {menuID, menuName, menuDescription, price} = menu
-                return (
-                  <MenuCard 
-                    key={menuID}
-                    id={menuID}
-                    name={menuName}
-                    menuDescription={menuDescription}
-                    price={price}
-                    rName={rName}
-                  />
-                )
-              }
-            )}
-        </Grid>
+          {/* "Add New Dish "Button */}
+          <Link className="menus__addButton" to={{
+              pathname:`/restaurant/menus/add`,
+              state: {
+                rName: rName
+              }}}>
+            <button >Add New Dishes</button>
+          </Link>
+          </div>
 
-        <Button>Load More</Button>
+
+
+          {/* Menu Cards */}
+          <div className="menus__cardWrap">
+            {this.state.menus.map(
+                menu => {
+                  const {menuID, menuName, menuDescription, price} = menu
+                  return (
+                    <MenuCard 
+                      key={menuID}
+                      id={menuID}
+                      name={menuName}
+                      menuDescription={menuDescription}
+                      price={price}
+                      rName={rName}
+                    />
+                  )
+                }
+              )}
+          </div>
+
+          <button className="menus__loadButton">Load More</button>
+        </div>
 
         </Route>
         <Route path="/restaurant/menus/detail/:id" component={MenuDetail} />
         <Route path="/restaurant/menus/edit/:id"  component={EditDish} />
         <Route path="/restaurant/menus/add"  component={AddDish} />
       </div>
+
     )
   }
 }

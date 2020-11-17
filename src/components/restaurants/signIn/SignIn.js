@@ -8,8 +8,12 @@ class SignIn extends Component {
   render() {
     return (
       <div className="signIn">
-        <img src={Logo} alt="logo" className="signIn__logo"/>
+        <Link to="/" >
+          <img src={Logo} alt="logo" className="signIn__logo"/>
+        </Link>
+        
         <div className="signIn__main">
+          
           <img src={SignInPic} alt="" />
           <div className="signIn__container">
             <h1>Take your restaurant to the next level.</h1>

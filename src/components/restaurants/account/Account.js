@@ -163,9 +163,13 @@ class Contact extends Component {
     const {rName, phoneNumber, password, description, addressSet} = this.state
 
     return (
-        <div>
-          <p>Hi {rName}, keep your restaurant info updated.</p>
-          <h1>Your Account</h1>
+        <div className="account">
+          <div className="account__title">
+            <p>Hi {rName}, keep your restaurant info updated.</p>
+            <h1>Your Account</h1>
+          </div>
+          
+          <div>
             <Route path="/restaurant/account">
               <RestaurantInfo rName={rName} phoneNumber={phoneNumber} password={password} description={description} address={addressSet}/>
             </Route>
@@ -187,6 +191,7 @@ class Contact extends Component {
                 saveInfo={this.saveInfo}
                 />
             </Route>
+          </div>
         </div>
     )
   }}

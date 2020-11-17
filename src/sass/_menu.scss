@@ -1,0 +1,116 @@
+.menus{
+  
+  &__titleWrap{
+    background-color: white;
+    padding: 20px;
+
+    @include desktop{
+      background-color: $secondaryVariant;
+      padding: 20px 65px;
+    }
+
+    h1{
+      margin: 0;
+    }
+
+    p{
+      font-size: 12px;
+
+      @include desktop{
+        font-size: 24px;
+      }
+    }
+  }
+
+  &__menuListWrap{
+    margin: 50px 20px;
+    padding: 20px;
+    border: 1px solid $primaryVariant2;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include desktop{
+      padding: 20px 50px;
+      margin: 20px 65px;
+    }
+  }
+
+  .MuiSelect-nativeInput{
+    text-align: center;
+  }
+
+  &__searchIcon,
+  &__arrowIcon{
+    width: 14px;
+    margin-right: 20px;
+  }
+
+  .MuiSelect-iconOutlined{
+    display: none;
+  }
+
+  
+
+  &__functionsWrap{
+    @include desktop{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 30px;
+    }
+
+    .menus__searchInput{
+      @include desktop{
+        order: 1;
+        width: 400px !important;
+      }
+    }
+
+    .menus__sortOptions{
+      @include desktop{
+        width: 300px !important;
+      }
+    }
+
+    .menus__addButton{
+      width: 100%;
+      margin: 20px 0;
+  
+      @include desktop{
+        order: -1;
+        width: 300px !important;
+      }
+  
+      button{
+        width: 100% !important;
+      }
+    }
+  }
+
+
+  &__cardWrap{
+    width: 100%;
+
+    @include desktop{
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 63px;
+      margin: 50px 0;
+    }
+  }
+
+  &__loadButton{
+    align-self: flex-start;
+    margin: 60px 0 120px;
+
+    background-color: white;
+    color: $primary;
+    border: 2px solid $primary;
+  }
+}

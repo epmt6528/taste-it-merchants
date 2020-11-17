@@ -1,12 +1,7 @@
 import React from 'react';
-import HamburgerButton from './Hamburger'
 import { NavLink } from 'react-router-dom'
-
 import SiteLogo from "../../../img/logo.png"
 import {Link} from 'react-scroll'
-
-// const ScrollLink = Scroll.ScrollLink
-
 
 function refreshPage() {
     window.location.reload(false);
@@ -21,7 +16,6 @@ const toolbar = props => (
                 </div>
                 
                 <div onClick={() => props.setMenu(false)}>
-                    {/* <HamburgerButton click={props.drawerClickHandler} /> */}
                     x
                 </div>
             </div>

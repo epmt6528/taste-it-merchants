@@ -39,6 +39,45 @@ h1{
 }
 
 
+// Form Input
+.makeStyles-root-1 .MuiFormControl-root{
+  margin: 20px 0 !important;
+  width: 100% !important;
+
+  @include desktop{
+    margin-bottom: 30px !important;
+  }
+}
+
+.PrivateNotchedOutline-root-2,
+.MuiInputBase-formControl{
+  border-radius: 20px !important;
+  border-width: 2px !important;
+
+  @include desktop{
+    height: 80px !important;
+  }
+}
+
+.MuiInputBase-root, 
+.MuiInputLabel-outlined,
+.MuiInputBase-formControl{
+  font-family: 'NexaRegular' !important;
+
+  @include desktop{
+    font-size: 24px !important;
+  }
+}
+
+.MuiInputBase-input{
+  @include desktop{
+    height: 40px !important;
+  }
+}
+
+
+
+
 @import 'headerHome';
 @import 'toolbar';
 @import 'main';
@@ -46,3 +85,16 @@ h1{
 @import 'footer';
 @import 'desktopMenu';
 @import 'signIn';
+@import 'signUp';
+@import 'signUpAbout';
+@import 'signUpAddress';
+@import 'welcome';
+@import 'navigation';
+@import 'mobileMenu';
+@import 'activeOrders';
+@import 'table';
+@import 'contact';
+@import 'account';
+@import 'orderHistory';
+@import 'menu';
+@import 'menuCard';

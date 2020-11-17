@@ -5,6 +5,14 @@
     @extend %sub_headings;
   }
 
+  &__hero{
+    @include desktop {
+      width: 960px;
+      position: absolute;
+      right: 0;
+    }
+  }
+
 
   // Hero Section(Hamburger Section)
   .hero{
@@ -18,15 +26,7 @@
 
     @include desktop {
       flex-direction: row;
-    }
-
-    img{
-      margin: 0 0 0 auto;
-      max-width: 95%;
-
-      @include desktop {
-        max-width: 50%;
-      }
+      height: 824px;
     }
 
     &__textWrapper{
@@ -54,6 +54,7 @@
 
         @include desktop {
           line-height: 36px;
+          max-width: 575px;
         }
       }
 
@@ -167,7 +168,7 @@
     margin: 0 auto;
 
     @include desktop {
-      padding: 200px 0;
+      padding: 200px 0 100px;
     }
 
     .home-section2{

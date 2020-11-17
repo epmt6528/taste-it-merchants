@@ -43,12 +43,16 @@ const RestaurantInfoEditor = props =>{
     });
 
   return(
-    <form>
-      <div>
+    <form className="account__editorWrap">
+      <div  className="account__infoEditor">
         <h2>Account Information</h2>
 
-        <TextField  fullWidth label="Restaurant Name" defaultValue={rName} variant="outlined" onChange={e => handleNameInputChange(e.target.value)}/>
-        <TextField  fullWidth label="Phone Number" defaultValue={phoneNumber} variant="outlined" onChange={e => handlePhoneNumberInputChange(e.target.value)} />
+        <div className="account__editorWrap1">
+          <TextField  fullWidth label="Restaurant Name" defaultValue={rName} variant="outlined" onChange={e => handleNameInputChange(e.target.value)}/>
+          <TextField  fullWidth label="Phone Number" defaultValue={phoneNumber} variant="outlined" onChange={e => handlePhoneNumberInputChange(e.target.value)} />
+        </div>
+
+
         <TextField
           fullWidth 
           label="Password" 
@@ -69,40 +73,42 @@ const RestaurantInfoEditor = props =>{
 
       </div>
       
-      <div>
+      <div  className="account__locationEditor">
 
         <h2>Location</h2>
-        <TextField
-        select
-        label="Province"
-        variant="outlined"
-        defaultValue={address.provinceDescription}
-        fullWidth
-        onChange={e => handleProvinceInputChange(e.target.value)}
-        >
-          <MenuItem key='1' value='British Columbia'>British Columbia</MenuItem>
-        </TextField>
+        <div className="account__editorWrap2">
+          <TextField
+          select
+          label="Province"
+          variant="outlined"
+          defaultValue={address.provinceDescription}
+          fullWidth
+          onChange={e => handleProvinceInputChange(e.target.value)}
+          >
+            <MenuItem key='1' value='British Columbia'>British Columbia</MenuItem>
+          </TextField>
 
-        <TextField
-        select
-        label="City"
-        variant="outlined"
-        defaultValue={address.cityDescription}
-        fullWidth
-        onChange={e => handleCityInputChange(e.target.value)}
-        >
-          <MenuItem key='1' value='Vancouver'>Vancouver</MenuItem>
-          <MenuItem key='2' value='Richmond'>Richmond</MenuItem>
-          <MenuItem key='3' value='Burnaby'>Burnaby</MenuItem>
-          <MenuItem key='4' value='North Vancouver'>North Vancouver</MenuItem>
-        </TextField>
-
+          <TextField
+          select
+          label="City"
+          variant="outlined"
+          defaultValue={address.cityDescription}
+          fullWidth
+          onChange={e => handleCityInputChange(e.target.value)}
+          >
+            <MenuItem key='1' value='Vancouver'>Vancouver</MenuItem>
+            <MenuItem key='2' value='Richmond'>Richmond</MenuItem>
+            <MenuItem key='3' value='Burnaby'>Burnaby</MenuItem>
+            <MenuItem key='4' value='North Vancouver'>North Vancouver</MenuItem>
+          </TextField>
+        </div>
+        
         <TextField  fullWidth label="Address" defaultValue={address.address} variant="outlined" onChange={e => handleAddressInputChange(e.target.value)} />
 
         <TextField fullWidth label="Postal Code" defaultValue={address.postcode} variant="outlined" onChange={e => handlePostalCodeInputChange(e.target.value)} />
       </div>
 
-      <Button onClick={saveInfo}>Save New Change</Button>
+      <button onClick={saveInfo}>Save Change</button>
     </form>
   )
 }

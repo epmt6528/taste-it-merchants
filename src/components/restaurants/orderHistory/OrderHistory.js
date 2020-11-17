@@ -14,6 +14,7 @@ import Loading from "../../Loading"
 // Other
 import { getJwtToken } from "../../getJwt"
 import {BASE_URL} from "../../../config/config"
+import TomatoSoup from "../../../img/dishes/tomatoSoup.png"
 
 
 class ActiveOrders extends Component {
@@ -118,26 +119,31 @@ class ActiveOrders extends Component {
 
 
     return (
-        <div>
-          <p>Hi {rName}, let's customize your menu now</p>
-          <h1>Order History</h1>
-
-          <div>
-            <h3>Analyze Your Data Now</h3>
-            <p>Did you know that you can track your data with our Pro pack?</p>
-            <Button>See Our Pro Plan</Button>
+        <div className="orderHistory">
+          <div className="orderHistory__titleWrap">
+            <p>Hi {rName}, <br/>let’s track your past orders and reviews</p>
+            <h1>Order History</h1>
           </div>
+          
+          <div className="orderHistory__ctaWrap">
+            <div className="orderHistory__cta">
+              <img src={TomatoSoup} alt="Tomato Soup" />
+              <h3>Analyze Your Data Now</h3>
+              <p>Did you know that you can track your data with our Pro pack?</p>
+              <button>See Our Pro Plan</button>
+            </div>
 
-          <div>
-            <h3>Your orders in {moment().format('MMMM')}</h3>
-            <h2>{numOfThisMonthOrders}</h2>
-            <p>
-              {
-                increaseRate 
-                  ? `Increase ${increaseRate}% compared to ${lastMonth}` 
-                  : ''
-              }
-            </p>
+            <div  className="orderHistory__statics">
+              <h3>Your orders in {moment().format('MMMM')}</h3>
+              <h2>{numOfThisMonthOrders}</h2>
+              <p>
+                {
+                  increaseRate 
+                    ? `Increase ${increaseRate}% compared to ${lastMonth}` 
+                    : ''
+                }
+              </p>
+            </div>
           </div>
 
           {
@@ -145,7 +151,7 @@ class ActiveOrders extends Component {
             <DateWrapper orders={orders}/>
           }
           
-          <Button>Load More</Button>
+          <button className="orderHistory__loadButton">Load More</button>
         </div>
     )
   }

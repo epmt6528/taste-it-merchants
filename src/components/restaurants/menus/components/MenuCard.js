@@ -41,9 +41,9 @@ const MenuCard = props =>{
           rName: rName
         }
       }}>
-      <Card key={id} className={classes.root}>
-        <CardMedia image={`${BASE_URL}/menus/image/${id}`} className={classes.media} />
-        <CardHeader title={name}/>
+      <Card key={id} className="menuCard">
+        <CardMedia image={`${BASE_URL}/menus/image/${id}`} className="menuCard__img" />
+        <CardHeader title={name} className="menuCard__dishName" />
       </Card>
     </Link>
   )
