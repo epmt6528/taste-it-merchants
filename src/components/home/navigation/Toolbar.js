@@ -3,9 +3,13 @@ import { NavLink } from 'react-router-dom'
 import SiteLogo from "../../../img/logo.png"
 import {Link} from 'react-scroll'
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
 function refreshPage() {
     window.location.reload(false);
 }
+
 
 const toolbar = props => (
     <header className="toolbar">
@@ -16,7 +20,7 @@ const toolbar = props => (
                 </div>
                 
                 <div onClick={() => props.setMenu(false)}>
-                    x
+                    <FontAwesomeIcon icon={faTimes} className="toolbar__closeIcon"/>
                 </div>
             </div>
             

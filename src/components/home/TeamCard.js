@@ -18,9 +18,9 @@ class TeamCard extends Component {
                     <p>{this.props.about.role}</p>
                 </div>
                 <ul>
-                    {this.props.about.linkedIn ? <li><a href={this.props.about.linkedIn}><img src={LinkedIn} alt="linkedIn Link"/></a></li> : ''}
-                    {this.props.about.github ? <li><a href={this.props.about.github}><img src={Github} alt="githubLink"/></a></li> : ''}
-                    {this.props.about.behance ? <li><a href={this.props.about.behance}><img src={Behance} alt="behance Link"/></a></li> : ''}
+                    {this.props.about.linkedIn ? <li><a href={this.props.about.linkedIn}　target="_blank"><img src={LinkedIn} alt="linkedIn Link"/></a></li> : ''}
+                    {this.props.about.github ? <li><a href={this.props.about.github}　target="_blank"><img src={Github} alt="githubLink"/></a></li> : ''}
+                    {this.props.about.behance ? <li><a href={this.props.about.behance}　target="_blank"><img src={Behance} alt="behance Link"/></a></li> : ''}
                 </ul>
             </div>
         )

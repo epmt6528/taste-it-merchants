@@ -21,12 +21,14 @@ const AddDish = props =>{
   const {rName} = props.location.state
 
   return(
-    <>
-      <Typography>Hi {rName}, let's customize your menu now</Typography>
-      <h1>Add New Dish</h1>
-
+    <div className="addDish">
+      <div className="addDish__titleWrap">
+        <p>Hi {rName}, let's customize your menu now</p>
+        <h1>Add New Dish</h1>
+      </div>
+      
       <MenuCreator />
-    </>
+    </div>
   )
 }
 

@@ -6,6 +6,7 @@
   }
 
   &__hero{
+    max-width: 100%;
     @include desktop {
       width: 960px;
       position: absolute;

@@ -1165,6 +1165,32 @@
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
   integrity sha512-kBJtf7PH6aWwZ6fka3zQ0p6SBYzx4fl1LoZXE2RrnYST9Xljm7WfKJrU4g/Xr3Beg72MLrp1AWNUmuYJTL7Cow==
 
+"@fortawesome/fontawesome-common-types@^0.2.32":
+  version "0.2.32"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.32.tgz#3436795d5684f22742989bfa08f46f50f516f259"
+  integrity sha512-ux2EDjKMpcdHBVLi/eWZynnPxs0BtFVXJkgHIxXRl+9ZFaHPvYamAfCzeeQFqHRjuJtX90wVnMRaMQAAlctz3w==
+
+"@fortawesome/fontawesome-svg-core@^1.2.32":
+  version "1.2.32"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.32.tgz#da092bfc7266aa274be8604de610d7115f9ba6cf"
+  integrity sha512-XjqyeLCsR/c/usUpdWcOdVtWFVjPbDFBTQkn2fQRrWhhUoxriQohO2RWDxLyUM8XpD+Zzg5xwJ8gqTYGDLeGaQ==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.32"
+
+"@fortawesome/free-solid-svg-icons@^5.15.1":
+  version "5.15.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.15.1.tgz#e1432676ddd43108b41197fee9f86d910ad458ef"
+  integrity sha512-EFMuKtzRMNbvjab/SvJBaOOpaqJfdSap/Nl6hst7CgrJxwfORR1drdTV6q1Ib/JVzq4xObdTDcT6sqTaXMqfdg==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.32"
+
+"@fortawesome/react-fontawesome@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.1.12.tgz#fbdea86e8b73032895e6ded1ee1dbb1874902d1a"
+  integrity sha512-kV6HtqotM3K4YIXlTVvomuIi6QgGCvYm++ImyEx2wwgmSppZ6kbbA29ASwjAUBD63j2OFU0yoxeXpZkjrrX0qQ==
+  dependencies:
+    prop-types "^15.7.2"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -5754,6 +5780,11 @@ inquirer@^7.0.0:
     string-width "^4.1.0"
     strip-ansi "^6.0.0"
     through "^2.3.6"
+
+install@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/install/-/install-0.13.0.tgz#6af6e9da9dd0987de2ab420f78e60d9c17260776"
+  integrity sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==
 
 internal-ip@^4.3.0:
   version "4.3.0"

@@ -210,39 +210,49 @@ class MenuCreator extends Component{
 
   render(){
     return(
-      <>
-        <form noValidate autoComplete="off">
-          <Typography>Dish Name</Typography>
-          <TextField variant="outlined" onChange={e => this.handleNameInputChange(e.target.value)} />
+        <form noValidate autoComplete="off" className="addDish__editor">
 
-          <Typography>Dish Price</Typography>
+        <div className="addDish__metaWrap">
+          <div className="addDish__imgWrap">
+            <img src={this.state.uploadImageSrc} className="addDish__img"/>
+
+            <div className="addDish__editor-buttonWrap">
+                <input accept="image/*" multiple type="file" className="input" id="upload-img"  onChange={e => this.handleChangeFile(e)} style={{display:'none'}}/>
+                <label htmlFor="upload-img">
+                    <button className="addDish__editor-addButton">
+                          Add
+                    </button>
+                </label>
+
+                <button onClick={e => this.deleteFile(e.target)} className="addDish__editor-deleteButton">Delete</button>
+            </div>
+          </div>
+          
+        
+        
+          <div className="addDish__inputWrap">
+          <TextField label="Dish Name" variant="outlined" onChange={e => this.handleNameInputChange(e.target.value)} className="addDish__editor-nameInput"/>
+
           <OutlinedInput
+              label="Dish Price"
               id="outlined-adornment-amount"
               startAdornment={<InputAdornment position="start">$</InputAdornment>}
               onChange={e => this.handlePriceInputChange(e.target.value)}
+              className="addDish__editor-priceInput"
           />
 
           <Typography>Description</Typography>
           <TextField
+            label="Description"
             id="outlined-multiline-static"
             multiline
             rows={4}
             variant="outlined"
             onChange={e => this.handleDescriptionInputChange(e.target.value)}
+            className="addDish__editor-descInput"
           />
-
-          <img src={this.state.uploadImageSrc} />
-
-          <div>
-              <input accept="image/*" multiple type="file" className="input" id="upload-img"  onChange={e => this.handleChangeFile(e)} style={{display:'none'}}/>
-              <label htmlFor="upload-img">
-                  <Button variant="contained" component="span">
-                        Add
-                  </Button>
-              </label>
-
-              <Button variant="contained" onClick={e => this.deleteFile(e.target)}>Delete</Button>
-          </div>
+        </div>
+        </div>
 
           <ChoiceCreator 
             cuisineType={this.state.cuisineType} 
@@ -255,9 +265,8 @@ class MenuCreator extends Component{
             handleDietTypeChange={this.handleDietTypeChange} 
           />
 
-          <Button onClick={this.saveInfo}>Save Dish</Button>
+          <button onClick={this.saveInfo} className="addDish__editor-saveButton">Save Dish</button>
         </form>
-      </>
     )}
 }
 

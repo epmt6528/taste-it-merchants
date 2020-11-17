@@ -163,8 +163,8 @@ class Main extends Component {
                 name: "Taichi Murai",
                 role: "Full Stack Developer",
                 imgUrl: require('../../img/teamImg/Taichi.jpg'),
-                linkedIn:"https://www.linkedin.com/in/mert-oktem/",
-                github:"https://www.github.com/mert-oktem"
+                linkedIn:"https://www.linkedin.com/in/taichimurai/",
+                github:"https://github.com/epmt6528"
               }}
             />
 

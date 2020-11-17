@@ -1,0 +1,34 @@
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  svg{
+    padding: 30px;
+  }
+
+  #lid{
+    animation: lid 1.2s infinite alternate;
+  }
+
+  #box{
+    animation: pop 1.5s ease-in-out infinite;
+  }
+
+  @keyframes lid {
+    from {
+      transform: rotateX(30deg);
+    } to {
+      transform: rotateX(0deg);
+    }
+  }
+
+  @keyframes pop {
+    20% { transform: rotate(0.5deg); }
+    40% { transform: rotate(-0.5deg); }
+    60% { transform: rotate(0.5deg); }
+    80% { transform: rotate(-0.5deg); }
+  }
+
+}
