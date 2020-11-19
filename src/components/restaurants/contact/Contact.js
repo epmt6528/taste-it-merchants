@@ -30,7 +30,7 @@ class Contact extends Component {
     }
 
     axios
-      .get(`${BASE_URL}/api/restaurants`, {headers: { Authorization: `${jwt}` }}
+      .get(`${BASE_URL}/restaurants`, {headers: { Authorization: `${jwt}` }}
       )
       .then((res) => {
         this.setState({
@@ -101,7 +101,7 @@ class Contact extends Component {
       <div className="contact">
         <div className="contact__title">
           <p>Hi {rName}, let's kepp in touch</p>
-          <h1>Contact</h1>
+          <h1>Support</h1>
         </div>
 
         <div className="contact__contactInfoWrap">

@@ -32,28 +32,41 @@ class MenuEditor extends Component{
     description: this.props.dishDescription,
     choices: [],
     cuisineType: [
-      { choiceDescription: 'Indian', checked: false},
-      { choiceDescription: 'Vietnamese', checked: false},
-      { choiceDescription: 'Japanese', checked: false},
-      { choiceDescription: 'French', checked: false},
+      { choiceDescription: 'Indian', checked: false, pictureURL:'https://i.ibb.co/R91348L/Indian.png'},
+      { choiceDescription: 'Vietnamese', checked: false, pictureURL:'https://i.ibb.co/nrDy9Wc/vietnamese.png'},
+      { choiceDescription: 'Japanese', checked: false, pictureURL:'https://i.ibb.co/PxGXKvd/Japanese.png'},
+      { choiceDescription: 'French', checked: false, pictureURL:'https://i.ibb.co/LRXR2DL/french.png'},
+      { choiceDescription: 'Mexican', checked: false, pictureURL:'https://i.ibb.co/J274P4Y/Mexican.png'},
+      { choiceDescription: 'Korean', checked: false, pictureURL:'https://i.ibb.co/pKQwt5q/Korean.png'},
+      { choiceDescription: 'Chinese', checked: false, pictureURL:'https://i.ibb.co/DLJCdx9/chinese.png'},
+      { choiceDescription: 'Thai', checked: false, pictureURL:'https://i.ibb.co/bK6CPYG/thai.png'},
     ],
     allergy: [
-      { choiceDescription: 'No Allergens', checked: false},
-      { choiceDescription: 'Milk', checked: false},
-      { choiceDescription: 'Crustacean shellfish', checked: false},
-      { choiceDescription: 'Tree nuts', checked: false},
-      { choiceDescription: 'Fish', checked: false},
+      { choiceDescription: 'No Allergens', checked: false, pictureURL:'https://i.ibb.co/hDBYYzk/good-heart.png'},
+      { choiceDescription: 'Milk', checked: false, pictureURL:'https://i.ibb.co/3c2zNHw/milk.png'},
+      { choiceDescription: 'Crustacean shellfish', checked: false, pictureURL:'https://i.ibb.co/d4jvWFm/crustacean-shellfish.png'},
+      { choiceDescription: 'Tree nuts', checked: false, pictureURL:'https://i.ibb.co/VDH0bMt/tree-nuts.png'},
+      { choiceDescription: 'Fish', checked: false, pictureURL:'https://i.ibb.co/5rMtbNN/fish.png'},
+      { choiceDescription: 'Eggs', checked: false, pictureURL:'https://i.ibb.co/sHC1Hbk/eggs.png'},
+      { choiceDescription: 'Soybean', checked: false, pictureURL:'https://i.ibb.co/X3qmqnv/soybeans.png'},
+      { choiceDescription: 'Peanuts', checked: false, pictureURL:'https://i.ibb.co/Dk5TzqD/peanuts.png'},
+      { choiceDescription: 'Wheat', checked: false, pictureURL:'https://i.ibb.co/JB2sfgL/wheat.png'},
     ],
     dietType: [
-      { choiceDescription: 'Anything', checked: false},
-      { choiceDescription: 'Vegetarian', checked: false},
-      { choiceDescription: 'Gluten-Free', checked: false}
+      { choiceDescription: 'Anything', checked: false, pictureURL:'https://i.ibb.co/hDBYYzk/good-heart.png'},
+      { choiceDescription: 'Vegetarian', checked: false, pictureURL:'https://i.ibb.co/1LHkS9V/vegetarian.png'},
+      { choiceDescription: 'Gluten-Free', checked: false, pictureURL:'https://i.ibb.co/vkNvNyB/gluten-free.png'},
+      { choiceDescription: 'Halal', checked: false, pictureURL:'https://i.ibb.co/S0wKSTm/halal.png'},
+      { choiceDescription: 'Kosher', checked: false, pictureURL:'https://i.ibb.co/LkfB5Zc/kosher.png'},
+      { choiceDescription: 'Diabetic', checked: false, pictureURL:'https://i.ibb.co/wzYnwgN/diabetic.png'},
+      { choiceDescription: 'Vegan', checked: false, pictureURL:'https://i.ibb.co/SJQNVZq/vegan.png'},
+      { choiceDescription: 'Organic', checked: false, pictureURL:'https://i.ibb.co/ph3FHq7/organic.png'}
     ],
     spicyLevel:  [
-      { choiceDescription: 'Very High', checked: false},
-      { choiceDescription: 'High', checked: false},
-      { choiceDescription: 'Moderate', checked: false},
-      { choiceDescription: 'Not Spicy', checked: false},
+      { choiceDescription: 'Very High', checked: false, pictureURL:'https://i.ibb.co/JHrbsps/very-high.png'},
+      { choiceDescription: 'High', checked: false, pictureURL:'https://i.ibb.co/jG56ncq/high.png'},
+      { choiceDescription: 'Moderate', checked: false, pictureURL:'https://i.ibb.co/Y2k55tj/moderate.png'},
+      { choiceDescription: 'Not Spicy', checked: false, pictureURL:'https://i.ibb.co/wph2BB8/not-spicy.png'},
     ],
     uploadImageSrc: `http://localhost:5000/api/menus/image/${this.props.id}`,
     isLoading: false
@@ -70,31 +83,44 @@ class MenuEditor extends Component{
     })
 
     const cuisineOptions = [
-      { choiceDescription: 'Indian', checked: false},
-      { choiceDescription: 'Vietnamese', checked: false},
-      { choiceDescription: 'Japanese', checked: false},
-      { choiceDescription: 'French', checked: false},
+      { choiceDescription: 'Indian', checked: false, pictureURL:'https://i.ibb.co/R91348L/Indian.png'},
+      { choiceDescription: 'Vietnamese', checked: false, pictureURL:'https://i.ibb.co/nrDy9Wc/vietnamese.png'},
+      { choiceDescription: 'Japanese', checked: false, pictureURL:'https://i.ibb.co/PxGXKvd/Japanese.png'},
+      { choiceDescription: 'French', checked: false, pictureURL:'https://i.ibb.co/LRXR2DL/french.png'},
+      { choiceDescription: 'Mexican', checked: false, pictureURL:'https://i.ibb.co/J274P4Y/Mexican.png'},
+      { choiceDescription: 'Korean', checked: false, pictureURL:'https://i.ibb.co/pKQwt5q/Korean.png'},
+      { choiceDescription: 'Chinese', checked: false, pictureURL:'https://i.ibb.co/DLJCdx9/chinese.png'},
+      { choiceDescription: 'Thai', checked: false, pictureURL:'https://i.ibb.co/bK6CPYG/thai.png'},
     ]
 
     const allergyOptions = [
-      { choiceDescription: 'No Allergens', checked: false},
-      { choiceDescription: 'Milk', checked: false},
-      { choiceDescription: 'Crustacean shellfish', checked: false},
-      { choiceDescription: 'Tree nuts', checked: false},
-      { choiceDescription: 'Fish', checked: false},
+      { choiceDescription: 'No Allergens', checked: false, pictureURL:'https://i.ibb.co/hDBYYzk/good-heart.png'},
+      { choiceDescription: 'Milk', checked: false, pictureURL:'https://i.ibb.co/3c2zNHw/milk.png'},
+      { choiceDescription: 'Crustacean shellfish', checked: false, pictureURL:'https://i.ibb.co/d4jvWFm/crustacean-shellfish.png'},
+      { choiceDescription: 'Tree nuts', checked: false, pictureURL:'https://i.ibb.co/VDH0bMt/tree-nuts.png'},
+      { choiceDescription: 'Fish', checked: false, pictureURL:'https://i.ibb.co/5rMtbNN/fish.png'},
+      { choiceDescription: 'Eggs', checked: false, pictureURL:'https://i.ibb.co/sHC1Hbk/eggs.png'},
+      { choiceDescription: 'Soybean', checked: false, pictureURL:'https://i.ibb.co/X3qmqnv/soybeans.png'},
+      { choiceDescription: 'Peanuts', checked: false, pictureURL:'https://i.ibb.co/Dk5TzqD/peanuts.png'},
+      { choiceDescription: 'Wheat', checked: false, pictureURL:'https://i.ibb.co/JB2sfgL/wheat.png'},
     ]
       
     const dietTypeOptions = [
-      { choiceDescription: 'Anything', checked: false},
-      { choiceDescription: 'Vegetarian', checked: false},
-      { choiceDescription: 'Gluten-Free', checked: false}
+      { choiceDescription: 'Anything', checked: false, pictureURL:'https://i.ibb.co/hDBYYzk/good-heart.png'},
+      { choiceDescription: 'Vegetarian', checked: false, pictureURL:'https://i.ibb.co/1LHkS9V/vegetarian.png'},
+      { choiceDescription: 'Gluten-Free', checked: false, pictureURL:'https://i.ibb.co/vkNvNyB/gluten-free.png'},
+      { choiceDescription: 'Halal', checked: false, pictureURL:'https://i.ibb.co/S0wKSTm/halal.png'},
+      { choiceDescription: 'Kosher', checked: false, pictureURL:'https://i.ibb.co/LkfB5Zc/kosher.png'},
+      { choiceDescription: 'Diabetic', checked: false, pictureURL:'https://i.ibb.co/wzYnwgN/diabetic.png'},
+      { choiceDescription: 'Vegan', checked: false, pictureURL:'https://i.ibb.co/SJQNVZq/vegan.png'},
+      { choiceDescription: 'Organic', checked: false, pictureURL:'https://i.ibb.co/ph3FHq7/organic.png'}
     ]
       
     const spicyLevelOptions = [
-      { choiceDescription: 'Very High', checked: false},
-      { choiceDescription: 'High', checked: false},
-      { choiceDescription: 'Moderate', checked: false},
-      { choiceDescription: 'Not Spicy', checked: false},
+      { choiceDescription: 'Very High', checked: false, pictureURL:'https://i.ibb.co/JHrbsps/very-high.png'},
+      { choiceDescription: 'High', checked: false, pictureURL:'https://i.ibb.co/jG56ncq/high.png'},
+      { choiceDescription: 'Moderate', checked: false, pictureURL:'https://i.ibb.co/Y2k55tj/moderate.png'},
+      { choiceDescription: 'Not Spicy', checked: false, pictureURL:'https://i.ibb.co/wph2BB8/not-spicy.png'},
     ]
     
     

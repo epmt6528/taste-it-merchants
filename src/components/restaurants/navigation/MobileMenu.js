@@ -18,7 +18,6 @@ const MobileMenu = props => {
     return (
         <div className='mobile-menu'>
             <div className="mobile-menu-head">
-                 {/* <SiteLogo />  */}
                  <img src={SiteLogo} alt="tasteIt Logo" className="mobile-menu__logo"/>
             </div>
             

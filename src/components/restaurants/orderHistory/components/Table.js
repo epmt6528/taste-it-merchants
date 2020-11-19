@@ -1,5 +1,6 @@
 // Libraries
 import React from 'react'
+import MediaQuery from 'react-responsive';
 
 // MaterialUI
 import { makeStyles } from '@material-ui/core/styles'
@@ -18,14 +19,11 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import TextField  from "@material-ui/core/TextField"
 import MenuItem from '@material-ui/core/MenuItem'
 
+// Images
+import CustomerIcon from "../../../../img/icons/account.svg"
+import ReviewIcon from "../../../../img/icons/review.svg"
+import FeedbackIcon from "../../../../img/icons/feedback.svg"
 
-const useRowStyles = makeStyles({
-  root: {
-    '& > *': {
-      borderBottom: 'unset',
-    },
-  },
-})
 
 // Order No. Formatter
 const orderNoFormatter = new Intl.NumberFormat('en', {
@@ -56,22 +54,38 @@ function createData(orderNo, product, quantity, status, customerName, review, fe
 function Row(props) {
   const { row } = props
   const [open, setOpen] = React.useState(false)
-  const classes = useRowStyles()
 
   return (
     <React.Fragment>
-      <TableRow className={classes.root}>
-        <TableCell>
-          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+      <TableRow className="ordersTable__row">
+        {/* Order No. */}
+        <TableCell component="th" scope="row" className="ordersTable__orderNoWrap">
+          <div className="ordersTable__orderNo"><div>{orderNoFormatter.format(row.orderNo)}</div></div>
+          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}  style={{width: '20px'}}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
-          {orderNoFormatter.format(row.orderNo)}
-        </TableCell>
-        <TableCell>{row.product}</TableCell>
-        <TableCell>{quantityFormatter.format(row.quantity)}</TableCell>
-        <TableCell>
+        
+        {/* For Mobile Design */}
+        <MediaQuery maxDeviceWidth={1200}>
+          <TableCell  className="ordersTable__nameQuantityCell">
+            {/* Product Name */}
+            <div className="ordersTable__productName" >{row.product}</div>
+            {/* Quantity */}
+            <div  className="ordersTable__quantity" >{quantityFormatter.format(row.quantity)}</div>
+          </TableCell>
+        </MediaQuery>
+
+        {/* For Desk top Design */}
+        <MediaQuery minDeviceWidth={1201}>
+          {/* Product Name */}
+          <TableCell className="ordersTable__productName" >{row.product}</TableCell>
+          {/* Quantity */}
+          <TableCell  className="ordersTable__quantity" >{quantityFormatter.format(row.quantity)}</TableCell>
+        </MediaQuery>
+
+        {/* Status */}
+        <TableCell className="ordersTable__statusDropdown">
           <TextField
           select
           variant="outlined"
@@ -79,6 +93,7 @@ function Row(props) {
           InputProps={{
             readOnly: true,
           }}
+          style={{width: '300px'}}
           >
             <MenuItem key='1' value='2'>Being Prepared</MenuItem>
             <MenuItem key='2' value='3'>Being Delivered</MenuItem>
@@ -88,25 +103,26 @@ function Row(props) {
         </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        {/* Detail Table */}
+        <TableCell className="ordersTable__detailTable" colSpan={4}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Customer's name</TableCell>
-                    <TableCell>Review</TableCell>
-                    <TableCell>feedback</TableCell>
+              <Table size="small" aria-label="purchases"  style={{ display: 'flex', flexDirection: 'row'}}>
+                <TableHead  className="ordersTable__detailTable-tabelHeader">
+                  <TableRow  style={{ display: 'flex', flexDirection: 'column'}}>
+                    <TableCell className="ordersTable__detailTable-tHCell" ><img src={CustomerIcon}/><span>Customer's name</span></TableCell>
+                    <TableCell className="ordersTable__detailTable-tHCell" ><img src={ReviewIcon}/><span>Review</span></TableCell>
+                    <TableCell className="ordersTable__detailTable-tHCell" ><img src={FeedbackIcon}/><span>feedback</span></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.customerInfo.map((customerInfoRow) => (
-                    <TableRow key={customerInfoRow.customerName}>
-                      <TableCell component="th" scope="row">
+                    <TableRow key={customerInfoRow.customerName} style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                      <TableCell component="th" scope="row" style={{ border: 'none', fontFamily: 'NexaXBold'}}>
                         {customerInfoRow.customerName}
                       </TableCell>
-                      <TableCell>{customerInfoRow.review ? customerInfoRow.review : 'Not reviewed yet'}</TableCell>
-                      <TableCell>{customerInfoRow.feedback ? customerInfoRow.feedback: 'Not reviewed yet'}</TableCell>
+                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}}>{customerInfoRow.review ? <span style={{color: '#FFC400'}}>{customerInfoRow.review}</span> : 'Not reviewed yet'}</TableCell>
+                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}}>{customerInfoRow.feedback ? customerInfoRow.feedback: 'Not reviewed yet'}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -132,13 +148,12 @@ export default function OrderTable(props) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
-        <TableHead>
+        <TableHead  className="ordersTable__tabelHeader">
           <TableRow>
-            <TableCell />
-            <TableCell>Order No.</TableCell>
+            <TableCell  style={{width: '130px'}}>Order No.</TableCell>
             <TableCell>Product</TableCell>
-            <TableCell>Quantity</TableCell>
-            <TableCell>Status</TableCell>
+            <TableCell  style={{width: '100px'}}>Quantity</TableCell>
+            <TableCell  style={{width: '300px'}}>Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

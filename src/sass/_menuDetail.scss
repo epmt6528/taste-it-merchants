@@ -20,7 +20,8 @@
     h2{
       @extend %headings;
       font-size: 32px;
-
+      margin: 0;
+      
       @include desktop{
         font-size: 60px;
       }
@@ -39,7 +40,7 @@
     align-items: center;
 
     @include desktop{
-      margin: 50px 64px;
+      margin: 20px 64px;
       padding: 64px;
     }
   }

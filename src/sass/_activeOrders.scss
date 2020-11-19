@@ -3,6 +3,9 @@
 }
 
 .activeOrders{
+  background-color: $secondaryVariant;
+  padding-bottom: 30px;
+
   // Title Area
   &__titleWrap{
     padding: 20px;
@@ -10,14 +13,15 @@
 
     @include desktop{
       background-color: $secondaryVariant;
-    }
-
-    p{
-      margin: 0;
+      padding: 20px 65px;
     }
 
     h1{
-      margin-bottom: 0
+      margin-bottom: 0;
+
+      @include desktop{
+        margin: 0;
+      }
     }
   }
 
@@ -35,12 +39,14 @@
 
     @include desktop{
       padding: 56px 78px;
+      margin: 20px 65px;
       align-items: flex-start;
     }
 
     // Nacho Pic
     img{
-      max-width: 90%;
+      height: 100%;
+      width: auto;
       position: absolute;
       top: -50px;
 
@@ -88,6 +94,7 @@
 
     @include desktop{
       padding: 70px;
+      margin: 20px 65px;
       align-items: flex-start;
     }
 

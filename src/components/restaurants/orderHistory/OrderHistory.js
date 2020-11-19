@@ -121,7 +121,7 @@ class ActiveOrders extends Component {
     return (
         <div className="orderHistory">
           <div className="orderHistory__titleWrap">
-            <p>Hi {rName}, <br/>let’s track your past orders and reviews</p>
+            <p>Hi {rName}, let’s track your past orders and reviews</p>
             <h1>Order History</h1>
           </div>
           

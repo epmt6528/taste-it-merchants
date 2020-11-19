@@ -7,11 +7,13 @@ import "./Header.css";
 const Header = () => {
   return (
     <header className="site-header">
-      <MediaQuery maxDeviceWidth={1000}>
+      {/* If the screen width is less than 1200 */}
+      <MediaQuery maxDeviceWidth={1200}>
         <MobileMenu />
       </MediaQuery>
 
-      <MediaQuery minDeviceWidth={1001}>
+      {/* If the screen width is more than 1200 */}
+      <MediaQuery minDeviceWidth={1201}>
         <DesktopMenu />
       </MediaQuery>
     </header>

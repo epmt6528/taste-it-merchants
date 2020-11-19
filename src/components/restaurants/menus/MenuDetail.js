@@ -216,7 +216,7 @@ const MenuDetail = props =>{
           </Link>
           
           <button onClick={() => deleteMenu(id)} className="menuDetail__removeButton">Remove Dish</button>
-        </div>
+          </div>
       </Card>
     </div>
   )

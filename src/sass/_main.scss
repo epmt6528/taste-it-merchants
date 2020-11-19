@@ -293,6 +293,12 @@
 
     // Member Cards List
     .section3-content2{
+      @include tablet {
+        display: grid;
+        grid-gap: 30px;
+        grid-template-columns: 1fr 1fr;
+      }
+
       @include desktop {
         display: grid;
         grid-gap: 50px;

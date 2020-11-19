@@ -11,17 +11,12 @@ import Toolbar from "./Toolbar"
 const MobileMenu = props => {
     const [menu, setMenu] = useState(false)
 
-    let mobileMenuClasses = 'mobile-menu'
-    if (props.show) {
-        mobileMenuClasses = 'mobile-menu open'
-    }
-
     function refreshPage() {
         window.location.reload(false);
     }
 
     return (
-        <div className={mobileMenuClasses}>
+        <div className='mobile-menu'>
             <div className="mobile-menu-head">
                  {/* <SiteLogo />  */}
                  <img src={SiteLogo} alt="tasteIt Logo" className="mobile-menu__logo"/>

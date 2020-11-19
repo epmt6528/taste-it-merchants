@@ -24,7 +24,7 @@
 
   &__editor{
     margin: 50px 20px;
-    padding: 20px;
+    padding: 50px 20px 150px;
     border: 1px solid $primaryVariant2;
     border-radius: 20px;
     background-color: white;
@@ -33,7 +33,7 @@
     align-items: center;
 
     @include desktop{
-      margin: 50px 65px;
+      margin: 20px 65px;
       padding: 65px;
     }
 

@@ -1,6 +1,11 @@
+// Libraries
 import React, { Component } from "react";
+import Parallax from 'react-rellax';
+
+// Components
 import TeamCard from "./TeamCard";
-import { Element } from "react-scroll";
+
+// Images
 import  Banner  from "../../img/banner.jpg";
 import  Pancake  from "../../img/pancake.png";
 import  Lobster  from "../../img/lobster.png";
@@ -10,15 +15,18 @@ import  Mouse  from "../../img/mouse.png";
 import  TomatoSoup  from "../../img/tomatoSoup.png";
 import  Sushi  from "../../img/sushi.png";
 import  Cooking  from "../../img/cooking.png";
-import MediaQuery from 'react-responsive';
+
 
 class Main extends Component {
   render() {
     return (
       <main className="site-home-main">
         <section className="home-section1">
-          <img src={Banner} alt="Hamburger, Fries, Drink and Egg" className="site-home-main__hero"/>
-        
+          {/* Hero Section */}
+          <Parallax speed={-1}>
+            <img src={Banner} alt="Hamburger, Fries, Drink and Egg" className="site-home-main__hero"/>
+          </Parallax>
+          
           <div className="hero">
             <div className="hero__textWrapper">
               <h1>Tailored for Your New Food Experiences.</h1>
@@ -30,6 +38,7 @@ class Main extends Component {
             </div>
           </div>
 
+          {/* How It Works Section */}
           <div className="howItWorks">
             <div className="howItWorks__textWrapper" id="section1-content3">
               <p className="subtitle">How it works</p>
@@ -39,9 +48,9 @@ class Main extends Component {
                 can discover your next favourite food through mystery dishes.
               </p>
             </div>
-
+            
             <img src={Pancake} alt="Home Section1" className="pancakePic"/>
-
+            
             <div className="howItWorks__stepsWrapper">
               <div className="howItWorks__step">
                 <img src={Champagne} alt="Champagne bottle" className="howItWorks__champagne" />
@@ -69,11 +78,13 @@ class Main extends Component {
         </section>
 
 
+        {/* Features Section */}
         <div className="features-section">
           <section className="home-section2" id="home-section2">
             <div className="section2-content1">
-              <img src={Lobster} alt="Lobster" />
+                <img src={Lobster} alt="Lobster" />
             </div>
+            
             <div className="home-section2__description">
               <div className="section2-content2">
                 <p className="subtitle">Features</p>
@@ -106,6 +117,7 @@ class Main extends Component {
           </section>
         </div>
 
+        {/* Meet the Team Section */}
         <section className="home-section3" id="home-section3">
           <div className="section3-content1">
             <h1>Meet The Team</h1>
@@ -220,6 +232,7 @@ class Main extends Component {
           </div>
         </section>
 
+        {/* Call to Action Section */}
         <div className="cta">
           <section className="home-section4">
             <img src={Cooking} alt="Cooking salmon and toast" />

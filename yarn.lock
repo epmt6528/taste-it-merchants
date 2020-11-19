@@ -9325,6 +9325,14 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
+react-rellax@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-rellax/-/react-rellax-1.0.3.tgz#43e8f41bcbab8eabf9a2c720a48382258ab38820"
+  integrity sha512-njrc/VpQMPmzLVBdwwhIKEXXeYbPog94Fv8TKbhTnIG8x97Df6ZATRWQJs2WVvMY4SXhjQ5j8vE93dlur7HsKw==
+  dependencies:
+    prop-types "^15.6.1"
+    rellax "^1.9.1"
+
 react-responsive@^8.1.1:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/react-responsive/-/react-responsive-8.1.1.tgz#e4b1bd677798deecb4f1c3cff35a020ca0abdb27"
@@ -9658,6 +9666,11 @@ relateurl@^0.2.7:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
+
+rellax@^1.9.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/rellax/-/rellax-1.12.1.tgz#1b433ef7ac4aa3573449a33efab391c112f6b34d"
+  integrity sha512-XBIi0CDpW5FLTujYjYBn1CIbK2CJL6TsAg/w409KghP2LucjjzBjsujXDAjyBLWgsfupfUcL5WzdnIPcGfK7XA==
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"

@@ -1,10 +1,145 @@
 .MuiTable-root{
   border: none;
+  font-family: 'NexaLight' !important;
 }
 
+.MuiTableCell-head{
+  font-family: 'NexaLight' !important;
+}
 
 .MuiPaper-elevation1{
   box-shadow: none !important;
+}
+
+// Table Header
+.ordersTable__tabelHeader{
+  display: none !important;
+
+  @include desktop{
+    display: table-header-group !important;
+  }
+}
+
+// Table Row
+.ordersTable__row{
+  display: flex !important;
+  flex-direction: column;
+
+  &>*{
+    border-bottom: unset !important;
+  }
+
+  @include desktop{
+    display: table-row !important;
+  }
+}
+
+// Detail Table
+.ordersTable__detailTable{
+  padding: 16px 0 !important;
+
+  @include desktop{
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-left: 120px !important;
+  }
+  
+  &-tableHeader{
+    padding-right: 25px !important;
+
+    @include desktop{
+      padding-right: 100px !important;
+    }
+  }
+
+  &-tHCell{
+    border: none !important;
+    padding: 6px 0 !important;
+
+    @include desktop{
+      padding: 6px 24px 6px 16px !important;
+    }
+
+    // Icon
+    img{
+      width: 16px !important;
+      margin-right: 16px !important;
+    }
+
+    span{
+      display: none !important;
+
+      @include desktop{
+        display: inline !important;
+      }
+    }
+  }
+}
+
+// Order No. Part
+.ordersTable__orderNoWrap{
+  // width: 130px;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 !important;
+
+  @include desktop{
+    justify-content: flex-start;
+  }
+}
+
+// Order No.
+.ordersTable__orderNo{
+  font-family: 'NexaXBold' !important;
+  font-size: 16px !important;
+
+  @include desktop{
+    font-family: 'NexaLight' !important;
+    font-size: 24px !important;
+    margin-right: 24px;
+  }
+}
+
+// Product Name
+.ordersTable__productName{
+  font-family: 'NexaXBold' !important;
+  font-size: 16px !important;
+
+  @include desktop{
+    font-size: 24px !important;
+  }
+}
+
+// Quantity
+.ordersTable__quantity{
+  font-family: 'NexaLight' !important;
+  font-size: 16px !important;
+  
+  @include desktop{
+    font-size: 24px !important;
+    width: 100px !important;
+  }
+}
+
+// Product Name and Quantity Cell (Just For Mobile)
+.ordersTable__nameQuantityCell{
+  padding: 16px 0 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+// Order Status Drop down
+.ordersTable__statusDropdown{
+  padding: 0 !important;
+
+  @include desktop{
+    padding: 16px !important;
+  }
+
+  .MuiSelect-selectMenu{
+    line-height: 40px !important;
+  }
 }
 
 .ordersTable{

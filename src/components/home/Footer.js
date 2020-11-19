@@ -7,8 +7,10 @@ class Footer extends Component {
     return (
       <footer className="site-footer">
         <div className="site-footer__upper">
+          {/* Taste It Logo */}
           <img src={Logo} alt="Taste It Logo" className="site-footer__logo" />
 
+          {/* About Us */}
           <div className="footer-content2">
             <h3>About Us</h3>
             <p>
@@ -17,6 +19,8 @@ class Footer extends Component {
               suit your preferences.
             </p>
           </div>
+
+          {/* Design/Devlopment Assets */}
           <div className="footer-content3">
             <ul className="content3-list">
 
@@ -39,6 +43,7 @@ class Footer extends Component {
 
         <hr />
       
+        {/* Copy Right Section */}
         <div className="footer-content5">
           <div className="content5-text1">
             <p>Made with love remotely from Vancouver, BC.</p>

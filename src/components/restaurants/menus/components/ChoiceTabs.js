@@ -23,14 +23,12 @@ const ChoiceTabs = props =>{
 
   return(
     <div>
-      <AppBar position="static" >
-        <Tabs aria-label="simple tabs example" value={value} onChange={handleChange}>
-          <Tab label="Cuisine Type" />
-          <Tab label="Allergy" />
-          <Tab label="Diet Type" />
-          <Tab label="Spicy Level" />
+        <Tabs variant="scrollable" value={value} onChange={handleChange} indicatorColor="none">
+          <Tab label="Cuisine Type" style={{ fontFamily: 'NexaBold', fontSize: '20px', textTransform: 'none'}} />
+          <Tab label="Allergy"  style={{ fontFamily: 'NexaBold', fontSize: '20px', textTransform: 'none'}}  />
+          <Tab label="Diet Type"  style={{ fontFamily: 'NexaBold', fontSize: '20px', textTransform: 'none'}}  />
+          <Tab label="Spicy Level"  style={{ fontFamily: 'NexaBold', fontSize: '20px', textTransform: 'none'}}  />
         </Tabs>
-      </AppBar>
       
       <TabPanel index={0} value={value} choices ={cuisineType} handleChange={handleCusineTypeChange}/>
       <TabPanel index={1} value={value} choices ={allergy} handleChange={handleAllergyChange}/>
