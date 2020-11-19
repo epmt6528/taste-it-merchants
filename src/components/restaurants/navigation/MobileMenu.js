@@ -18,7 +18,7 @@ const MobileMenu = props => {
     return (
         <div className='mobile-menu'>
             <div className="mobile-menu-head">
-                 <img src={SiteLogo} alt="tasteIt Logo" className="mobile-menu__logo"/>
+                <Link to="/"><img src={SiteLogo} alt="tasteIt Logo" className="mobile-menu__logo"/></Link>
             </div>
             
             <span onClick={() => setMenu(menu ? false : true)}>

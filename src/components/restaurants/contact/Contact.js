@@ -1,6 +1,8 @@
 // Libraries
 import React, { Component } from "react"
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // MaterialUI
 import { Button } from '@material-ui/core'
@@ -19,22 +21,31 @@ class Contact extends Component {
     name: '',
     phoneNumber: '',
     email: '',
-    body: ''
+    body: '',
+    isLoading: false
   }
 
-  componentDidMount() {
+  
 
+  componentDidMount() {
     const jwt = getJwtToken()
     if (!jwt) {
       // this.props.history.push("/signIn")
     }
+
+    this.setState({
+      isLoading: true,
+    })
 
     axios
       .get(`${BASE_URL}/restaurants`, {headers: { Authorization: `${jwt}` }}
       )
       .then((res) => {
         this.setState({
-          rName: res.data[0].restaurantName
+          rName: res.data[0].restaurantName,
+          phoneNumber: res.data[0].phoneNumber,
+          email: res.data[0].email,
+          isLoading: false
         })
       })
       .catch((err) => {
@@ -44,9 +55,9 @@ class Contact extends Component {
   }
 
 
+  // Send Message
   sendMessage = e => {
     const {name, phoneNumber, email, body} = this.state
-
     e.preventDefault()
 
     const jwt = getJwtToken()
@@ -55,7 +66,7 @@ class Contact extends Component {
     }
 
     axios
-      .post(`${BASE_URL}/api/inquiries`, {
+      .post(`${BASE_URL}/inquiries`, {
         name: name,
         phoneNumber: phoneNumber,
         email: email,
@@ -65,10 +76,12 @@ class Contact extends Component {
     .catch((err) => {
       // localStorage.removeItem("jwt-token")
       // this.props.history.push("/signIn")
+      console.log(err)
     })
   }
 
 
+  // Input Change Handlers
   handleNameInputChange = input => {
     this.setState({
       name: input
@@ -96,6 +109,10 @@ class Contact extends Component {
   
   render() {
     const rName = this.state.rName
+    const phoneNumber = this.state.phoneNumber
+    const email = this.state.email
+
+    const notify = () => toast("Message has been sent.");
 
     return (
       <div className="contact">
@@ -104,8 +121,19 @@ class Contact extends Component {
           <h1>Support</h1>
         </div>
 
+        {/* Contact Info */}
         <div className="contact__contactInfoWrap">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2605.732168014052!2d-123.1108751841337!3d49.22460628280447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5486746f412563f7%3A0x36606d221509fdfe!2sLangara%20College!5e0!3m2!1sen!2sca!4v1604615828263!5m2!1sen!2sca" frameBorder="0"  allowFullScreen="" aria-hidden="false" tabIndex="0" title='map' width='100%' height='180px'/>
+          {/* Google Map */}
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2605.732168014052!2d-123.1108751841337!3d49.22460628280447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5486746f412563f7%3A0x36606d221509fdfe!2sLangara%20College!5e0!3m2!1sen!2sca!4v1604615828263!5m2!1sen!2sca" 
+            frameBorder="0"  
+            allowFullScreen="" 
+            aria-hidden="false" 
+            tabIndex="0" 
+            title='map' 
+            width='100%' 
+            height='180px'/>
+
           <div className="contact__infoWrap">
             <div className="contact__locationWrap">
               <img src={PinIcon} alt='Pin Icon' />
@@ -119,30 +147,63 @@ class Contact extends Component {
           </div>
         </div>
 
-        
+        {/* Contact Form */}
         <div className="contact__form">
           <h2>Get in touch with us</h2>
-          <form>
+          <form onSubmit={e=>this.sendMessage(e)}>
             <div className="contact__form-namePhoneWrap">
-              <TextField id="outlined-basic" label="Name" variant="outlined" onChange={e=>this.handleNameInputChange(e.target.value)}/>
-              <TextField id="outlined-basic" label="Phone Number" variant="outlined" onChange={e=>this.handlePhoneNumberInputChange(e.target.value)}/>
+              {/* Name Input */}
+              <TextField 
+                id="outlined-basic" 
+                label="Name" 
+                variant="outlined" 
+                defaultValue={rName} 
+                onChange={e=>this.handleNameInputChange(e.target.value)}/>
+
+              {/* Phone Number Input */}
+              <TextField 
+                id="outlined-basic" 
+                label="Phone Number" 
+                variant="outlined" 
+                defaultValue={phoneNumber} 
+                onChange={e=>this.handlePhoneNumberInputChange(e.target.value)}/>
             </div>
             
-            <TextField id="outlined-basic" label="Email" variant="outlined" onChange={e=>this.handleEmailInputChange(e.target.value)}/>
+            {/* Email Input */}
+            <TextField 
+              id="outlined-basic" 
+              label="Email" 
+              variant="outlined" 
+              defaultValue={email} 
+              onChange={e=>this.handleEmailInputChange(e.target.value)}/>
+
+            {/* Body Input */}
             <TextField
               id="outlined-multiline-static"
               label="Message"
               multiline
               rows={4}
               variant="outlined"
-              onChange={e=>this.handleBodyInputChange(e.target.value)}
-            />
+              onChange={e=>this.handleBodyInputChange(e.target.value)}/>
 
-            <button type='submit'>Submit</button>
+            <button type='submit' onClick={notify}>Submit</button>
+            <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            />
           </form>
         </div>
       </div>
     )
   }
 }
+
+
 export default Contact

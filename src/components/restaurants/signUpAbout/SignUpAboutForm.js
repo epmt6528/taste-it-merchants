@@ -5,6 +5,7 @@ import Controls from "../../controls/Controls";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { getJwtToken } from "../../getJwt";
+import {BASE_URL} from "../../../config/config"
 
 const initialFValues = {
   restaurantName: "",
@@ -55,7 +56,7 @@ export default function SignUpAboutForm() {
 
     axios
       .put(
-        "http://localhost:5000/api/restaurants/",
+        `${BASE_URL}/restaurants/`,
         {
           restaurantName: values.restaurantName,
           restaurantDescription: values.restaurantDescription,
