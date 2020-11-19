@@ -4,6 +4,7 @@ import { useForm, Form } from "../useForm";
 import Controls from "../../controls/Controls";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import {BASE_URL} from "../../../config/config"
 
 const initialFValues = {
   email: "",
@@ -49,7 +50,7 @@ export default function SignUpForm() {
     // provinceService.insertEmployee(values)
 
     axios
-      .post("http://localhost:5000/api/restaurants/", {
+      .post(`${BASE_URL}/restaurants/`, {
         email: values.email,
         password: values.password,
       })

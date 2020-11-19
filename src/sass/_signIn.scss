@@ -48,6 +48,11 @@
       }
     }
 
+    .MuiFormControl-root{
+      width: 100% !important;
+      margin: 8px 0 !important;
+    }
+
     &__cta{
       font-family: 'NexaBold';
 

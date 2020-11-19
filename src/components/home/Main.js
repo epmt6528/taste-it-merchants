@@ -1,6 +1,7 @@
 // Libraries
 import React, { Component } from "react";
 import Parallax from 'react-rellax';
+import { Link } from 'react-router-dom'
 
 // Components
 import TeamCard from "./TeamCard";
@@ -34,7 +35,7 @@ class Main extends Component {
                 Discover your next favourite food and expand your taste horizons
                 through mystery dishes, customized just for you.
               </p>
-              <button>Start Now</button>
+              <Link to="/signIn"><button>Start Now</button></Link>
             </div>
           </div>
 

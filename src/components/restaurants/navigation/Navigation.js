@@ -1,14 +1,13 @@
 // Libraries
-import React from 'react';
-import {Switch, Route, Link, BrowserRouter } from 'react-router-dom';
-import MediaQuery from 'react-responsive';
-
+import React from 'react'
+import {Switch, Route, Link, BrowserRouter } from 'react-router-dom'
+import MediaQuery from 'react-responsive'
 
 // MaterialUI
-import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import Box from '@material-ui/core/Box'
 
 // Components
 import Menus from '../menus/Menus'
@@ -16,14 +15,15 @@ import ActiveOrders from '../activeOrders/ActiveOrders'
 import OrderHistory from '../orderHistory/OrderHistory'
 import Contact from '../contact/Contact'
 import Account from '../account/Account'
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "./MobileMenu"
 
+// Images
 import SiteLogo from "../../../img/logo.svg"
 import Icon from "../../Icon"
 
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
   return (
     <div
@@ -39,7 +39,7 @@ function TabPanel(props) {
         </Box>
       )}
     </div>
-  );
+  )
 }
 
 
@@ -55,19 +55,18 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     backgroundColor: '#FFFCF5'
   }
-}));
+}))
 
 
 export default function Navigation() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const classes = useStyles()
+  const [value, setValue] = React.useState(0)
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   return (
-    <BrowserRouter>
       <div className={classes.root} >
 
       <MediaQuery maxDeviceWidth={1600}>
@@ -124,7 +123,5 @@ export default function Navigation() {
           <Contact />
         </TabPanel>
       </div>
-    </BrowserRouter>
-    
-  );
+  )
 }
