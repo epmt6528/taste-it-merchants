@@ -8,6 +8,9 @@ import ListItem from '@material-ui/core/ListItem'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 
+// Images
+import Japan from '../../../../img/icons/japanese.svg'
+
 
 const TabPanel = (props) => {
   const { value, index, choices, handleChange,...other } = props
@@ -32,10 +35,12 @@ const TabPanel = (props) => {
           {
             choices.map(
               (choice) => {
-                const {choiceDescription, checked, index} = choice
-                console.log(index)
+                const {choiceDescription, checked, pictureURL,index} = choice
+                const choiceIcon = <img src={pictureURL} className="choiceIcon"/>
+                
                 return (
                   <ListItem>
+                    {choiceIcon}
                     <FormControlLabel
                       index={index}
                       label={choiceDescription}

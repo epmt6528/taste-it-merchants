@@ -42,7 +42,6 @@
   h3{
     @extend %buttons;
     color: $primary;
-    white-space: nowrap;
 
     @include desktop {
       margin-top: 0;

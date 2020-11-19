@@ -19,12 +19,14 @@ const EditDish = props =>{
   const {id, dishName, dishDescription, dishPrice, rName} = props.location.state
 
   return(
-    <>
-      <Typography>Hi {rName}, let's customize your menu now</Typography>
-      <Typography>Edit Dish</Typography>
+    <div className="editDish">
+      <div className="editDish__titleWrap">
+        <p>Hi {rName}, let's customize your menu now</p>
+        <h1>Edit Dish</h1>
+      </div>
 
       <MenuEditor id={id} dishName={dishName} dishDescription={dishDescription} dishPrice={dishPrice}/>
-    </>
+    </div>
   )
 }
 

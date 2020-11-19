@@ -1,11 +1,13 @@
 .account{
+  background-color: $secondaryVariant;
+  padding-bottom: 30px;
 
   &__title{
     padding: 20px;
     background-color: white;
 
     @include desktop{
-      padding: 60px;
+      padding: 20px 60px;
       background-color: $secondaryVariant;
     }
 
@@ -36,7 +38,7 @@
     background-color: white;
 
     @include desktop{
-      margin: 0 60px 60px;
+      margin: 20px 60px 60px;
       padding: 40px 60px;
     }
 
@@ -98,7 +100,7 @@
 
   &__editorWrap{
     button{
-      margin: 30px 20px 80px;
+      margin: 20px 60px 80px;
     }
   }
 
@@ -109,6 +111,11 @@
     border: 1px solid $primaryVariant2;
     border-radius: 20px;
     background-color: white;
+
+    @include desktop{
+      margin: 20px 60px 60px;
+      padding: 40px 60px;
+    }
 
     h2{
       @extend %headings;

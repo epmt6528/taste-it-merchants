@@ -170,42 +170,53 @@ const MenuDetail = props =>{
 
 
   return(
-    <div>
-      <Typography>Hi {rName}, let's customize your menu now</Typography>
-      <Typography>Dish Detail</Typography>
+    <div className="menuDetail">
+      <div className="menuDetail__titleWrap">
+        <p>Hi {rName}, let's customize your menu now</p>
+        <h2>Dish Detail</h2>
+      </div>
+      
 
       <Card>
-        <CardMedia image={`${BASE_URL}/menus/image/${id}`}  className={classes.media} />
-        <CardContent>
-            <Typography>Dish Name</Typography>
-            <Typography gutterBottom variant="h5" component="h2">
-              {name}
-            </Typography>
-            <Typography>Description</Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {description}
-            </Typography>
-            <Typography>Price</Typography>
-            <Typography>{formatter.format(price)}</Typography>
+        <div className="menuDetail__picDescWrap">
+          <CardMedia image={`${BASE_URL}/menus/image/${id}`}  className={classes.media} />
+          <CardContent>
+            <div className="menuDetail__nameWrap">
+              <h3>Dish Name</h3>
+              <h2>{name}</h2>
+            </div>
+            
+            <div className="menuDetail__descWrap">
+              <h3>Description</h3>
+              <p>{description}</p>
+            </div>
+            
+            <div className="menuDetail__priceWrap">
+              <h3>Price</h3>
+              <h2>{formatter.format(price)}</h2>
+            </div>
           </CardContent>
-          
-        {/* <ChoiceContainer choices={choices} /> */}
-
-        <Link 
-          to={{
-            pathname:`/restaurant/menus/edit/${id}`,
-            state: {
-              id: id,
-              dishName: name,
-              dishDescription: description,
-              dishPrice: price,
-              rName: rName
-            }}}
-        >
-          <Button>Edit Dish</Button>
-        </Link>
+        </div>
         
-        <Button onClick={() => deleteMenu(id)}>Remove Dish</Button>
+        {/* <ChoiceContainer choices={choices} /> */}
+        <div className="menuDetail__buttonWrap">
+          <Link 
+            to={{
+              pathname:`/restaurant/menus/edit/${id}`,
+              state: {
+                id: id,
+                dishName: name,
+                dishDescription: description,
+                dishPrice: price,
+                rName: rName
+              }}}
+              className="menuDetail__editButton"
+          >
+            <button>Edit Dish</button>
+          </Link>
+          
+          <button onClick={() => deleteMenu(id)} className="menuDetail__removeButton">Remove Dish</button>
+          </div>
       </Card>
     </div>
   )

@@ -1,0 +1,140 @@
+.menuDetail{
+  
+  &__titleWrap{
+    padding: 20px;
+    background-color: white;
+
+    @include desktop{
+      background-color: $secondaryVariant;
+      padding: 20px 65px;
+    }
+
+    p{
+      font-size: 12px;
+
+      @include desktop{
+        font-size: 24px;
+      }
+    }
+
+    h2{
+      @extend %headings;
+      font-size: 32px;
+      margin: 0;
+      
+      @include desktop{
+        font-size: 60px;
+      }
+    }
+  }
+
+  // Card Wrap
+  .MuiCard-root{
+    margin: 50px 20px;
+    padding: 20px;
+    border: 1px solid $primaryVariant2;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include desktop{
+      margin: 20px 64px;
+      padding: 64px;
+    }
+  }
+  
+  &__picDescWrap{
+    @include desktop{
+      display: flex;
+    }
+  }
+
+  // Dish Image
+  .MuiCardMedia-root{
+    padding-top: 100%;
+    width: 100%;
+
+    @include desktop{
+      width: 50%;
+      padding-top: 50%;
+    }
+  }
+
+  // Card Content
+  .MuiCardContent-root{
+    padding: 47px 0;
+
+    @include desktop{
+      width: 50%;
+      padding: 0 0 0 50px;
+      margin-bottom: 80px;
+    }
+
+    h3{
+      @extend %buttons;
+    }
+
+    h2{
+      @extend %buttons;
+      font-size: 20px;
+    }
+  }
+
+  &__nameWrap,
+  &__descWrap,
+  &__priceWrap{
+    margin-bottom: 28px;
+  }
+
+  &__nameWrap{
+    h3{
+      @include desktop{
+        margin-top: 0;
+      }
+    }
+
+    h2{
+      @include desktop{
+        font-size: 32px !important;
+      }
+    }
+  }
+
+  &__priceWrap{
+    h2{
+      @include desktop{
+        font-size: 32px !important;
+      }
+    }
+  }
+
+  &__buttonWrap{
+    @include desktop{
+      display: flex;
+      align-self: flex-start;
+    }
+  }
+
+  &__editButton{
+    align-self: flex-start;
+
+    @include desktop{
+      margin-right: 40px;
+    }
+
+    button{
+      width: 235px;
+    }
+  }
+
+  &__removeButton{
+    margin: 28px 0 70px;
+    width: 235px;
+    align-self: flex-start;
+    background-color: white;
+    color: $primary;
+    border: 2px solid $primary;
+  }
+}

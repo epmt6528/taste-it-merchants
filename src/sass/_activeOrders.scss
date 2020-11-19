@@ -3,6 +3,9 @@
 }
 
 .activeOrders{
+  background-color: $secondaryVariant;
+  padding-bottom: 30px;
+
   // Title Area
   &__titleWrap{
     padding: 20px;
@@ -10,44 +13,60 @@
 
     @include desktop{
       background-color: $secondaryVariant;
-    }
-
-    p{
-      margin: 0;
+      padding: 20px 65px;
     }
 
     h1{
-      margin-bottom: 0
+      margin-bottom: 0;
+
+      @include desktop{
+        margin: 0;
+      }
     }
   }
 
   // Active/Inactive Area
   &__onOffWrap{
-    margin: 80px 20px;
-    padding: 140px 20px 40px;
+    margin: 150px 20px 80px;
+    padding-top: 150px;
     border: 1px solid $primaryVariant2;
     border-radius: 20px;
     background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     position: relative;
 
     @include desktop{
-      padding: 56px 78px;
-      align-items: flex-start;
+      padding: 0;
+      margin: 20px 86px 20px 65px;
+      display: grid;
+      grid-template-columns: 1fr 547px;
+      grid-template-rows: 340px;
+    }
+
+    div{
+      padding: 0 20px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include desktop{
+        padding: 40px 0 40px 60px;
+        align-items: flex-start;
+        grid-column: 1/2;
+        grid-row: 1/1;
+      }
     }
 
     // Nacho Pic
     img{
-      max-width: 90%;
       position: absolute;
-      top: -50px;
+      top: -100px;
 
       @include desktop{
-        max-width: 500px;
-        top: 0;
-        right: -10px;
+        top: -24px;
+        right: -23px;
+        
+        grid-column: 2/3;
+        grid-row: 1/1;
       }
     }
 
@@ -70,7 +89,8 @@
       text-align: center;
 
       @include desktop{
-        margin-bottom: 50px;
+        text-align: left;
+        margin: 0 0 40px;
       }
     }
   }
@@ -88,6 +108,7 @@
 
     @include desktop{
       padding: 70px;
+      margin: 20px 65px;
       align-items: flex-start;
     }
 
@@ -104,6 +125,7 @@
       color: $primary;
 
       @include desktop{
+        align-self: flex-start;
         font-size: 32px;
         margin-bottom: 100px;
       }

@@ -1,48 +1,82 @@
+// Libraries
 import React from 'react';
-
-import SiteLogo from "../../../img/logo.svg"
 import {Link, BrowserRouter} from 'react-scroll'
 
+// Images
+import SiteLogo from "../../../img/logo.svg"
 import Icon from "../../Icon"
 
+// Others
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-
-
-
-// const ScrollLink = Scroll.ScrollLink
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 
 function refreshPage() {
     window.location.reload(false);
 }
 
+
 const Toolbar = props =>{
     console.log(props.value)
     return(
         <header className="toolbar">
             <nav className="toolbar__wrapper">
+                {/* Toolbar Header Part(Logo and Close Button) */}
                 <div className="toolbar__header">
                     <div onClick={refreshPage}>
                         <Link to="/"><img src={SiteLogo} alt="Logo" className="mobile-menu__logo" /></Link>
                     </div>
                     
                     <div onClick={() => props.setMenu(false)}>
-                        x
+                        <FontAwesomeIcon icon={faTimes} className="toolbar__closeIcon"/>
                     </div>
                 </div>
                 
+                {/* Link Buttons */}
                 <ul className="toolbar__menu">
                     <Tabs
                         orientation="vertical"
                         value={props.value}
                         onChange={props.handleChange}
+                        indicatorColor="none"
                     >
-                        <Tab label="Active Orders" icon={<Icon name="activeOrders" />} to="/restaurant/activeOrders" component={Link} onClick={() => props.setMenu(false)} />
-                        <Tab label="Menu" icon={ <Icon name="menu" />} to="/restaurant/menus" component={Link} onClick={() => props.setMenu(false)} />
-                        <Tab label="Order History" icon={<Icon name="orderHistory" />} to="/restaurant/orderHistory" component={Link} onClick={() => props.setMenu(false)} /> 
-                        <Tab label="Account" icon={<Icon name="account" />} to="/restaurant/account" component={Link} onClick={() => props.setMenu(false)} />
-                        <Tab label="Support" icon={<Icon name="support" />} to="/restaurant/contact" component={Link} onClick={() => props.setMenu(false)} />
+                        <Tab 
+                            label="Active Orders" 
+                            icon={<Icon name="activeOrders" />} 
+                            to="/restaurant/activeOrders" 
+                            component={Link} 
+                            onClick={() => props.setMenu(false)} 
+                            aria-disabled='true'/>
+
+                        <Tab 
+                            label="Menu" 
+                            icon={ <Icon name="menu" />} 
+                            to="/restaurant/menus" 
+                            component={Link} 
+                            onClick={() => props.setMenu(false)} />
+
+                        <Tab 
+                            label="Order History" 
+                            icon={<Icon name="orderHistory" />} 
+                            to="/restaurant/orderHistory" 
+                            component={Link} 
+                            onClick={() => props.setMenu(false)} /> 
+
+                        <Tab 
+                            label="Account" 
+                            icon={<Icon name="account" />} 
+                            to="/restaurant/account" 
+                            component={Link} 
+                            onClick={() => props.setMenu(false)} />
+
+                        <Tab 
+                            label="Support" 
+                            icon={<Icon name="support" />} 
+                            to="/restaurant/contact" 
+                            component={Link} 
+                            onClick={() => props.setMenu(false)} />
                     </Tabs>
                 </ul> 
             </nav>

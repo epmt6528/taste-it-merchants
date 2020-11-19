@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 
 import Navigation from './restaurants/navigation/Navigation'
+import Loading from "./Loading";
 
 class AuthenticationComp extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class AuthenticationComp extends Component {
     if (this.state.user === undefined) {
       return (
         <div>
-          <h1>Loading...</h1>
+          <Loading />
         </div>
       );
     }

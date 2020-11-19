@@ -2,7 +2,6 @@
 import React, { Component } from "react"
 import axios from 'axios'
 import { getJwtToken } from "../../getJwt"
-// import { Link } from 'react-router-dom'
 import {Switch, Route, Link, BrowserRouter } from 'react-router-dom';
 
 // MaterialUI
@@ -20,10 +19,10 @@ import AddDish from './AddDish'
 
 // Other
 import {BASE_URL} from "../../../config/config"
-
 import Sort from "../../../img/icons/sort.svg"
 import Search from "../../../img/icons/search.svg"
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class Menus extends Component {
   state = {
@@ -194,7 +193,7 @@ class Menus extends Component {
               state: {
                 rName: rName
               }}}>
-            <button >Add New Dishes</button>
+            <button ><FontAwesomeIcon icon={faPlus} className="menus__plusIcon"/>Add New Dishes</button>
           </Link>
           </div>
 

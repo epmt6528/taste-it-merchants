@@ -3,6 +3,9 @@
 }
 
 .contact{
+  background-color: $secondaryVariant;
+  padding-bottom: 30px;
+
   &__title{
     background-color: white;
     padding: 20px;
@@ -15,6 +18,10 @@
     // 'Contact'
     h1{
       margin-bottom: 0;
+
+      @include desktop{
+        margin: 0;
+      }
     }
   }
 

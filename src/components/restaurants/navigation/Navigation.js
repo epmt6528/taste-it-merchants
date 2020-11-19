@@ -70,19 +70,20 @@ export default function Navigation() {
     <BrowserRouter>
       <div className={classes.root} >
 
-      <MediaQuery maxDeviceWidth={1000}>
+      <MediaQuery maxDeviceWidth={1600}>
         <MobileMenu handleChange={handleChange} value={value}/>
       </MediaQuery>
 
-      <MediaQuery minDeviceWidth={1001}>
+      <MediaQuery minDeviceWidth={1601}>
         <div className="navigation__wrapper">
-          <img src={SiteLogo} alt="tasteIt Logo" className="navigation__logo"/>
+          <Link to="/"><img src={SiteLogo} alt="tasteIt Logo" className="navigation__logo"/></Link>
           {/* Navigation Menu */}
           <Tabs
             orientation="vertical"
             value={value}
             onChange={handleChange}
             className="navigation"
+            indicatorColor="none"
           >
             <Tab label="Active Orders" icon={<Icon name="activeOrders" />} to="/restaurant/activeOrders" component={Link} />
             <Tab label="Menu" icon={ <Icon name="menu" />} to="/restaurant/menus" component={Link} />

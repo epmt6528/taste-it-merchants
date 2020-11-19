@@ -11,6 +11,7 @@ import SignUpAddress from "./components/restaurants/signUpAddress/SignUpAddress"
 import Welcome from "./components/restaurants/welcome/Welcome";
 import AuthenticationComp from "./components/AuthenticationComp";
 import Navigation from "./components/restaurants/navigation/Navigation";
+import Loading from "./components/Loading";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/" exact component={Home} />
+          {/* <Route path="/" exact component={Loading} /> */}
           <Route path="/signIn" component={SignIn} />
           <Route path="/signUp" exact component={SignUp} />
           

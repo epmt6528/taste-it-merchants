@@ -137,16 +137,20 @@ class ActiveOrders extends Component {
           isActive ? 
                     <div className="activeOrders__onOffWrap">
                       <img src={Nacho} alt="Nachos and Chips" />
-                      <h3>Take A Break</h3>
-                      <p>You can deactivate your restaurant to stop receieving orders.</p>
-                      <button onClick={this.onActiveStatusChange} >Go Offline</button>
+                      <div>
+                        <h3>Take A Break</h3>
+                        <p>You can deactivate your restaurant to stop receieving orders.</p>
+                        <button onClick={this.onActiveStatusChange} >Go Offline</button>
+                      </div>
                     </div>
                    :
                     <div  className="activeOrders__onOffWrap">
                       <img src={Nacho} alt="Nachos and Chips" />
-                      <h3>Let's Get Started</h3>
-                      <p>Please activate your restaurant to start receieving orders.</p>
-                      <button onClick={this.onActiveStatusChange} >Activate</button>
+                      <div>
+                        <h3>Let's Get Started</h3>
+                        <p>Please activate your restaurant to start receieving orders.</p>
+                        <button onClick={this.onActiveStatusChange} >Activate</button>
+                      </div>
                     </div>
         }
 
