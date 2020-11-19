@@ -52,7 +52,8 @@
       top: -150px;
 
       @include desktop{
-        top: 0;
+        top: 50%;
+        transform: translateY(-50%);
         right: -40px;
       }
     }

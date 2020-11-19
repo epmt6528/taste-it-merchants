@@ -145,8 +145,8 @@ class Main extends Component {
                 name: "Chloe Bui",
                 role: "Lead Designer",
                 imgUrl: require('../../img/teamImg/Chloe.jpg'),
-                linkedIn:"https://www.linkedin.com/in/mert-oktem/",
-                behance:"https://www.github.com/mert-oktem"
+                linkedIn:"https://www.linkedin.com/in/chloe-buii/",
+                behance:"https://www.behance.net/chloebui"
               }}
             />
 
@@ -154,9 +154,7 @@ class Main extends Component {
               about={{
                 name: "Milad Mokhtari",
                 role: "Project Manager",
-                imgUrl: require('../../img/teamImg/Milad.jpg'),
-                linkedIn:"https://www.linkedin.com/in/mert-oktem/",
-                github:"https://www.github.com/mert-oktem"
+                imgUrl: require('../../img/teamImg/Milad.jpg')
               }}
             />
 
@@ -164,9 +162,7 @@ class Main extends Component {
               about={{
                 name: "Antriksh Saini",
                 role: "Full Stack Developer",
-                imgUrl: require('../../img/teamImg/Antrix.jpg'),
-                linkedIn:"https://www.linkedin.com/in/mert-oktem/",
-                github:"https://www.github.com/mert-oktem"
+                imgUrl: require('../../img/teamImg/Antrix.jpg')
               }}
             />
 
@@ -184,9 +180,7 @@ class Main extends Component {
               about={{
                 name: "Arjun Dhingra",
                 role: "Front End Developer",
-                imgUrl: require('../../img/teamImg/Arjun.jpg'),
-                linkedIn:"https://www.linkedin.com/in/mert-oktem/",
-                github:"https://www.github.com/mert-oktem"
+                imgUrl: require('../../img/teamImg/Arjun.jpg')
               }}
             />
 
@@ -195,8 +189,8 @@ class Main extends Component {
                 name: "Bokai Hsu",
                 role: "UI/UX Designer",
                 imgUrl: require('../../img/teamImg/Kai.jpg'),
-                linkedIn:"https://www.linkedin.com/in/mert-oktem/",
-                behance:"https://www.github.com/mert-oktem"
+                linkedIn:"https://www.linkedin.com/in/bokai-hsu/",
+                behance:"https://www.behance.net/bokaihsu"
               }}
             />
 
@@ -204,9 +198,7 @@ class Main extends Component {
               about={{
                 name: "Harmanpreet Kaur",
                 role: "UI/UX Designer",
-                imgUrl: require('../../img/teamImg/Harman.jpg'),
-                linkedIn:"https://www.linkedin.com/in/mert-oktem/",
-                behance:"https://www.github.com/mert-oktem"
+                imgUrl: require('../../img/teamImg/Harman.jpg')
               }}
             />
 
@@ -214,9 +206,7 @@ class Main extends Component {
               about={{
                 name: "Manpreet Kaur",
                 role: "UI/UX Designer",
-                imgUrl: require('../../img/teamImg/Manpreet.jpg'),
-                linkedIn:"https://www.linkedin.com/in/mert-oktem/",
-                behance:"https://www.github.com/mert-oktem"
+                imgUrl: require('../../img/teamImg/Manpreet.jpg')
               }}
             />
 
@@ -224,9 +214,7 @@ class Main extends Component {
               about={{
                 name: "Hiril Kainth",
                 role: "UI/UX Designer",
-                imgUrl: require('../../img/teamImg/Hiril.jpg'),
-                linkedIn:"https://www.linkedin.com/in/mert-oktem/",
-                behance:"https://www.github.com/mert-oktem"
+                imgUrl: require('../../img/teamImg/Hiril.jpg')
               }}
             />
           </div>
