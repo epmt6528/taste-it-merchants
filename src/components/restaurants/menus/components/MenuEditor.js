@@ -20,6 +20,7 @@ import Loading from "../../../Loading"
 // Other
 import {getJwtToken} from "../../../getJwt"
 import {BASE_URL} from "../../../../config/config"
+import whiteImg from "../../../../img/white.png"
 
 var createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
 
@@ -345,7 +346,7 @@ class MenuEditor extends Component{
           // Upload choices
           axios
           .post(
-            `${BASE_URL}/menus/choices`,{
+            `${BASE_URL}/menus/choice`,{
               menuID: id,
               choiceDescription: newChoices[i]
             },{
@@ -368,17 +369,17 @@ class MenuEditor extends Component{
           
           <div className="editDish__metaWrap">
             <div className="editDish__imgWrap">
-              <img src={this.state.uploadImageSrc}  className="editDish__img" />
+              <img src={this.state.uploadImageSrc || whiteImg}  className="editDish__img" />
 
               <div className="editDish__editor-buttonWrap">
                   <input accept="image/*" multiple type="file" className="input" id="upload-img"  onChange={e => this.handleChangeFile(e)} style={{display:'none'}}/>
                   <label htmlFor="upload-img">
-                      <button  className="editDish__editor-addButton">
+                      <Button  className="editDish__editor-addButton" id="addButton"  component="span">
                             Add
-                      </button>
+                      </Button>
                   </label>
 
-                  <button onClick={e => this.deleteFile(e.target)} className="editDish__editor-deleteButton">Delete</button>
+                  <Button onClick={e => this.deleteFile(e.target)} className="editDish__editor-deleteButton" id="deleteButton">Delete</Button>
               </div>
             </div>
             

@@ -59,6 +59,11 @@ export default function SignInForm() {
         // console.log(props);
 
         history.push('/restaurant');
+      })
+      .catch((err) => {
+        // localStorage.removeItem("jwt-token");
+        // this.props.history.push("/signIn");
+        console.log(err)
       });
       
       resetForm();

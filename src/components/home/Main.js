@@ -7,15 +7,15 @@ import { Link } from 'react-router-dom'
 import TeamCard from "./TeamCard";
 
 // Images
-import  Banner  from "../../img/banner.jpg";
-import  Pancake  from "../../img/pancake.png";
-import  Lobster  from "../../img/lobster.png";
-import  Heart  from "../../img/heart.png";
-import  Champagne  from "../../img/champagne.png";
-import  Mouse  from "../../img/mouse.png";
-import  TomatoSoup  from "../../img/tomatoSoup.png";
-import  Sushi  from "../../img/sushi.png";
-import  Cooking  from "../../img/cooking.png";
+import  Banner  from "../../img/main/banner.jpg";
+import  Pancake  from "../../img/main/pancake.png";
+import  Lobster  from "../../img/main/lobster.png";
+import  Heart  from "../../img/main/heart.png";
+import  Champagne  from "../../img/main/champagne.png";
+import  Mouse  from "../../img/main/mouse.png";
+import  TomatoSoup  from "../../img/main/tomatoSoup.png";
+import  Sushi  from "../../img/main/sushi.png";
+import  Cooking  from "../../img/main/cooking.png";
 
 
 class Main extends Component {

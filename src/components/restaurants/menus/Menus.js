@@ -143,7 +143,7 @@ class Menus extends Component {
 
     return (
       <div className="menus">
-      <Route exact path="/restaurant/menus">
+      {/* <Route exact path="/restaurant/menus"> */}
         <div className="menus__titleWrap">
           <p>Hi {rName}, let's customize your menu now</p>
           <h1>Menu</h1>
@@ -221,10 +221,10 @@ class Menus extends Component {
           <button className="menus__loadButton">Load More</button>
         </div>
 
-        </Route>
-        <Route path="/restaurant/menus/detail/:id" component={MenuDetail} />
+        {/* </Route> */}
+        {/* <Route path="/restaurant/menus/detail/:id" component={MenuDetail} />
         <Route path="/restaurant/menus/edit/:id"  component={EditDish} />
-        <Route path="/restaurant/menus/add"  component={AddDish} />
+        <Route path="/restaurant/menus/add"  component={AddDish} /> */}
       </div>
 
     )

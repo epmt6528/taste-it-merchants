@@ -17,6 +17,10 @@ import Contact from '../contact/Contact'
 import Account from '../account/Account'
 import MobileMenu from "./MobileMenu"
 
+import MenuDetail from '../menus/MenuDetail';
+import EditDish from '../menus/EditDish'
+import AddDish from '../menus/AddDish'
+
 // Images
 import SiteLogo from "../../../img/logo.svg"
 import Icon from "../../Icon"
@@ -102,8 +106,11 @@ export default function Navigation() {
 
         {/* Menu panel */}
         <TabPanel value={value} index={1} className={classes.tabPanels}>
-          {/* <Route path="/restaurant/menus" component={Menus} /> */}
-          <Menus />
+          <Route path="/restaurant/menus" exact component={Menus} />
+          <Route path="/restaurant/menus/detail/:id" component={MenuDetail} />
+          <Route path="/restaurant/menus/edit/:id"  component={EditDish} />
+          <Route path="/restaurant/menus/add"  component={AddDish} />
+          {/* <Menus /> */}
         </TabPanel>
 
         {/* Order History panel */}

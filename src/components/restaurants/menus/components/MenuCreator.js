@@ -6,12 +6,14 @@ import {getJwtToken} from "../../../getJwt"
 // MaterialUI
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
+import Button from '@material-ui/core/Button';
 
 // Components
 import ChoiceCreator from "./ChoiceCreator"
 
 // Other
 import {BASE_URL} from "../../../../config/config"
+import whiteImg from "../../../../img/white.png"
 
 
 var createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
@@ -58,7 +60,7 @@ class MenuCreator extends Component{
       { choiceDescription: 'Moderate', checked: false, pictureURL:'https://i.ibb.co/Y2k55tj/moderate.png'},
       { choiceDescription: 'Not Spicy', checked: false, pictureURL:'https://i.ibb.co/wph2BB8/not-spicy.png'},
     ],
-    uploadImageSrc: ''
+    uploadImageSrc: ""
   }
 
   handleCusineTypeChange= choiceDescription =>{
@@ -185,23 +187,11 @@ class MenuCreator extends Component{
         'Authorization': `${jwt}` 
        }})
       .then((res)=>{
-        // Deactivate all choices
-        axios
-        .put(
-          `${BASE_URL}/menus/choices/deactivateChoices`,{
-            menuID: res.data.menuID
-          },{
-            headers: {
-              Authorization: `${jwt}`
-            }
-          }
-        )
-        .then(()=>{
           for(let i = 0; i<newChoices.length; i++){
             // Upload choices
             axios
             .post(
-              `${BASE_URL}/menus/choices`,{
+              `${BASE_URL}/menus/choice`,{
                 menuID: res.data.menuID,
                 choiceDescription: newChoices[i]
               },{
@@ -212,7 +202,6 @@ class MenuCreator extends Component{
             )
           }
         })
-      })
       .catch((err) => {
         console.log(err)
       })
@@ -225,17 +214,17 @@ class MenuCreator extends Component{
 
         <div className="addDish__metaWrap">
           <div className="addDish__imgWrap">
-            <img src={this.state.uploadImageSrc} className="addDish__img"/>
+            <img src={this.state.uploadImageSrc || whiteImg} className="addDish__img"/>
 
             <div className="addDish__editor-buttonWrap">
                 <input accept="image/*" multiple type="file" className="input" id="upload-img"  onChange={e => this.handleChangeFile(e)} style={{display:'none'}}/>
                 <label htmlFor="upload-img">
-                    <button className="addDish__editor-addButton">
+                    <Button className="addDish__editor-addButton" id="addButton" component="span">
                           Add
-                    </button>
+                    </Button>
                 </label>
 
-                <button onClick={e => this.deleteFile(e.target)} className="addDish__editor-deleteButton">Delete</button>
+                <Button onClick={e => this.deleteFile(e.target)} className="addDish__editor-deleteButton" id="deleteButton">Delete</Button>
             </div>
           </div>
           
@@ -276,7 +265,7 @@ class MenuCreator extends Component{
             handleDietTypeChange={this.handleDietTypeChange} 
           />
 
-          <button onClick={this.saveInfo} className="addDish__editor-saveButton">Add New Dish</button>
+          <button onClick={e => this.saveInfo(e)} className="addDish__editor-saveButton">Add New Dish</button>
         </form>
     )}
 }

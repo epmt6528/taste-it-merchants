@@ -179,7 +179,7 @@ const MenuDetail = props =>{
 
       <Card>
         <div className="menuDetail__picDescWrap">
-          <CardMedia image={`${BASE_URL}/menus/image/${id}`}  className={classes.media} />
+          <CardMedia image={`${BASE_URL}/menus/image/${id}`}  className={classes.media}  />
           <CardContent>
             <div className="menuDetail__nameWrap">
               <h3>Dish Name</h3>

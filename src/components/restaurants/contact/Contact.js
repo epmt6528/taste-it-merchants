@@ -42,7 +42,7 @@ class Contact extends Component {
       )
       .then((res) => {
         this.setState({
-          rName: res.data[0].restaurantName,
+          name: res.data[0].restaurantName,
           phoneNumber: res.data[0].phoneNumber,
           email: res.data[0].email,
           isLoading: false
@@ -73,6 +73,10 @@ class Contact extends Component {
         subject: "Inquiry",
         body: body
       }, {headers: { Authorization: `${jwt}` }})
+    .then((res)=>{
+
+      toast('Messeage has been sent!');
+    })
     .catch((err) => {
       // localStorage.removeItem("jwt-token")
       // this.props.history.push("/signIn")
@@ -108,11 +112,9 @@ class Contact extends Component {
 
   
   render() {
-    const rName = this.state.rName
+    const rName = this.state.name
     const phoneNumber = this.state.phoneNumber
     const email = this.state.email
-
-    const notify = () => toast("Message has been sent.");
 
     return (
       <div className="contact">
@@ -186,7 +188,8 @@ class Contact extends Component {
               variant="outlined"
               onChange={e=>this.handleBodyInputChange(e.target.value)}/>
 
-            <button type='submit' onClick={notify}>Submit</button>
+            <button type='submit'>Submit</button>
+
             <ToastContainer
             position="top-center"
             autoClose={5000}

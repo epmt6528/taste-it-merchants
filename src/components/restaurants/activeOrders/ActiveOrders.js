@@ -74,7 +74,7 @@ class ActiveOrders extends Component {
 
   // Update orders' status
   onStatusChange = (orderID, orderStatusID) =>{
-    console.log(orderID, orderStatusID)
+
     const jwt = getJwtToken()
     if (!jwt) {
       this.props.history.push("/signIn")
@@ -86,6 +86,9 @@ class ActiveOrders extends Component {
         orderStatusID: orderStatusID
       }, {headers: { Authorization: `${jwt}` }}
       )
+      .then((res)=>{
+        console.log(res)
+      })
       .catch((err) => {
         // localStorage.removeItem("jwt-token")
         // this.props.history.push("/signIn")
