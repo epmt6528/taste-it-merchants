@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SignUpForm from "./SignUpForm";
 import SignUpPic from "../../../img/dishes/signUp.jpg";
+import SignUpPicWebP from "../../../img/dishes/signUp.jpg.webp";
 import Logo from "../../../img/logo.png"
 
 class SignUp extends Component {
@@ -13,7 +14,11 @@ class SignUp extends Component {
         </Link>
         
         <div className="signUp__main">
-          <img src={SignUpPic} alt="logo" />
+          <picture>
+            <source srcset={SignUpPicWebP} type="image/webp" />
+            <img src={SignUpPic} alt="logo" />
+          </picture>
+          
           <div className="signUp__container">
             <h1>Become a partner <br/>with Taste It.</h1>
             <p>

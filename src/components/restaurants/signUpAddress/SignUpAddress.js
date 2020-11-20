@@ -4,6 +4,7 @@ import SignUpAddressForm from "./SignUpAddressForm";
 import Container from "@material-ui/core/Container";
 import Logo from "../../../img/logo.svg";
 import Croissant from "../../../img/dishes/signUp2.png";
+import CroissantWebP from "../../../img/dishes/signUp2.png.webp";
 
 class SignUpAddress extends Component {
   render() {
@@ -23,7 +24,10 @@ class SignUpAddress extends Component {
             <SignUpAddressForm />
           </Container>
         </div>
-        <img src={Croissant} alt="Croissant" className="croissant" />
+        <picture>
+            <source srcset={CroissantWebP} type="image/webp" />
+            <img src={Croissant} alt="Croissant" className="croissant" />
+        </picture>
       </div>
       
     );

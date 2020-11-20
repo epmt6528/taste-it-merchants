@@ -98,6 +98,20 @@ export default function Navigation() {
       </MediaQuery>
           
         
+      {/* Restaurant Dashboard Router */}
+      {/* <Route path="/restaurant" exact component={ActiveOrders} />
+
+      <Route path="/restaurant/menus" exact component={Menus} />
+      <Route path="/restaurant/menus/detail/:id" component={MenuDetail} />
+      <Route path="/restaurant/menus/edit/:id"  component={EditDish} />
+      <Route path="/restaurant/menus/add"  component={AddDish} />
+
+      <Route path="/restaurant/orderHistory" component={OrderHistory} />
+
+      <Route path="/restaurant/account" component={Account} />
+
+      <Route path="/restaurant/contact" component={Contact} />  */}
+
 
         {/* Active Order panel */}
         <TabPanel value={value} index={0} className={classes.tabPanels}>
@@ -110,13 +124,12 @@ export default function Navigation() {
           <Route path="/restaurant/menus/detail/:id" component={MenuDetail} />
           <Route path="/restaurant/menus/edit/:id"  component={EditDish} />
           <Route path="/restaurant/menus/add"  component={AddDish} />
-          {/* <Menus /> */}
         </TabPanel>
 
         {/* Order History panel */}
         <TabPanel value={value} index={2} className={classes.tabPanels}>
-          {/* <Route path="/restaurant/orderHistory" component={OrderHistory} /> */}
-          <OrderHistory />
+          <Route path="/restaurant/orderHistory" component={OrderHistory} />
+          {/* <OrderHistory /> */}
         </TabPanel>
 
         {/* Account panel */}
@@ -126,9 +139,10 @@ export default function Navigation() {
 
         {/* Contact panel */}
         <TabPanel value={value} index={4} className={classes.tabPanels}>
-          {/* <Route path="/restaurant/contact" component={Contact} /> */}
-          <Contact />
-        </TabPanel>
+          <Route path="/restaurant/contact" component={Contact} />
+          {/* <Contact /> */}
+        </TabPanel> 
+
       </div>
   )
 }

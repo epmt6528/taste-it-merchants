@@ -9,6 +9,7 @@ import OrderTable from './Table'
 
 // Others
 import Empty from '../../../../img/dishes/empty.png'
+import EmptyWebP from '../../../../img/dishes/empty.png.webp'
 
 
 const getStyles = makeStyles(theme => ({
@@ -29,7 +30,11 @@ const DateWrapper = props =>{
                           <OrderTable orders={orders} onStatusChange={onStatusChange}/>
                       :
                         <div>
+                        <picture>
+                          <source srcset={EmptyWebP} type="image/webp" />
                           <img src={Empty} alt="Empty Dish" />
+                        </picture>
+                          
                           <p>You don't have any active orders currently.</p>
                         </div>
       }

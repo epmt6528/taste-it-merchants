@@ -65,7 +65,7 @@ function Row(props) {
     <React.Fragment>
       <TableRow className="ordersTable__row">
         {/* Order No. */}
-        <TableCell component="th" scope="row"  >
+        <TableCell component="th" scope="row"  onClick={() => setOpen(!open)} style={{width: '20px'}}>
           <div className="ordersTable__orderNoWrap">
             <div className="ordersTable__orderNo"><div>{orderNoFormatter.format(row.orderNo)}</div></div>
             <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)} style={{width: '20px'}}>
@@ -76,7 +76,7 @@ function Row(props) {
 
         {/* For Mobile Design */}
         <MediaQuery maxDeviceWidth={1200}>
-          <TableCell  className="ordersTable__nameQuantityCell">
+          <TableCell  className="ordersTable__nameQuantityCell" onClick={() => setOpen(!open)} style={{width: '20px'}}>
             {/* Product Name */}
             <div className="ordersTable__productName" >{row.product}</div>
             {/* Quantity */}
@@ -87,9 +87,9 @@ function Row(props) {
         {/* For Desk top Design */}
         <MediaQuery minDeviceWidth={1201}>
           {/* Product Name */}
-          <TableCell className="ordersTable__productName" >{row.product}</TableCell>
+          <TableCell className="ordersTable__productName" onClick={() => setOpen(!open)} style={{width: '20px'}}>{row.product}</TableCell>
           {/* Quantity */}
-          <TableCell  className="ordersTable__quantity" >{quantityFormatter.format(row.quantity)}</TableCell>
+          <TableCell  className="ordersTable__quantity" onClick={() => setOpen(!open)} style={{width: '20px'}}>{quantityFormatter.format(row.quantity)}</TableCell>
         </MediaQuery>
 
 

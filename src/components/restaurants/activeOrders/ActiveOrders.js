@@ -13,6 +13,7 @@ import Loading from "../../Loading"
 // Other
 import {BASE_URL} from "../../../config/config"
 import Nacho from "../../../img/dishes/nacho.png"
+import NachoWebP from "../../../img/dishes/nacho.png.webp"
 
 
 class ActiveOrders extends Component {
@@ -139,7 +140,10 @@ class ActiveOrders extends Component {
         {
           isActive ? 
                     <div className="activeOrders__onOffWrap">
-                      <img src={Nacho} alt="Nachos and Chips" />
+                      <picture>
+                        <source srcset={NachoWebP} type="image/webp" />
+                        <img src={Nacho} alt="Nachos and Chips" />
+                      </picture>
                       <div>
                         <h3>Take A Break</h3>
                         <p>You can deactivate your restaurant to stop receieving orders.</p>
@@ -148,7 +152,10 @@ class ActiveOrders extends Component {
                     </div>
                    :
                     <div  className="activeOrders__onOffWrap">
-                      <img src={Nacho} alt="Nachos and Chips" />
+                      <picture>
+                        <source srcset={NachoWebP} type="image/webp" />
+                        <img src={Nacho} alt="Nachos and Chips" />
+                      </picture>
                       <div>
                         <h3>Let's Get Started</h3>
                         <p>Please activate your restaurant to start receieving orders.</p>

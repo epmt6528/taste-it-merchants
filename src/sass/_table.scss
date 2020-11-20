@@ -24,6 +24,7 @@
 .ordersTable__row{
   display: flex !important;
   flex-direction: column;
+  cursor : pointer;
 
   &>*{
     border-bottom: unset !important;
@@ -132,6 +133,7 @@
 // Order Status Drop down
 .ordersTable__statusDropdown{
   padding: 0 !important;
+  width: 20%;
 
   @include desktop{
     padding: 16px !important;

@@ -9,7 +9,10 @@ class TeamCard extends Component {
         return (
             <div className="team-card">
                 {/* Member Image */}
-                <img src={this.props.about.imgUrl} alt="{this.props.about.name}" className="team-card__face"/>
+                <picture>
+                    <source srcset={this.props.about.imgWebPUrl} type="image/webp" />
+                    <img src={this.props.about.imgUrl} alt="{this.props.about.name}" className="team-card__face"/>
+                </picture>
 
                 {/* Name */}
                 <div className="team-card-name">

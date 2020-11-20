@@ -2,6 +2,7 @@
 import React, {Component} from "react"
 import axios from "axios"
 import {getJwtToken} from "../../../getJwt"
+import { useHistory , Redirect} from "react-router-dom";
 
 // MaterialUI
 import TextField from '@material-ui/core/TextField'
@@ -10,10 +11,12 @@ import Button from '@material-ui/core/Button';
 
 // Components
 import ChoiceCreator from "./ChoiceCreator"
+import Toastify from "../../Toastify.js"
 
 // Other
 import {BASE_URL} from "../../../../config/config"
 import whiteImg from "../../../../img/white.png"
+import { toast } from 'react-toastify';
 
 
 var createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
@@ -60,7 +63,8 @@ class MenuCreator extends Component{
       { choiceDescription: 'Moderate', checked: false, pictureURL:'https://i.ibb.co/Y2k55tj/moderate.png'},
       { choiceDescription: 'Not Spicy', checked: false, pictureURL:'https://i.ibb.co/wph2BB8/not-spicy.png'},
     ],
-    uploadImageSrc: ""
+    uploadImageSrc: "",
+    redirect: false,
   }
 
   handleCusineTypeChange= choiceDescription =>{
@@ -135,6 +139,10 @@ class MenuCreator extends Component{
     console.log(this.state.uploadImageSrc)
   }
 
+  // jump(){
+  //   window.location.href = "http://localhost:3000/restaurant/menus"
+  // }
+
   saveInfo = e => {
     const {dishName, dishPrice, description, file, cuisineType, allergy, dietType, spicyLevel} = this.state
 
@@ -177,6 +185,8 @@ class MenuCreator extends Component{
       this.props.history.push("/signIn")
     }
 
+    toast('New dish has been added!');
+
     // Upload dishName, dishPrice, description
     axios({
       method: 'post',
@@ -187,6 +197,7 @@ class MenuCreator extends Component{
         'Authorization': `${jwt}` 
        }})
       .then((res)=>{
+          
           for(let i = 0; i<newChoices.length; i++){
             // Upload choices
             axios
@@ -202,6 +213,9 @@ class MenuCreator extends Component{
             )
           }
         })
+      // .then(()=>{
+      //   this.jump()
+      // })
       .catch((err) => {
         console.log(err)
       })
@@ -209,6 +223,8 @@ class MenuCreator extends Component{
   }
 
   render(){
+    
+
     return(
         <form noValidate autoComplete="off" className="addDish__editor">
 
@@ -266,6 +282,8 @@ class MenuCreator extends Component{
           />
 
           <button onClick={e => this.saveInfo(e)} className="addDish__editor-saveButton">Add New Dish</button>
+
+          <Toastify />
         </form>
     )}
 }
