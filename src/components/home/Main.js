@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom'
 import TeamCard from "./TeamCard";
 
 // Images
-import  Banner  from "../../img/main/banner.jpg";
-import  BannerWebP  from "../../img/main/banner.jpg.webp";
+import  Banner  from "../../img/main/banner.png";
+import  BannerWebP  from "../../img/main/banner.png.webp";
 import  Pancake  from "../../img/main/pancake.png";
 import  PancakeWebP  from "../../img/main/pancake.png.webp";
 import  Lobster  from "../../img/main/lobster.png";
@@ -33,7 +33,7 @@ class Main extends Component {
       <main className="site-home-main">
         <section className="home-section1">
           {/* Hero Section */}
-          <Parallax speed={-1}>
+          <Parallax speed={-2}>
             <picture>
               <source srcset={BannerWebP} type="image/webp" />
               <img src={Banner} alt="Hamburger, Fries, Drink and Egg" className="site-home-main__hero"/>
@@ -62,10 +62,14 @@ class Main extends Component {
               </p>
             </div>
             
+            
             <picture>
-              <source srcset={PancakeWebP} type="image/webp" />
-              <img src={Pancake} alt="Home Section1" className="pancakePic"/>
+              <Parallax speed={-1} >
+                <source srcset={PancakeWebP} type="image/webp" />
+                <img src={Pancake} alt="Home Section1" className="pancakePic" />
+              </Parallax>
             </picture>
+            
             
             <div className="howItWorks__stepsWrapper">
               <div className="howItWorks__step">
@@ -107,10 +111,12 @@ class Main extends Component {
         <div className="features-section">
           <section className="home-section2" id="home-section2">
             <div className="section2-content1">
-              <picture>
-                <source srcset={LobsterWebP} type="image/webp" />
-                <img src={Lobster} alt="Lobster" />
-              </picture>
+              <Parallax speed={-0.5}>
+                <picture>
+                  <source srcset={LobsterWebP} type="image/webp" />
+                  <img src={Lobster} alt="Lobster" />
+                </picture>
+              </Parallax>
             </div>
             
             <div className="home-section2__description">
@@ -191,7 +197,8 @@ class Main extends Component {
                 name: "Milad Mokhtari",
                 role: "Project Manager",
                 imgUrl: require('../../img/teamImg/Milad.jpg'),
-                imgWebPUrl: require('../../img/teamImg/Milad.jpg.webp')
+                imgWebPUrl: require('../../img/teamImg/Milad.jpg.webp'),
+                linkedIn:"http://linkedin.com/in/milad-mokhtari/",
               }}
             />
 
@@ -201,6 +208,7 @@ class Main extends Component {
                 role: "Full Stack Developer",
                 imgUrl: require('../../img/teamImg/Antrix.jpg'),
                 imgWebPUrl: require('../../img/teamImg/Antrix.jpg.webp'),
+                linkedIn:"linkedin.com/in/antriksh-saini-3286b3106/",
               }}
             />
 
@@ -221,6 +229,8 @@ class Main extends Component {
                 role: "Front End Developer",
                 imgUrl: require('../../img/teamImg/Arjun.jpg'),
                 imgWebPUrl: require('../../img/teamImg/Arjun.jpg.webp'),
+                linkedIn:"linkedin.com/in/arjun-dhingra-617749159/",
+                github:"github.com/arjund96"
               }}
             />
 
@@ -241,6 +251,7 @@ class Main extends Component {
                 role: "UI/UX Designer",
                 imgUrl: require('../../img/teamImg/Harman.jpg'),
                 imgWebPUrl: require('../../img/teamImg/Harman.jpg.webp'),
+                linkedIn:"linkedin.com/in/harman-jhita/",
               }}
             />
 
@@ -250,6 +261,7 @@ class Main extends Component {
                 role: "UI/UX Designer",
                 imgUrl: require('../../img/teamImg/Manpreet.jpg'),
                 imgWebPUrl: require('../../img/teamImg/Manpreet.jpg.webp'),
+                linkedIn:"linkedin.com/in/manpreet-kaur-b42a21136/",
               }}
             />
 
@@ -258,7 +270,8 @@ class Main extends Component {
                 name: "Hiril Kainth",
                 role: "UI/UX Designer",
                 imgUrl: require('../../img/teamImg/Hiril.jpg'),
-                imgWebPUrl: require('../../img/teamImg/Hiril.jpg.webp')
+                imgWebPUrl: require('../../img/teamImg/Hiril.jpg.webp'),
+                linkedIn:"linkedin.com/in/hiril-kainth-3ba598171/",
               }}
             />
           </div>

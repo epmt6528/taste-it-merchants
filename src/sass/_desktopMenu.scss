@@ -4,7 +4,7 @@
   align-items: center;
 
   max-width: $maxWidth;
-  padding: 0 20px;
+  padding: 0 17.5px;
   margin: 0 auto;
   
 
@@ -13,16 +13,20 @@
     color: $primaryVariant1;
 
     li{
-      padding-right: 110px;
+      padding-right: 96.25px;
+
+      &:last-child{
+        padding-right: 0;
+      }
     }
   }
 
   &__wrapper{
-    padding: 30px 20px;
+    padding: 26.25px 17.5px;
   }
 
   &__logo{
-    width: 131px;
+    width: 114.7px;
   }
 
 }

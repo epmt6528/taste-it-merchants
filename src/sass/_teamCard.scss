@@ -1,41 +1,38 @@
 .team-card{
   background-color: $secondaryVariant;
   margin-bottom: 50px;
-  padding: 20px;
+  padding: 21px;
   text-align: center;
 
-  // @include tablet {
-  //   width: 45%;
-  //   flex-grow: 1;
-  //   margin: 10px;
-  // }
-
   @include desktop{
-    margin: 10px;
+    margin: 0;
   }
 
+  // Name
   h1{
-    font-size: 24px;
-    margin: 0;
+    font-size: 21px;
+    margin: 10px 0 0;
 
     @include desktop{
-      line-height: 36px;
+      line-height: 25px;
     }
   }
 
+  // Title
   p{
     margin: 0;
 
     @include desktop {
       text-align: center;
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 
+  // Solical Links
   ul{
     display: flex;
     justify-content: center;
-    margin-bottom: 0;
+    margin: 15px 0 0;
 
     img{
       width: 25px;
