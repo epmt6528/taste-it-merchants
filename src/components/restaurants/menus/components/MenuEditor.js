@@ -387,7 +387,8 @@ class MenuEditor extends Component{
             <div className="editDish__inputWrap">
               <TextField label="Dish Name" variant="outlined" defaultValue={this.state.name} onChange={e => this.handleNameInputChange(e.target.value)}   className="editDish__editor-nameInput" />
 
-              <OutlinedInput
+              <TextField
+                  variant="outlined"
                   id="outlined-adornment-amount"
                   startAdornment={<InputAdornment position="start">$</InputAdornment>}
                   defaultValue={this.state.price}

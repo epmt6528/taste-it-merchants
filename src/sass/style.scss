@@ -109,6 +109,15 @@ h1{
   }
 }
 
+// drop down
+.MuiPopover-paper{
+  box-shadow: none !important;
+}
+
+.MuiList-root{
+  border-radius: 20px;
+}
+
 @import 'headerHome';
 @import 'toolbar';
 @import 'main';

@@ -15,17 +15,13 @@
       font-size: 12px;
 
       @include desktop{
-        font-size: 24px;
+        font-size: 21px;
+        margin: 26.5px 0;
       }
     }
 
     h1{
-      font-size: 32px;
       margin: 0;
-
-      @include desktop{
-        font-size: 60px;
-      }
     }
   }
 
@@ -38,8 +34,8 @@
     background-color: white;
 
     @include desktop{
-      margin: 20px 60px 60px;
-      padding: 40px 60px;
+      padding: 20px 54.8px;
+      margin: 35px 56px ;
     }
 
     .MuiInputLabel-root{
@@ -113,13 +109,23 @@
     background-color: white;
 
     @include desktop{
-      margin: 20px 60px 60px;
-      padding: 40px 60px;
+      padding: 20px 54.8px;
+      margin: 35px 56px ;
     }
 
     h2{
       @extend %headings;
       font-size: 24px;
+    }
+  }
+
+  .MuiOutlinedInput-multiline{
+    @include desktop{
+      height: 233px !important;
+    }
+
+    .MuiOutlinedInput-inputMultiline{
+      height: 100% !important;
     }
   }
 }

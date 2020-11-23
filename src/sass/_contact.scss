@@ -23,6 +23,13 @@
         margin: 0;
       }
     }
+
+    p{
+
+      @include desktop{
+        margin: 26.5px 0;
+      }
+    }
   }
 
   &__contactInfoWrap{
@@ -69,8 +76,8 @@
     padding: 20px 20px 80px;
 
     @include desktop{
-      padding: 40px 65px;
-      margin: 20px 65px;
+      padding: 20px 54.8px 144px;
+      margin: 35px 56px ;
     }
 
     h2{

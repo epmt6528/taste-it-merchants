@@ -1,25 +1,36 @@
 .choiceTable_wrap{
-  max-width: 100%;
+  width: 100%;
   margin-top: 50px;
-}
 
-.MuiList-root{
-  margin: 30px 0 60px !important;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 30px;
+  .MuiList-root{
+    margin: 30px 0 60px !important;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+  
+  
+    @include desktop{
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 35.9px;
+    }
+  }
+
+  .MuiTab-root{
+    margin-right: 77px;
+    width: auto !important;
+    min-width: 0 !important;
 
 
-  @include desktop{
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 40px;
   }
 }
+
+
 
 .MuiListItem-root{
   border: 2px solid $primaryVariant2;
   border-radius: 20px;
   padding: 0 !important;
+  height: 72.6px;
 }
 
 .MuiFormControlLabel-root{
@@ -41,7 +52,7 @@
 
 .MuiFormControlLabel-root .MuiTypography-body1{
   font-family: 'NexaLight';
-  font-size: 18px;
+  font-size: 21px;
 }
 
 .MuiCheckbox-colorPrimary.Mui-checked{
@@ -61,7 +72,7 @@
   color: $primary;
 
   .MuiTab-wrapper{
-    border-bottom: 2px solid $primary;
+    border-bottom: 6px solid $primary;
   }
 }
 

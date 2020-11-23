@@ -1,4 +1,6 @@
 .editDish{
+  background-color: $secondaryVariant;
+  padding-bottom: 135px;
 
   &__titleWrap{
     background-color: white;
@@ -69,6 +71,7 @@
   &__metaWrap{
     @include desktop{
       display: flex;
+      width: 100%;
     }
   }
 
@@ -99,14 +102,13 @@
         margin-top: 0 !important;
       }
     }
-  }
 
-  &__descInput{
+    .editDish__editor-descInput{
       height: 280px !important;
 
     @include desktop{
-      height: auto !important;
-      flex-grow: 1;
+      height: 100% !important;
+      flex-grow: 3;
     }
 
     .MuiOutlinedInput-multiline{
@@ -117,4 +119,7 @@
       }
     }
   }
+  }
+
+  
 }

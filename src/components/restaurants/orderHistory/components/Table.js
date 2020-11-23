@@ -107,6 +107,7 @@ function Row(props) {
         <TableCell className="ordersTable__detailTable" colSpan={4}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
+            <hr />
               <Table size="small" aria-label="purchases"  style={{ display: 'flex', flexDirection: 'row'}}>
                 <TableHead  className="ordersTable__detailTable-tabelHeader">
                   <TableRow  style={{ display: 'flex', flexDirection: 'column'}}>
