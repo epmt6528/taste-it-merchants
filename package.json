@@ -2,7 +2,7 @@
   "name": "taste_it_merchants",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "https://54.243.236.248:3000/api",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
@@ -22,7 +22,8 @@
     "react-responsive": "^8.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-scroll": "^1.8.1"
+    "react-scroll": "^1.8.1",
+    "react-toastify": "^6.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

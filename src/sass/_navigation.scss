@@ -1,14 +1,16 @@
+// Whole Screen Wrapper(Navigation and Content Area)
 .makeStyles-root-1{
   flex-direction: column;
 
   @include desktop{
     flex-direction: row;
   }
+}
 
   .navigation{
-    width: 400px;
+    width: 350px;
     margin: 0;
-    padding: 20px 32px;
+    padding: 20px 28px;
 
     &__logo{
       width: 48px;
@@ -19,7 +21,7 @@
     }
 
     &__logo{
-      width: 131px;
+      width: 115px;
       margin: 50px;
     }
 
@@ -42,11 +44,11 @@
 
     .MuiTab-root{
       font-family: 'NexaRegular';
-      font-size: 24px;
+      font-size: 21px;
       text-transform: none;
       max-width: none;
       padding: 0;
-      height: 82px;
+      height: 74.4px;
       border-radius: 16px;
 
       // Icon Size Adjustment
@@ -70,7 +72,7 @@
       // icons
       svg{
         width: 36px;
-        margin: 0 56px 0 36px;
+        margin: 0 49.6px 0 28px;
         fill:none;
         stroke:white;
         stroke-linecap:round;
@@ -85,11 +87,12 @@
       align-items: center;
       flex-direction: row;
       justify-content: flex-start;
+      line-height: 25.2px;
 
       // icons
       svg{
         width: 36px;
-        margin: 0 56px 0 36px;
+        margin: 0 49.6px 0 28px;
         fill:none;
         stroke:#3e315a;
         stroke-linecap:round;
@@ -107,4 +110,3 @@
       color: black !important;
     }
   }
-}

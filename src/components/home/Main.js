@@ -1,20 +1,30 @@
 // Libraries
 import React, { Component } from "react";
 import Parallax from 'react-rellax';
+import { Link } from 'react-router-dom'
 
 // Components
 import TeamCard from "./TeamCard";
 
 // Images
-import  Banner  from "../../img/banner.jpg";
-import  Pancake  from "../../img/pancake.png";
-import  Lobster  from "../../img/lobster.png";
-import  Heart  from "../../img/heart.png";
-import  Champagne  from "../../img/champagne.png";
-import  Mouse  from "../../img/mouse.png";
-import  TomatoSoup  from "../../img/tomatoSoup.png";
-import  Sushi  from "../../img/sushi.png";
-import  Cooking  from "../../img/cooking.png";
+import  Banner  from "../../img/main/banner.png";
+import  BannerWebP  from "../../img/main/banner.png.webp";
+import  Pancake  from "../../img/main/pancake.png";
+import  PancakeWebP  from "../../img/main/pancake.png.webp";
+import  Lobster  from "../../img/main/lobster.png";
+import  LobsterWebP  from "../../img/main/lobster.png.webp";
+import  Heart  from "../../img/main/heart.png";
+import  HeartWebP  from "../../img/main/heart.png.webp";
+import  Champagne  from "../../img/main/champagne.png";
+import  ChampagneWebP  from "../../img/main/champagne.png.webp";
+import  Mouse  from "../../img/main/mouse.png";
+import  MouseWebP  from "../../img/main/mouse.png.webp";
+import  TomatoSoup  from "../../img/main/tomatoSoup.png";
+import  TomatoSoupWebP  from "../../img/main/tomatoSoup.png.webp";
+import  Sushi  from "../../img/main/sushi.png";
+import  SushiWebP  from "../../img/main/sushi.png.webp";
+import  Cooking  from "../../img/main/cooking.png";
+import  CookingWebP  from "../../img/main/cooking.png.webp";
 
 
 class Main extends Component {
@@ -23,8 +33,11 @@ class Main extends Component {
       <main className="site-home-main">
         <section className="home-section1">
           {/* Hero Section */}
-          <Parallax speed={-1}>
-            <img src={Banner} alt="Hamburger, Fries, Drink and Egg" className="site-home-main__hero"/>
+          <Parallax speed={-2}>
+            <picture>
+              <source srcset={BannerWebP} type="image/webp" />
+              <img src={Banner} alt="Hamburger, Fries, Drink and Egg" className="site-home-main__hero"/>
+            </picture>
           </Parallax>
           
           <div className="hero">
@@ -34,7 +47,7 @@ class Main extends Component {
                 Discover your next favourite food and expand your taste horizons
                 through mystery dishes, customized just for you.
               </p>
-              <button>Start Now</button>
+              <Link to="/signIn"><button>Start Now</button></Link>
             </div>
           </div>
 
@@ -49,25 +62,39 @@ class Main extends Component {
               </p>
             </div>
             
-            <img src={Pancake} alt="Home Section1" className="pancakePic"/>
+            
+            <picture>
+                <source srcset={PancakeWebP} type="image/webp" />
+                <img src={Pancake} alt="Home Section1" className="pancakePic" />
+            </picture>
+            
             
             <div className="howItWorks__stepsWrapper">
               <div className="howItWorks__step">
-                <img src={Champagne} alt="Champagne bottle" className="howItWorks__champagne" />
+                <picture>
+                  <source srcset={ChampagneWebP} type="image/webp" />
+                  <img src={Champagne} alt="Champagne bottle" className="howItWorks__champagne" />
+                </picture>
 
                 <div className="howItWorks__step-text">
                   <p>Sign up and create your unique flavour profile.</p>
                 </div>
               </div>
               <div className="howItWorks__step">
-                <img src={Mouse} alt="Cursol" className="howItWorks__cursol" />
+                <picture>
+                  <source srcset={MouseWebP} type="image/webp" />
+                  <img src={Mouse} alt="Cursol" className="howItWorks__cursol" />
+                </picture>
 
                 <div className="howItWorks__step-text">
                   <p>Hit “Order Now” and we will do the rest.</p>
                 </div>
               </div>
               <div className="howItWorks__step">
-                <img src={Heart} alt="Heart" className="howItWorks__heart" />
+                <picture>
+                  <source srcset={HeartWebP} type="image/webp" />
+                  <img src={Heart} alt="Heart" className="howItWorks__heart" />
+                </picture>
 
                 <div className="howItWorks__step-text">
                   <p>Enjoy a surprising meal tailored just for you.</p>
@@ -82,7 +109,10 @@ class Main extends Component {
         <div className="features-section">
           <section className="home-section2" id="home-section2">
             <div className="section2-content1">
-                <img src={Lobster} alt="Lobster" />
+                <picture>
+                  <source srcset={LobsterWebP} type="image/webp" />
+                  <img src={Lobster} alt="Lobster" />
+                </picture>
             </div>
             
             <div className="home-section2__description">
@@ -93,7 +123,10 @@ class Main extends Component {
               <div className="section2-content3">
                 <div className="content3">
                   <div className="content3-image">
-                    <img src={TomatoSoup} alt="Customize your menu" />
+                    <picture>
+                      <source srcset={TomatoSoupWebP} type="image/webp" />
+                      <img src={TomatoSoup} alt="Customize your menu" />
+                    </picture>
                   </div>
                   <div className="content3-text">
                     <p className="subtitle">Customize your menu</p>
@@ -105,7 +138,10 @@ class Main extends Component {
                 </div>
                 <div className="content3">
                   <div className="content3-image">
-                    <img src={Sushi} alt="Update your order statuses" />
+                    <picture>
+                      <source srcset={SushiWebP} type="image/webp" />
+                      <img src={Sushi} alt="Update your order statuses" />
+                    </picture>
                   </div>
                   <div className="content3-text">
                     <p className="subtitle">Update your order statuses</p>
@@ -135,6 +171,7 @@ class Main extends Component {
                 name: "Mert Oktem",
                 role: "Lead Developer",
                 imgUrl: require('../../img/teamImg/Mert.jpg'),
+                imgWebPUrl: require('../../img/teamImg/Mert.jpg.webp'),
                 linkedIn:"https://www.linkedin.com/in/mert-oktem/",
                 github:"https://www.github.com/mert-oktem"
               }}
@@ -145,6 +182,7 @@ class Main extends Component {
                 name: "Chloe Bui",
                 role: "Lead Designer",
                 imgUrl: require('../../img/teamImg/Chloe.jpg'),
+                imgWebPUrl: require('../../img/teamImg/Chloe.jpg.webp'),
                 linkedIn:"https://www.linkedin.com/in/chloe-buii/",
                 behance:"https://www.behance.net/chloebui"
               }}
@@ -154,7 +192,9 @@ class Main extends Component {
               about={{
                 name: "Milad Mokhtari",
                 role: "Project Manager",
-                imgUrl: require('../../img/teamImg/Milad.jpg')
+                imgUrl: require('../../img/teamImg/Milad.jpg'),
+                imgWebPUrl: require('../../img/teamImg/Milad.jpg.webp'),
+                linkedIn:"http://linkedin.com/in/milad-mokhtari/",
               }}
             />
 
@@ -162,7 +202,10 @@ class Main extends Component {
               about={{
                 name: "Antriksh Saini",
                 role: "Full Stack Developer",
-                imgUrl: require('../../img/teamImg/Antrix.jpg')
+                imgUrl: require('../../img/teamImg/Antrix.jpg'),
+                imgWebPUrl: require('../../img/teamImg/Antrix.jpg.webp'),
+                linkedIn:"linkedin.com/in/antriksh-saini-3286b3106/",
+                github:"https://github.com/antrikshsaini"
               }}
             />
 
@@ -171,6 +214,7 @@ class Main extends Component {
                 name: "Taichi Murai",
                 role: "Full Stack Developer",
                 imgUrl: require('../../img/teamImg/Taichi.jpg'),
+                imgWebPUrl: require('../../img/teamImg/Taichi.jpg.webp'),
                 linkedIn:"https://www.linkedin.com/in/taichimurai/",
                 github:"https://github.com/epmt6528"
               }}
@@ -180,7 +224,10 @@ class Main extends Component {
               about={{
                 name: "Arjun Dhingra",
                 role: "Front End Developer",
-                imgUrl: require('../../img/teamImg/Arjun.jpg')
+                imgUrl: require('../../img/teamImg/Arjun.jpg'),
+                imgWebPUrl: require('../../img/teamImg/Arjun.jpg.webp'),
+                linkedIn:"linkedin.com/in/arjun-dhingra-617749159/",
+                github:"github.com/arjund96"
               }}
             />
 
@@ -189,6 +236,7 @@ class Main extends Component {
                 name: "Bokai Hsu",
                 role: "UI/UX Designer",
                 imgUrl: require('../../img/teamImg/Kai.jpg'),
+                imgWebPUrl: require('../../img/teamImg/Kai.jpg.webp'),
                 linkedIn:"https://www.linkedin.com/in/bokai-hsu/",
                 behance:"https://www.behance.net/bokaihsu"
               }}
@@ -198,7 +246,9 @@ class Main extends Component {
               about={{
                 name: "Harmanpreet Kaur",
                 role: "UI/UX Designer",
-                imgUrl: require('../../img/teamImg/Harman.jpg')
+                imgUrl: require('../../img/teamImg/Harman.jpg'),
+                imgWebPUrl: require('../../img/teamImg/Harman.jpg.webp'),
+                linkedIn:"linkedin.com/in/harman-jhita/",
               }}
             />
 
@@ -206,7 +256,9 @@ class Main extends Component {
               about={{
                 name: "Manpreet Kaur",
                 role: "UI/UX Designer",
-                imgUrl: require('../../img/teamImg/Manpreet.jpg')
+                imgUrl: require('../../img/teamImg/Manpreet.jpg'),
+                imgWebPUrl: require('../../img/teamImg/Manpreet.jpg.webp'),
+                linkedIn:"linkedin.com/in/manpreet-kaur-b42a21136/",
               }}
             />
 
@@ -214,7 +266,9 @@ class Main extends Component {
               about={{
                 name: "Hiril Kainth",
                 role: "UI/UX Designer",
-                imgUrl: require('../../img/teamImg/Hiril.jpg')
+                imgUrl: require('../../img/teamImg/Hiril.jpg'),
+                imgWebPUrl: require('../../img/teamImg/Hiril.jpg.webp'),
+                linkedIn:"linkedin.com/in/hiril-kainth-3ba598171/",
               }}
             />
           </div>
@@ -223,7 +277,10 @@ class Main extends Component {
         {/* Call to Action Section */}
         <div className="cta">
           <section className="home-section4">
-            <img src={Cooking} alt="Cooking salmon and toast" />
+            <picture>
+              <source srcset={CookingWebP} type="image/webp" />
+              <img src={Cooking} alt="Cooking salmon and toast" />
+            </picture>
             <div className="section4-content2">
               <h1>Ready to see what we are working on?</h1>
               <p>

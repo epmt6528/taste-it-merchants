@@ -1,14 +1,13 @@
 // Libraries
-import React from 'react';
-import {Switch, Route, Link, BrowserRouter } from 'react-router-dom';
-import MediaQuery from 'react-responsive';
-
+import React from 'react'
+import {Switch, Route, Link, BrowserRouter } from 'react-router-dom'
+import MediaQuery from 'react-responsive'
 
 // MaterialUI
-import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import Box from '@material-ui/core/Box'
 
 // Components
 import Menus from '../menus/Menus'
@@ -16,14 +15,19 @@ import ActiveOrders from '../activeOrders/ActiveOrders'
 import OrderHistory from '../orderHistory/OrderHistory'
 import Contact from '../contact/Contact'
 import Account from '../account/Account'
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "./MobileMenu"
 
+import MenuDetail from '../menus/MenuDetail';
+import EditDish from '../menus/EditDish'
+import AddDish from '../menus/AddDish'
+
+// Images
 import SiteLogo from "../../../img/logo.svg"
 import Icon from "../../Icon"
 
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
   return (
     <div
@@ -39,7 +43,7 @@ function TabPanel(props) {
         </Box>
       )}
     </div>
-  );
+  )
 }
 
 
@@ -55,19 +59,18 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     backgroundColor: '#FFFCF5'
   }
-}));
+}))
 
 
 export default function Navigation() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const classes = useStyles()
+  const [value, setValue] = React.useState(0)
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   return (
-    <BrowserRouter>
       <div className={classes.root} >
 
       <MediaQuery maxDeviceWidth={1600}>
@@ -85,16 +88,50 @@ export default function Navigation() {
             className="navigation"
             indicatorColor="none"
           >
-            <Tab label="Active Orders" icon={<Icon name="activeOrders" />} to="/restaurant/activeOrders" component={Link} />
-            <Tab label="Menu" icon={ <Icon name="menu" />} to="/restaurant/menus" component={Link} />
-            <Tab label="Order History" icon={<Icon name="orderHistory" />} to="/restaurant/orderHistory" component={Link} /> 
-            <Tab label="Account" icon={<Icon name="account" />} to="/restaurant/account" component={Link} />
-            <Tab label="Support" icon={<Icon name="support" />} to="/restaurant/contact" component={Link} />
+            <Tab 
+              label="Active Orders" 
+              icon={<Icon name="activeOrders" />} 
+              to="/restaurant/activeOrders" 
+              component={Link} />
+            <Tab 
+              label="Menu" 
+              icon={ <Icon name="menu" />} 
+              to="/restaurant/menus" 
+              component={Link} />
+            <Tab 
+              label="Order History" 
+              icon={<Icon name="orderHistory" />} 
+              to="/restaurant/orderHistory" 
+              component={Link} /> 
+            <Tab 
+              label="Account" 
+              icon={<Icon name="account" />} 
+              to="/restaurant/account" 
+              component={Link} />
+            <Tab 
+              label="Support" 
+              icon={<Icon name="support" />} 
+              to="/restaurant/contact" 
+              component={Link} />
           </Tabs>
         </div>
       </MediaQuery>
           
         
+      {/* Restaurant Dashboard Router */}
+      {/* <Route path="/restaurant" exact component={ActiveOrders} />
+
+      <Route path="/restaurant/menus" exact component={Menus} />
+      <Route path="/restaurant/menus/detail/:id" component={MenuDetail} />
+      <Route path="/restaurant/menus/edit/:id"  component={EditDish} />
+      <Route path="/restaurant/menus/add"  component={AddDish} />
+
+      <Route path="/restaurant/orderHistory" component={OrderHistory} />
+
+      <Route path="/restaurant/account" component={Account} />
+
+      <Route path="/restaurant/contact" component={Contact} />  */}
+
 
         {/* Active Order panel */}
         <TabPanel value={value} index={0} className={classes.tabPanels}>
@@ -103,14 +140,16 @@ export default function Navigation() {
 
         {/* Menu panel */}
         <TabPanel value={value} index={1} className={classes.tabPanels}>
-          {/* <Route path="/restaurant/menus" component={Menus} /> */}
-          <Menus />
+          <Route path="/restaurant/menus" exact component={Menus} />
+          <Route path="/restaurant/menus/detail/:id" component={MenuDetail} />
+          <Route path="/restaurant/menus/edit/:id"  component={EditDish} />
+          <Route path="/restaurant/menus/add"  component={AddDish} />
         </TabPanel>
 
         {/* Order History panel */}
         <TabPanel value={value} index={2} className={classes.tabPanels}>
-          {/* <Route path="/restaurant/orderHistory" component={OrderHistory} /> */}
-          <OrderHistory />
+          <Route path="/restaurant/orderHistory" component={OrderHistory} />
+          {/* <OrderHistory /> */}
         </TabPanel>
 
         {/* Account panel */}
@@ -120,11 +159,10 @@ export default function Navigation() {
 
         {/* Contact panel */}
         <TabPanel value={value} index={4} className={classes.tabPanels}>
-          {/* <Route path="/restaurant/contact" component={Contact} /> */}
-          <Contact />
-        </TabPanel>
+          <Route path="/restaurant/contact" component={Contact} />
+          {/* <Contact /> */}
+        </TabPanel> 
+
       </div>
-    </BrowserRouter>
-    
-  );
+  )
 }

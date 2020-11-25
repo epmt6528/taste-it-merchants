@@ -5,6 +5,7 @@ import axios from "axios";
 
 import Navigation from './restaurants/navigation/Navigation'
 import Loading from "./Loading";
+import {BASE_URL} from "../config/config"
 
 class AuthenticationComp extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class AuthenticationComp extends Component {
     }
 
     axios
-      .get("http://localhost:5000/api/restaurants/", {
+      .get(`${BASE_URL}/restaurants/`, {
         headers: { Authorization: `${jwt}` },
       })
       .then((res) => {
@@ -33,6 +34,7 @@ class AuthenticationComp extends Component {
       .catch((err) => {
         // localStorage.removeItem("jwt-token");
         // this.props.history.push("/signIn");
+        console.log(err)
       });
   }
 

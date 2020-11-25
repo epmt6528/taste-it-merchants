@@ -11,6 +11,8 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 import { Button } from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
+import TextField  from "@material-ui/core/TextField"
+import MenuItem from '@material-ui/core/MenuItem'
 
 // Components
 import ChoiceContainer from "./components/ChoiceContainer"
@@ -158,7 +160,7 @@ const getChoices = (menuID) =>{
 const MenuDetail = props =>{
   const classes = getStyles()
 
-  const {id, name, description, price, rName} = props.location.state
+  const {id, name, description, price, rName, status} = props.location.state
 
   getChoices(id)
   
@@ -173,13 +175,13 @@ const MenuDetail = props =>{
     <div className="menuDetail">
       <div className="menuDetail__titleWrap">
         <p>Hi {rName}, let's customize your menu now</p>
-        <h2>Dish Detail</h2>
+        <h2>Dish Details</h2>
       </div>
       
 
       <Card>
         <div className="menuDetail__picDescWrap">
-          <CardMedia image={`${BASE_URL}/menus/image/${id}`}  className={classes.media} />
+          <CardMedia image={`${BASE_URL}/menus/image/${id}`}  className={classes.media}  />
           <CardContent>
             <div className="menuDetail__nameWrap">
               <h3>Dish Name</h3>
@@ -195,6 +197,15 @@ const MenuDetail = props =>{
               <h3>Price</h3>
               <h2>{formatter.format(price)}</h2>
             </div>
+
+            <TextField
+              select
+              variant="outlined"
+              defaultValue={status}
+              >
+              <MenuItem key='0' value='0'>Sold Out</MenuItem>
+              <MenuItem key='1' value='1'>Available</MenuItem>
+            </TextField>
           </CardContent>
         </div>
         

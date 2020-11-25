@@ -2,7 +2,6 @@ import React from "react";
 import MediaQuery from 'react-responsive';
 import MobileMenu from "./navigation/MobileMenu";
 import DesktopMenu from "./navigation/DesktopMenu";
-import "./Header.css";
 
 const Header = () => {
   return (

@@ -27,6 +27,9 @@ import PhoneIcon from "../../../../img/icons/phone.svg"
 import InstructionIcon from "../../../../img/icons/instructions.svg"
 import TimeIcon from "../../../../img/icons/time.svg"
 
+// Other
+import {BASE_URL} from "../../../../config/config"
+
 
 // Order No. Formatter
 const orderNoFormatter = new Intl.NumberFormat('en', {
@@ -41,12 +44,13 @@ const quantityFormatter = new Intl.NumberFormat('en', {
 });
 
 
-function createData(orderID, orderNo, product, quantity, status, customerName, address, phoneNumber, instructions, dateTime) {
+function createData(orderID, orderNo, menuID, product, quantity, status, customerName, address, phoneNumber, instructions, dateTime) {
   const formattedDate = moment(dateTime).format('MMM Do - h:mm a')
 
   return {
     orderID,
     orderNo,
+    menuID,
     product,
     quantity,
     status,
@@ -65,10 +69,10 @@ function Row(props) {
     <React.Fragment>
       <TableRow className="ordersTable__row">
         {/* Order No. */}
-        <TableCell component="th" scope="row"  >
+        <TableCell component="th" scope="row"  onClick={() => setOpen(!open)}>
           <div className="ordersTable__orderNoWrap">
             <div className="ordersTable__orderNo"><div>{orderNoFormatter.format(row.orderNo)}</div></div>
-            <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)} style={{width: '20px'}}>
+            <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
           </div>
@@ -76,7 +80,7 @@ function Row(props) {
 
         {/* For Mobile Design */}
         <MediaQuery maxDeviceWidth={1200}>
-          <TableCell  className="ordersTable__nameQuantityCell">
+          <TableCell  className="ordersTable__nameQuantityCell" onClick={() => setOpen(!open)}>
             {/* Product Name */}
             <div className="ordersTable__productName" >{row.product}</div>
             {/* Quantity */}
@@ -86,10 +90,16 @@ function Row(props) {
 
         {/* For Desk top Design */}
         <MediaQuery minDeviceWidth={1201}>
-          {/* Product Name */}
-          <TableCell className="ordersTable__productName" >{row.product}</TableCell>
+          <TableCell className="ordersTable__productName" onClick={() => setOpen(!open)}>
+            <div  className="ordersTable__productName-wrap">
+              {/* Menu Image */}
+              <img src={`${BASE_URL}/menus/image/${row.menuID}`}  alt="Menu Image" className="ordersTable__menuImg"/>
+              {/* Product Name */}
+              <span>{row.product}</span>
+            </div>
+          </TableCell>
           {/* Quantity */}
-          <TableCell  className="ordersTable__quantity" >{quantityFormatter.format(row.quantity)}</TableCell>
+          <TableCell  className="ordersTable__quantity" onClick={() => setOpen(!open)}>{quantityFormatter.format(row.quantity)}</TableCell>
         </MediaQuery>
 
 
@@ -114,6 +124,7 @@ function Row(props) {
         <TableCell className="ordersTable__detailTable" colSpan={4}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
+              <hr />
               <Table size="small" aria-label="purchases" style={{ display: 'flex', flexDirection: 'row'}}>
                 <TableHead className="ordersTable__detailTable-tabelHeader" >
                   <TableRow style={{ display: 'flex', flexDirection: 'column'}}>
@@ -154,7 +165,7 @@ export default function OrderTable(props) {
 
   for(let i=0; i<orders.length; i++){
     console.log(orders[i])
-    const newData = createData(orders[i].orderID, i+1, orders[i].menuName, orders[i].forHowManyPeople, orders[i].orderStatusID, `${orders[i].firstName} ${orders[i].lastName}`, `${orders[i].address} ${orders[i].postcode} `, orders[i].phoneNumber,  orders[i].instructions, orders[i].createdAt)
+    const newData = createData(orders[i].orderID, i+1, orders[i].menuID, orders[i].menuName, orders[i].forHowManyPeople, orders[i].orderStatusID, `${orders[i].firstName} ${orders[i].lastName}`, `${orders[i].address} ${orders[i].postcode} `, orders[i].phoneNumber,  orders[i].instructions, orders[i].createdAt)
     rows[i] = (newData)
   }
 
@@ -163,10 +174,10 @@ export default function OrderTable(props) {
       <Table aria-label="collapsible table">
         <TableHead className="ordersTable__tabelHeader">
           <TableRow>
-            <TableCell style={{width: '130px'}}>Order No.</TableCell>
-            <TableCell>Product</TableCell>
-            <TableCell style={{width: '100px'}}>Quantity</TableCell>
-            <TableCell style={{width: '300px'}}>Status</TableCell>
+            <TableCell className="table__orderNoHeader">Order No.</TableCell>
+            <TableCell className="table__productHeader">Product</TableCell>
+            <TableCell className="table__quantityHeader">Quantity</TableCell>
+            <TableCell className="table__statusHeader">Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

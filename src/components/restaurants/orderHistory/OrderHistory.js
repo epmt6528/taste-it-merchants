@@ -15,6 +15,7 @@ import Loading from "../../Loading"
 import { getJwtToken } from "../../getJwt"
 import {BASE_URL} from "../../../config/config"
 import TomatoSoup from "../../../img/dishes/tomatoSoup.png"
+import TomatoSoupWebP from "../../../img/dishes/tomatoSoup.png.webp"
 
 
 class ActiveOrders extends Component {
@@ -127,7 +128,10 @@ class ActiveOrders extends Component {
           
           <div className="orderHistory__ctaWrap">
             <div className="orderHistory__cta">
-              <img src={TomatoSoup} alt="Tomato Soup" />
+              <picture>
+                <source srcset={TomatoSoupWebP} type="image/webp" />
+                <img src={TomatoSoup} alt="Tomato Soup" />
+              </picture>
               <h3>Analyze Your Data Now</h3>
               <p>Did you know that you can track your data with our Pro pack?</p>
               <button>See Our Pro Plan</button>

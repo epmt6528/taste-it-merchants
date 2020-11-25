@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { getJwtToken } from "../../getJwt";
 import axios from "axios"
+import {BASE_URL} from "../../../config/config"
 
 ////////////Using hooks
 
@@ -83,7 +84,7 @@ let city = {
       cityName: values.cityNameId
     };
     axios
-      .post("http://localhost:5000/api/restaurants/address", elements, {
+      .post(`${BASE_URL}/restaurants/address`, elements, {
         headers: { 'Authorization': `${jwt}` },
       })
       .then((res) => {

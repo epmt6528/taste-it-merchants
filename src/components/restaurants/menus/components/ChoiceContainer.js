@@ -12,7 +12,7 @@ import { getJwtToken } from "../../../getJwt"
 
 const ChoiceContainer =(props)=>{
     return (
-      <div>
+      <div className="choiceTable_wrap">
         <ChoiceTabs 
           cuisineType={props.cuisineType} 
           allergy={props.allergy} 

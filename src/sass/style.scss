@@ -9,9 +9,13 @@
 
 body {
   @extend %body;
-  color: #3E315A;
+  color: $primaryVariant1 !important;
   max-width: 100%;
   margin: 0 !important;
+}
+
+.MuiPaper-root{
+  color: $primaryVariant1 !important;
 }
 
 
@@ -34,7 +38,7 @@ h1{
   @extend %headings;
 
   @include desktop {
-    line-height: 80px;
+    line-height: 70px;
   }
 }
 
@@ -53,9 +57,9 @@ h1{
 .MuiInputBase-formControl{
   border-radius: 20px !important;
   border-width: 2px !important;
-
+  
   @include desktop{
-    height: 80px !important;
+    height: 72.6px !important;
   }
 }
 
@@ -63,10 +67,16 @@ h1{
 .MuiInputLabel-outlined,
 .MuiInputBase-formControl{
   font-family: 'NexaRegular' !important;
+  color: $primaryVariant1 !important;
 
   @include desktop{
-    font-size: 24px !important;
+    font-size: 21px !important;
   }
+}
+
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline,
+.MuiOutlinedInput-root.Mui-focused{
+  border-color: $primaryVariant2 !important;
 }
 
 .MuiInputBase-input{
@@ -75,8 +85,59 @@ h1{
   }
 }
 
+#addButton{
+  border: none;
+  @extend %buttons;
+  color: #ffffff;
+  background-color: $primary;
+  padding: 18px 64px;
+  border-radius: 20px;
+  text-transform: none !important;
 
+  @include desktop{
+    padding: 25px 44px;
+    margin-bottom: 46px;
+    width: 100%;
+    height: 80px;
+  }
+}
 
+#deleteButton{
+  border: none;
+  @extend %buttons;
+  background-color: white;
+  color: $primary;
+  border: 2px solid $primary;
+  padding: 18px 64px;
+  border-radius: 20px;
+  text-transform: none !important;
+  margin-top: 30px;
+
+  @include desktop{
+    padding: 25px 44px;
+    width: 100%;
+    height: 80px;
+    margin-top: 0;
+  }
+}
+
+// drop down
+// .MuiPopover-paper{
+//   box-shadow: none !important;
+// }
+
+// .MuiList-root{
+//   li{
+//     &:first-child{
+//       border-radius: 20px 20px 0 0;
+//     }
+//   }
+// }
+
+// .MuiListItem-root.Mui-selected, .MuiListItem-root.Mui-selected:hover{
+//   background-color: $primary !important;
+//   color: #ffffff;
+// }
 
 @import 'headerHome';
 @import 'toolbar';
@@ -103,3 +164,5 @@ h1{
 @import 'editDish';
 @import 'addDish';
 @import 'choiceTable';
+@import 'toastify'; // Feedback modal
+@import 'header'; // Feedback modal

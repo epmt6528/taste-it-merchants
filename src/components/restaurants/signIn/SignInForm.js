@@ -4,6 +4,7 @@ import { useForm, Form } from "../useForm";
 import Controls from "../../controls/Controls";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import {BASE_URL} from "../../../config/config"
 
 const initialValues = {
   
@@ -49,7 +50,7 @@ export default function SignInForm() {
     // if (validate()) {
       // provinceService.insertEmployee(values)
 
-      axios.post('http://localhost:5000/api/restaurants/login', {
+      axios.post(`${BASE_URL}/restaurants/login`, {
         email: values.email,
         password: values.password
       }).then(res => {
@@ -58,6 +59,11 @@ export default function SignInForm() {
         // console.log(props);
 
         history.push('/restaurant');
+      })
+      .catch((err) => {
+        // localStorage.removeItem("jwt-token");
+        // this.props.history.push("/signIn");
+        console.log(err)
       });
       
       resetForm();

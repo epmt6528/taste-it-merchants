@@ -27,7 +27,7 @@ const getStyles = makeStyles(theme => ({
 
 const MenuCard = props =>{
   const classes = getStyles()
-  const {id, name, menuDescription, price, rName} = props
+  const {id, name, menuDescription, price, rName, status} = props
 
   return(
     <Link 
@@ -38,12 +38,14 @@ const MenuCard = props =>{
           name: name,
           description: menuDescription,
           price: price,
-          rName: rName
+          rName: rName,
+          status: status
         }
       }}>
       <Card key={id} className="menuCard">
         <CardMedia image={`${BASE_URL}/menus/image/${id}`} className="menuCard__img" />
         <CardHeader title={name} className="menuCard__dishName" />
+        {status ? <p>Available</p> : <p>Sold Out</p>}
       </Card>
     </Link>
   )

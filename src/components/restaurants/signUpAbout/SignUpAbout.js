@@ -4,6 +4,7 @@ import SignUpAboutForm from "./SignUpAboutForm";
 import Container from "@material-ui/core/Container";
 import Logo from "../../../img/logo.svg";
 import StrawberryCrepe from "../../../img/dishes/signUp1.png";
+import StrawberryCrepeWebP from "../../../img/dishes/signUp1.png.webp";
 
 class SignUp extends Component {
   render() {
@@ -20,7 +21,11 @@ class SignUp extends Component {
             <SignUpAboutForm />
           </Container>
         </div>
-        <img src={StrawberryCrepe} alt="Strawberry Crepe"  className="crepe" />
+
+        <picture>
+            <source srcset={StrawberryCrepeWebP} type="image/webp" />
+            <img src={StrawberryCrepe} alt="Strawberry Crepe"  className="crepe" />
+        </picture>
       </div>
       
     );

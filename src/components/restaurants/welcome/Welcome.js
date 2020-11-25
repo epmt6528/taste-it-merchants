@@ -6,7 +6,9 @@ import axios from "axios";
 import { getJwtToken } from "../../getJwt";
 import Logo from "../../../img/logo.svg";
 import HeroPicMobile from "../../../img/dishes/welcomeMobileView.png"
+import HeroPicMobileWebP from "../../../img/dishes/welcomeMobileView.png.webp"
 import HeroPicDesktop from "../../../img/dishes/welcome.png"
+import HeroPicDesktopWebP from "../../../img/dishes/welcome.png.webp"
 import MediaQuery from 'react-responsive';
 
 
@@ -58,7 +60,10 @@ class Welcome extends Component {
     return (
       <div className="welcome_wrapper">
         <MediaQuery minDeviceWidth={1001}>
-          <img src={HeroPicDesktop} alt="A glasss of champagne" className="welcome__hero" className="welcome__heroPicDesktop"/>
+          <picture>
+            <source srcset={HeroPicDesktopWebP} type="image/webp" />
+            <img src={HeroPicDesktop} alt="A glasss of champagne" className="welcome__hero" className="welcome__heroPicDesktop"/>
+          </picture>
         </MediaQuery>
 
         <div className="welcome">
@@ -68,7 +73,10 @@ class Welcome extends Component {
 
           <Container fixed className="welcome__main">
             <MediaQuery maxDeviceWidth={1000}>
-              <img src={HeroPicMobile} alt="A glasss of champagne" className="welcome__heroPicMobile"/>
+              <picture>
+                <source srcset={HeroPicMobileWebP} type="image/webp" />
+                <img src={HeroPicMobile} alt="A glasss of champagne" className="welcome__heroPicMobile"/>
+              </picture>
             </MediaQuery>
 
             
