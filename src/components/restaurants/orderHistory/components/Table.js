@@ -24,6 +24,9 @@ import CustomerIcon from "../../../../img/icons/account.svg"
 import ReviewIcon from "../../../../img/icons/review.svg"
 import FeedbackIcon from "../../../../img/icons/feedback.svg"
 
+// Other
+import {BASE_URL} from "../../../../config/config"
+
 
 // Order No. Formatter
 const orderNoFormatter = new Intl.NumberFormat('en', {
@@ -37,11 +40,12 @@ const quantityFormatter = new Intl.NumberFormat('en', {
   useGrouping: false
 });
 
-function createData(orderNo, product, quantity, status, customerName, review, feedback, date ) {
+function createData(orderNo, menuID, product, quantity, status, customerName, review, feedback, date ) {
   const reviewStars = "★"
   
   return {
     orderNo,
+    menuID,
     product,
     quantity,
     status,
@@ -59,11 +63,13 @@ function Row(props) {
     <React.Fragment>
       <TableRow className="ordersTable__row">
         {/* Order No. */}
-        <TableCell component="th" scope="row" className="ordersTable__orderNoWrap">
-          <div className="ordersTable__orderNo"><div>{orderNoFormatter.format(row.orderNo)}</div></div>
-          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}  style={{width: '20px'}}>
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
+        <TableCell component="th" scope="row">
+          <div className="ordersTable__orderNoWrap">
+            <div className="ordersTable__orderNo"><div>{orderNoFormatter.format(row.orderNo)}</div></div>
+            <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
+          </div>
         </TableCell>
         
         {/* For Mobile Design */}
@@ -78,10 +84,16 @@ function Row(props) {
 
         {/* For Desk top Design */}
         <MediaQuery minDeviceWidth={1201}>
-          {/* Product Name */}
-          <TableCell className="ordersTable__productName" >{row.product}</TableCell>
+          <TableCell className="ordersTable__productName" onClick={() => setOpen(!open)}>
+            <div  className="ordersTable__productName-wrap">
+              {/* Menu Image */}
+              <img src={`${BASE_URL}/menus/image/${row.menuID}`}  alt="Menu Image" className="ordersTable__menuImg"/>
+              {/* Product Name */}
+              <span>{row.product}</span>
+            </div>
+          </TableCell>
           {/* Quantity */}
-          <TableCell  className="ordersTable__quantity" >{quantityFormatter.format(row.quantity)}</TableCell>
+          <TableCell  className="ordersTable__quantity" onClick={() => setOpen(!open)}>{quantityFormatter.format(row.quantity)}</TableCell>
         </MediaQuery>
 
         {/* Status */}
@@ -142,7 +154,7 @@ export default function OrderTable(props) {
   const orders = props.orders
   
   for(let i=0; i<orders.length; i++){
-    const newData = createData(i+1, orders[i].menuName, orders[i].forHowManyPeople, orders[i].orderStatusID, `${orders[i].firstName} ${orders[i].lastName}`, orders[i].rate, orders[i].review, orders[i].createdAt)
+    const newData = createData(i+1, orders[i].menuID, orders[i].menuName, orders[i].forHowManyPeople, orders[i].orderStatusID, `${orders[i].firstName} ${orders[i].lastName}`, orders[i].rate, orders[i].review, orders[i].createdAt)
     rows[i]=(newData)
   }
 
@@ -151,10 +163,10 @@ export default function OrderTable(props) {
       <Table aria-label="collapsible table">
         <TableHead  className="ordersTable__tabelHeader">
           <TableRow>
-            <TableCell  style={{width: '130px'}}>Order No.</TableCell>
-            <TableCell>Product</TableCell>
-            <TableCell  style={{width: '100px'}}>Quantity</TableCell>
-            <TableCell  style={{width: '300px'}}>Status</TableCell>
+            <TableCell className="table__orderNoHeader">Order No.</TableCell>
+            <TableCell className="table__productHeader">Product</TableCell>
+            <TableCell className="table__quantityHeader">Quantity</TableCell>
+            <TableCell className="table__statusHeader">Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

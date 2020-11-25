@@ -88,11 +88,31 @@ export default function Navigation() {
             className="navigation"
             indicatorColor="none"
           >
-            <Tab label="Active Orders" icon={<Icon name="activeOrders" />} to="/restaurant/activeOrders" component={Link} />
-            <Tab label="Menu" icon={ <Icon name="menu" />} to="/restaurant/menus" component={Link} />
-            <Tab label="Order History" icon={<Icon name="orderHistory" />} to="/restaurant/orderHistory" component={Link} /> 
-            <Tab label="Account" icon={<Icon name="account" />} to="/restaurant/account" component={Link} />
-            <Tab label="Support" icon={<Icon name="support" />} to="/restaurant/contact" component={Link} />
+            <Tab 
+              label="Active Orders" 
+              icon={<Icon name="activeOrders" />} 
+              to="/restaurant/activeOrders" 
+              component={Link} />
+            <Tab 
+              label="Menu" 
+              icon={ <Icon name="menu" />} 
+              to="/restaurant/menus" 
+              component={Link} />
+            <Tab 
+              label="Order History" 
+              icon={<Icon name="orderHistory" />} 
+              to="/restaurant/orderHistory" 
+              component={Link} /> 
+            <Tab 
+              label="Account" 
+              icon={<Icon name="account" />} 
+              to="/restaurant/account" 
+              component={Link} />
+            <Tab 
+              label="Support" 
+              icon={<Icon name="support" />} 
+              to="/restaurant/contact" 
+              component={Link} />
           </Tabs>
         </div>
       </MediaQuery>

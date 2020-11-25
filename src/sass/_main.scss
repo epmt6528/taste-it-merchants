@@ -352,7 +352,11 @@
 
   // Call To Action Section (Salmon and Egg area)
   .cta{
-    background-color: $secondaryVariant;
+    
+    @include desktop {
+      background-color: $secondaryVariant;
+
+    }
 
     .home-section4{
       margin: 100px auto 0;
@@ -361,7 +365,6 @@
   
       @include desktop {
         display: flex;
-
       }
   
       img{

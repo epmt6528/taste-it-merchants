@@ -375,11 +375,11 @@ class MenuEditor extends Component{
                   <input accept="image/*" multiple type="file" className="input" id="upload-img"  onChange={e => this.handleChangeFile(e)} style={{display:'none'}}/>
                   <label htmlFor="upload-img">
                       <Button  className="editDish__editor-addButton" id="addButton"  component="span">
-                            Add
+                            Upload Image
                       </Button>
                   </label>
 
-                  <Button onClick={e => this.deleteFile(e.target)} className="editDish__editor-deleteButton" id="deleteButton">Delete</Button>
+                  <Button onClick={e => this.deleteFile(e.target)} className="editDish__editor-deleteButton" id="deleteButton">Delete Image</Button>
               </div>
             </div>
             

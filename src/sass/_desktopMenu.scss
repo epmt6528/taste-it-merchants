@@ -14,10 +14,23 @@
 
     li{
       padding-right: 96.25px;
+      
 
       &:last-child{
         padding-right: 0;
       }
+
+      a{
+        font-size: 16.8px;
+      }
+    }
+  }
+
+  .forRestaurants{
+    button{
+      width: 194px;
+      height: 56px;
+      font-size: 16.8px;
     }
   }
 
@@ -26,7 +39,7 @@
   }
 
   &__logo{
-    width: 114.7px;
+    width: 91.7px;
   }
 
 }

@@ -47,8 +47,7 @@ const Toolbar = props =>{
                             icon={<Icon name="activeOrders" />} 
                             to="/restaurant/activeOrders" 
                             component={Link} 
-                            onClick={() => props.setMenu(false)} 
-                            aria-disabled='true'/>
+                            onClick={() => props.setMenu(false)} />
 
                         <Tab 
                             label="Menu" 

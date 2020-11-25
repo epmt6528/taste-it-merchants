@@ -64,10 +64,8 @@ class Main extends Component {
             
             
             <picture>
-              <Parallax speed={-1} >
                 <source srcset={PancakeWebP} type="image/webp" />
                 <img src={Pancake} alt="Home Section1" className="pancakePic" />
-              </Parallax>
             </picture>
             
             
@@ -111,12 +109,10 @@ class Main extends Component {
         <div className="features-section">
           <section className="home-section2" id="home-section2">
             <div className="section2-content1">
-              <Parallax speed={-0.5}>
                 <picture>
                   <source srcset={LobsterWebP} type="image/webp" />
                   <img src={Lobster} alt="Lobster" />
                 </picture>
-              </Parallax>
             </div>
             
             <div className="home-section2__description">
@@ -209,6 +205,7 @@ class Main extends Component {
                 imgUrl: require('../../img/teamImg/Antrix.jpg'),
                 imgWebPUrl: require('../../img/teamImg/Antrix.jpg.webp'),
                 linkedIn:"linkedin.com/in/antriksh-saini-3286b3106/",
+                github:"https://github.com/antrikshsaini"
               }}
             />
 

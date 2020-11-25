@@ -27,6 +27,9 @@ import PhoneIcon from "../../../../img/icons/phone.svg"
 import InstructionIcon from "../../../../img/icons/instructions.svg"
 import TimeIcon from "../../../../img/icons/time.svg"
 
+// Other
+import {BASE_URL} from "../../../../config/config"
+
 
 // Order No. Formatter
 const orderNoFormatter = new Intl.NumberFormat('en', {
@@ -41,12 +44,13 @@ const quantityFormatter = new Intl.NumberFormat('en', {
 });
 
 
-function createData(orderID, orderNo, product, quantity, status, customerName, address, phoneNumber, instructions, dateTime) {
+function createData(orderID, orderNo, menuID, product, quantity, status, customerName, address, phoneNumber, instructions, dateTime) {
   const formattedDate = moment(dateTime).format('MMM Do - h:mm a')
 
   return {
     orderID,
     orderNo,
+    menuID,
     product,
     quantity,
     status,
@@ -86,8 +90,14 @@ function Row(props) {
 
         {/* For Desk top Design */}
         <MediaQuery minDeviceWidth={1201}>
-          {/* Product Name */}
-          <TableCell className="ordersTable__productName" onClick={() => setOpen(!open)}>{row.product}</TableCell>
+          <TableCell className="ordersTable__productName" onClick={() => setOpen(!open)}>
+            <div  className="ordersTable__productName-wrap">
+              {/* Menu Image */}
+              <img src={`${BASE_URL}/menus/image/${row.menuID}`}  alt="Menu Image" className="ordersTable__menuImg"/>
+              {/* Product Name */}
+              <span>{row.product}</span>
+            </div>
+          </TableCell>
           {/* Quantity */}
           <TableCell  className="ordersTable__quantity" onClick={() => setOpen(!open)}>{quantityFormatter.format(row.quantity)}</TableCell>
         </MediaQuery>
@@ -111,7 +121,6 @@ function Row(props) {
       </TableRow>
       <TableRow>
         {/* Detail Table */}
-        
         <TableCell className="ordersTable__detailTable" colSpan={4}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
@@ -156,7 +165,7 @@ export default function OrderTable(props) {
 
   for(let i=0; i<orders.length; i++){
     console.log(orders[i])
-    const newData = createData(orders[i].orderID, i+1, orders[i].menuName, orders[i].forHowManyPeople, orders[i].orderStatusID, `${orders[i].firstName} ${orders[i].lastName}`, `${orders[i].address} ${orders[i].postcode} `, orders[i].phoneNumber,  orders[i].instructions, orders[i].createdAt)
+    const newData = createData(orders[i].orderID, i+1, orders[i].menuID, orders[i].menuName, orders[i].forHowManyPeople, orders[i].orderStatusID, `${orders[i].firstName} ${orders[i].lastName}`, `${orders[i].address} ${orders[i].postcode} `, orders[i].phoneNumber,  orders[i].instructions, orders[i].createdAt)
     rows[i] = (newData)
   }
 

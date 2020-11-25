@@ -63,6 +63,7 @@ class Menus extends Component {
         headers: { Authorization: `${jwt}` }
       })
       .then((res) => {
+        console.log(res.data)
         this.setState({
           menus: res.data,
           originalArray: res.data,
@@ -156,14 +157,7 @@ class Menus extends Component {
             className="menus__searchInput"
             onChange={e => this.keyWordSearch(e.target.value)}
             variant="outlined"
-            label="Search"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <img src={Search} className="menus__searchIcon"/>
-                </InputAdornment>
-              ),
-            }}
+            label={<><img src={Search} className="menus__searchIcon"/>Search</>}
           />
 
           {/* "Sort By" Drop downs */}
@@ -173,17 +167,10 @@ class Menus extends Component {
             value={sortBy}
             onChange={e => this.onSortingChange(e.target.value)}
             variant="outlined"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <img src={Sort} alt="Arrow Icon" className="menus__arrowIcon"/>
-                </InputAdornment>
-              ),
-            }}
           >
-            <MenuItem key='1' value='1'>Sort By: Latest</MenuItem>
-            <MenuItem key='2' value='2'>Sort By: Oldest</MenuItem>
-            <MenuItem key='3' value='3'>Sort By: ABC</MenuItem>
+            <MenuItem key='1' value='1'><img src={Sort} alt="Arrow Icon" className="menus__arrowIcon"/>Sort By: Latest</MenuItem>
+            <MenuItem key='2' value='2'><img src={Sort} alt="Arrow Icon" className="menus__arrowIcon"/>Sort By: Oldest</MenuItem>
+            <MenuItem key='3' value='3'><img src={Sort} alt="Arrow Icon" className="menus__arrowIcon"/>Sort By: ABC</MenuItem>
           </TextField>
 
 
@@ -203,7 +190,7 @@ class Menus extends Component {
           <div className="menus__cardWrap">
             {this.state.menus.map(
                 menu => {
-                  const {menuID, menuName, menuDescription, price} = menu
+                  const {menuID, menuName, menuDescription, price, isActive} = menu
                   return (
                     <MenuCard 
                       key={menuID}
@@ -212,6 +199,7 @@ class Menus extends Component {
                       menuDescription={menuDescription}
                       price={price}
                       rName={rName}
+                      status={isActive}
                     />
                   )
                 }

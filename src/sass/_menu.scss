@@ -45,11 +45,15 @@
     text-align: center;
   }
 
-  &__searchIcon,
+  &__searchIcon{
+    width: 14px;
+    margin-right: 14.6px;
+    margin-left: 20px;
+  }
+  
   &__arrowIcon{
     width: 14px;
     margin-right: 14.6px;
-    margin-left: 30px;
   }
 
   .MuiSelect-iconOutlined{
@@ -68,7 +72,12 @@
       margin-top: 30px;
     }
 
+    .MuiFormControl-root:first-child{
+      margin-bottom: 0 !important;
+    }
+
     .menus__searchInput{
+      
       @include desktop{
         order: 1;
         flex-grow: 2;
@@ -77,13 +86,14 @@
     }
 
     .menus__sortOptions{
+
+      .MuiSelect-outlined{
+        padding: 18px 64px;
+      }
+      
       @include desktop{
         max-width: 300px !important;
         margin: 20px 20px 30px !important;
-      }
-
-      .MuiSelect-selectMenu{
-        line-height: 40px;
       }
     }
 

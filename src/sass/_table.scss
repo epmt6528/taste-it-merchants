@@ -1,6 +1,17 @@
 .MuiTable-root{
   border: none;
   font-family: 'NexaLight' !important;
+  
+
+  .MuiTableCell-body{
+    color: $primaryVariant1 !important;
+  }
+
+  tr:last-child{
+    &>td{
+      border: none;
+    }
+  }
 }
 
 .MuiTableCell-head{
@@ -14,6 +25,7 @@
 // Table Header
 .ordersTable__tabelHeader{
   display: none !important;
+  color: $primaryVariant1 !important;
 
   @include desktop{
     display: table-header-group !important;
@@ -29,6 +41,11 @@
 
   &>*{
     border-bottom: unset !important;
+    width: 100%;
+
+    @include desktop{
+      width: auto;
+    }
   }
 
   @include desktop{
@@ -53,7 +70,7 @@
   @include desktop{
     padding-bottom: 0 !important;
     padding-top: 0 !important;
-    padding-left: 120px !important;
+    padding-left: 190px !important;
   }
 
   hr{
@@ -62,6 +79,7 @@
   
 
   .MuiTable-root{
+    padding: 15px 0;
 
     @include desktop{
       padding: 35px 0;
@@ -79,11 +97,13 @@
   &-tHCell{
     border: none !important;
     padding: 6px 0 !important;
+    height: 32px;
 
     @include desktop{
       display: flex !important;
       align-items: center;
-      padding: 6px 125px 6px 16px !important;
+      padding: 6px 125px 6px 0px !important;
+      height: auto;
     }
 
     // Icon
@@ -104,15 +124,20 @@
 
 // Order No. Part
 .ordersTable__orderNoWrap{
-  // width: 130px;
   display: flex !important;
   align-items: center;
   justify-content: space-between;
   padding: 16px 0 !important;
+  width: 100%;
 
   @include desktop{
+    width: 85px;
     justify-content: flex-start;
     margin: 25px 0;
+  }
+
+  button{
+    width: auto;
   }
 }
 
@@ -134,13 +159,34 @@
   }
 }
 
-// Product Name
-.ordersTable__productName{
-  font-family: 'NexaXBold' !important;
-  font-size: 16px !important;
 
-  @include desktop{
-    font-size: 21px !important;
+// Menu Image & Product Name
+.ordersTable__productName{
+
+  &-wrap{
+    display: flex;
+    align-items: center;
+  }
+  
+  // Menu Image
+  .ordersTable__menuImg{
+    width: 72px !important;
+    margin-right: 33px;
+
+    @include desktop{
+      width: 72px !important;
+      margin-right: 33px;
+    }
+  }
+
+  // Product Name
+  span{
+    font-family: 'NexaXBold' !important;
+    font-size: 16px !important;
+  
+    @include desktop{
+      font-size: 21px !important;
+    }
   }
 }
 
@@ -172,6 +218,7 @@
 
   .MuiSelect-selectMenu{
     line-height: 40px !important;
+    padding: 18.5px 20px !important;
 
     @include desktop{
       font-size: 17.5px !important;

@@ -7,14 +7,30 @@
     height: 100vh;
   }
 
+  .MuiFormControl-root{
+    width: 100% !important;
+    margin: 8px 0 !important;
+  }
+
+  .MuiContainer-fixed{
+    @include desktop{
+      margin: auto auto;
+    }
+  }
+
   &__wrapper{
     position: relative;
     .croissant{
+      margin-top: 50px;
+      margin-left: 50%;
+      max-width: 50%;
+      
       @include desktop{
         position: absolute;
-        right: 0;
-        bottom: 0;
+        right: 20px;
+        bottom: 20px;
         z-index: -1;
+        width: 20%;
       }
     }
   }
@@ -50,7 +66,7 @@
     }
 
     p{
-      margin-top: 10px;
+      margin: 10px 0 30px;
 
       @include desktop{
         text-align: center;
@@ -95,7 +111,7 @@
 
   .MuiFormControl-root{
     @include desktop{
-      margin-top: 0 !important;
+      margin-top: 10px !important;
     }
   }
 }
