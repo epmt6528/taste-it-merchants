@@ -1,0 +1,15 @@
+.Toastify__toast{
+  border-radius: 20px;
+  padding: 0 60px;
+
+  &-container {
+    width: 500px;
+    border-radius: 20px;
+  }
+
+  .Toastify__close-button{
+    width: 50px;
+    padding: 32px 0;
+    margin: 0;
+  }
+}

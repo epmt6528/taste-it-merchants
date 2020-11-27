@@ -15,17 +15,13 @@
       font-size: 12px;
 
       @include desktop{
-        font-size: 24px;
+        font-size: 21px;
+        margin: 26.5px 0;
       }
     }
 
     h1{
-      font-size: 32px;
       margin: 0;
-
-      @include desktop{
-        font-size: 60px;
-      }
     }
   }
 
@@ -38,8 +34,14 @@
     background-color: white;
 
     @include desktop{
-      margin: 20px 60px 60px;
-      padding: 40px 60px;
+      padding: 20px 54.8px;
+      margin: 35px 56px ;
+    }
+
+    input{
+      @include desktop{
+        padding-top: 40px !important;
+      }
     }
 
     .MuiInputLabel-root{
@@ -54,6 +56,7 @@
 
     .MuiInputBase-input{
       padding: 12px 0;
+      line-height: 24px;
     }
 
     button{
@@ -66,15 +69,15 @@
   &__wrap2,
   &__editorWrap1,
   &__editorWrap2{
-    &>div:first-child{
-      @include desktop{
-        padding-right: 20px;
-      }
-    }
+    // &>div:first-child{
+    //   @include desktop{
+    //     padding-right: 40px;
+    //   }
+    // }
 
-    &>div:last-child{
+    .MuiFormControl-root{
       @include desktop{
-        padding-left: 20px;
+        width: 47% !important;
       }
     }
 
@@ -113,13 +116,33 @@
     background-color: white;
 
     @include desktop{
-      margin: 20px 60px 60px;
-      padding: 40px 60px;
+      padding: 20px 54.8px;
+      margin: 35px 56px ;
     }
 
     h2{
       @extend %headings;
       font-size: 24px;
+    }
+  }
+
+  .MuiOutlinedInput-multiline{
+    @include desktop{
+      height: 233px !important;
+    }
+
+    .MuiOutlinedInput-inputMultiline{
+      height: 100% !important;
+    }
+  }
+
+  .MuiInputLabel-outlined{
+    z-index: 1;
+    transform: translate(25px, 20px) scale(1);
+    pointer-events: none;
+
+    @include desktop{
+      transform: translate(25px, 25px) scale(1);
     }
   }
 }

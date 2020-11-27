@@ -19,18 +19,23 @@
         margin: 0;
       }
     }
+
+    p{
+      @include desktop{
+        margin: 26.5px 0;
+      }
+    }
   }
 
   &__ctaWrap{
     @include desktop{
       display: flex;
-
     }
   }
 
   &__cta{
     margin: 250px 20px 40px;
-    padding: 180px 20px 40px;
+    padding: 180px 20px 40px 20px;
     border: 1px solid $primaryVariant2;
     border-radius: 20px;
     background-color: white;
@@ -41,20 +46,24 @@
 
     @include desktop{
       // max-width: 750px;
-      margin: 20px 0 40px 65px;
-      padding: 20px 300px 20px 65px;
+      padding: 20px 30px 20px 54.8px;
+      margin: 35px 75px 35px 56px;
       align-items: flex-start;
+      flex-grow: 1;
     }
 
     img{
-      width: 294px;
+      width: 285px;
       position: absolute;
       top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
 
       @include desktop{
         top: 50%;
         transform: translateY(-50%);
-        right: -40px;
+        right: -20px;
+        left: auto;
       }
     }
 
@@ -66,6 +75,8 @@
 
       @include desktop{
         text-align: left;
+        font-size: 28px;
+        margin-top: 42px;
       }
     }
 
@@ -74,11 +85,17 @@
 
       @include desktop{
         text-align: left;
+        width: 60%;
       }
     }
 
     button{
       margin: 25px 0;
+
+      @include desktop{
+        width: 315px;
+        // margin-top: 0;
+      }
     }
   }
 
@@ -93,7 +110,8 @@
     align-items: center;
 
     @include desktop{
-      margin: 20px 65px;
+      padding: 20px 41.1px 20px;
+      margin: 35px 56px  35px 0;
     }
 
     h3{

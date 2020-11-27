@@ -1,33 +1,16 @@
 .site-footer{
+  max-width: $maxWidth;
+  margin: 87px auto;
+  padding: 0 20px;
   @extend %body;
   font-size: 10px;
   line-height: 18px;
-  padding: 50px 0;
 
   @include desktop {
-    font-size: 24px;
-    line-height: 36px;
-  }
-
-  &__upper{
-    @include desktop {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .footer-content2{
-
-      @include desktop {
-        width: 480px;
-      }
-    }
-
-    .footer-content3{
-      @include desktop {
-        width: 600px;
-      }
-    }
+    margin: 0 auto;
+    padding: 129.5px 20px 50px;
+    font-size: 21px;
+    line-height: 31.5px;
   }
 
   &__logo{
@@ -35,10 +18,11 @@
     margin-bottom: 60px;
 
     @include desktop {
-      width: 108px;
+      width: 94.5px;
     }
   }
 
+  // Titles(About Us, Design Assets, Development Assets)
   h3{
     @extend %buttons;
     color: $primary;
@@ -48,21 +32,51 @@
     }
   }
 
-  li{
-    margin-bottom: 20px;
-
-    @include desktop {
-      margin-bottom: 30px;
-    }
-  }
-
   ul{
+    padding: 0;
+  max-width: 45%;
 
     @include desktop {
       margin-top: 0;
     }
   }
 
+
+  li{
+    margin-bottom: 20px;
+
+    @include desktop {
+      margin-bottom: 26.25px;
+    }
+  }
+
+  // Above the horizontal line
+  &__upper{
+    @include desktop {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-content2{
+      @include desktop {
+        width: 420px;
+      }
+    }
+
+    // Design Assets & Development Assets
+    .footer-content3{
+      display: flex;
+      justify-content: space-between;
+
+      @include desktop {
+        width: 525px;
+      }
+    }
+  }
+
+
+  // Below the horizontal line
   .footer-content5{
     text-align: center;
     padding-top: 30px;

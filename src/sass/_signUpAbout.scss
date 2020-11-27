@@ -2,15 +2,30 @@
   padding: 0 20px;
   max-width: $maxWidth;
   margin: 0 auto;
+
+  @include desktop{
+    height: 100vh;
+  }
+
+  .MuiFormControl-root{
+    width: 100% !important;
+    margin: 8px 0 !important;
+  }
   
   &__wrapper{
     position: relative;
+
     .crepe{
+      margin-top: 50px;
+      margin-left: 50%;
+      max-width: 50%;
+
       @include desktop{
         position: absolute;
-        right: 0;
-        bottom: 0;
+        right: 20px;
+        bottom: 20px;
         z-index: -1;
+        width: 24%;
       }
     }
   }
@@ -28,7 +43,11 @@
   &__main{
     margin-top: 54px;
     padding: 0 !important;
-    max-width: 639px !important;
+    max-width: 560px !important;
+
+    @include desktop{
+      margin-top: 0;
+    }
 
     h1{
       font-size: 32px;
@@ -41,7 +60,7 @@
     }
 
     p{
-      margin-top: 10px;
+      margin: 10px 0 30px;
 
       @include desktop{
         text-align: center;
@@ -49,12 +68,13 @@
       }
     }
 
+
     button{
       margin-top: 50px;
 
       @include desktop{
         width: 215px;
-        margin: 0 0 90px;
+        margin-top: 50px;
       }
     }
   }
@@ -65,17 +85,47 @@
       flex-direction: column;
       align-items: center !important;
     }
+
+    .MuiFormControl-root{
+      @include desktop{
+        margin-top: 10px !important;
+      }
+    }
   }
 
   &__descriptionInput{
-    .PrivateNotchedOutline-root-2{
+
+    @include desktop{
+      height: 156px !important;
+    }
+
+    textarea{
       @include desktop{
+        margin-top: 20px;
         height: 156px !important;
       }
     }
 
-    .MuiInputBase-input{
-      height: 156px !important;
+    .PrivateNotchedOutline-root-2{
+      @include desktop{
+        height: 180px !important;
+      }
+    }
+
+    .MuiOutlinedInput-multiline{
+      @include desktop{
+        height: 156px !important;
+      }
+    }
+  }
+
+  .MuiInputLabel-outlined {
+    z-index: 1;
+    transform: translate(25px, 20px) scale(1);
+    pointer-events: none;
+
+    @include desktop{
+      transform: translate(25px, 25px) scale(1);
     }
   }
 }

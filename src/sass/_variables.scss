@@ -7,27 +7,27 @@ $secondary: #FFC400;
 $secondaryVariant: #FFFCF5;
 $background: #ffffff;
 
-$maxWidth: 1600px;
+$maxWidth: 1292px;
 
 // Font Variables
 @font-face {
   font-family: 'NexaRegular';
-  src: local('Nexa'), url(../fonts/Nexa/NexaRegular.otf) format('truetype');
+  src: local('Nexa'), url(../assets/fonts/Nexa/NexaRegular.otf) format('truetype');
 }
 
 @font-face {
   font-family: 'NexaXBold';
-  src: local('Nexa'), url(../fonts/Nexa/NexaXBold.otf) format('truetype');
+  src: local('Nexa'), url(../assets/fonts/Nexa/NexaXBold.otf) format('truetype');
 }
 
 @font-face {
   font-family: 'NexaBold';
-  src: local('Nexa'), url(../fonts/Nexa/NexaBold.otf) format('truetype');
+  src: local('Nexa'), url(../assets/fonts/Nexa/NexaBold.otf) format('truetype');
 }
 
 @font-face {
   font-family: 'NexaLight';
-  src: local('Nexa'), url(../fonts/Nexa/NexaLight.otf) format('truetype');
+  src: local('Nexa'), url(../assets/fonts/Nexa/NexaLight.otf) format('truetype');
 }
 
 %headings{
@@ -37,8 +37,8 @@ $maxWidth: 1600px;
   line-height: 48px;
 
   @include desktop{
-    font-size: 60px;
-    line-height: 80px;
+    font-size: 52.5px;
+    line-height: 70px;
   }
 }
 
@@ -47,7 +47,7 @@ $maxWidth: 1600px;
   font-size: 16px;
 
   @include desktop{
-    font-size: 32px;
+    font-size: 28px;
   }
 }
 
@@ -56,7 +56,7 @@ $maxWidth: 1600px;
   font-size: 24px;
 
   @include desktop{
-    font-size: 24pt;
+    font-size: 21pt;
   }
 }
 
@@ -65,7 +65,7 @@ $maxWidth: 1600px;
   font-size: 16px;
 
   @include desktop{
-    font-size: 16pt;
+    font-size: 21px;
   }
 }
 
@@ -75,8 +75,8 @@ $maxWidth: 1600px;
   line-height: 24px;
 
   @include desktop{
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 21px;
+    line-height: 31.5px;
   }
 }
 
@@ -90,9 +90,9 @@ button{
   border-radius: 20px;
 
   @include desktop{
-    padding: 25px 44px;
-    width: 277px;
-    height: 80px;
+    padding: 22px 0;
+    width: 243px;
+    height: 70px;
   }
 }
 

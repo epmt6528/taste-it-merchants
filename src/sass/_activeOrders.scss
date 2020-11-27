@@ -23,6 +23,12 @@
         margin: 0;
       }
     }
+
+    p{
+      @include desktop{
+        margin: 26.25px 0;
+      }
+    }
   }
 
   // Active/Inactive Area
@@ -36,10 +42,10 @@
 
     @include desktop{
       padding: 0;
-      margin: 20px 86px 20px 65px;
+      margin: 35px 86px 55px 56px;
       display: grid;
-      grid-template-columns: 1fr 547px;
-      grid-template-rows: 340px;
+      grid-template-columns: 1fr 479px;
+      grid-template-rows: 300px;
     }
 
     div{
@@ -49,10 +55,19 @@
       align-items: center;
 
       @include desktop{
-        padding: 40px 0 40px 60px;
+        padding: 48px 0 48px 68.25px;
         align-items: flex-start;
         grid-column: 1/2;
         grid-row: 1/1;
+      }
+
+      // Go Offline Button
+      button{
+
+        @include desktop{
+          width: 238px !important;
+          height: 74.375px !important;
+        }
       }
     }
 
@@ -62,8 +77,9 @@
       top: -100px;
 
       @include desktop{
-        top: -24px;
-        right: -23px;
+        top: -20px;
+        right: -20px;
+        width: 479px;
         
         grid-column: 2/3;
         grid-row: 1/1;
@@ -78,9 +94,9 @@
       margin-bottom: 0;
 
       @include desktop{
-        font-size: 60px;
+        font-size: 52.5px;
         margin: 0;
-        line-height: 80px;
+        line-height: 70px;
       }
     }
 
@@ -90,7 +106,8 @@
 
       @include desktop{
         text-align: left;
-        margin: 0 0 40px;
+        margin: 0 0 44px;
+        line-height: 31px;
       }
     }
   }
@@ -107,8 +124,8 @@
     align-items: center;
 
     @include desktop{
-      padding: 70px;
-      margin: 20px 65px;
+      padding: 48px 68.25px;
+      margin: 0 56px;
       align-items: flex-start;
     }
 
@@ -123,11 +140,11 @@
       @extend %buttons;
       font-size: 24px;
       color: $primary;
+      align-self: flex-start;
 
       @include desktop{
-        align-self: flex-start;
         font-size: 32px;
-        margin-bottom: 100px;
+        margin-bottom: 72px;
       }
     }
 

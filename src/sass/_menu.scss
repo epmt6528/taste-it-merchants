@@ -19,7 +19,8 @@
       font-size: 12px;
 
       @include desktop{
-        font-size: 24px;
+        font-size: 21px;
+        margin: 26.5px 0;
       }
     }
   }
@@ -35,8 +36,8 @@
     align-items: center;
 
     @include desktop{
-      padding: 20px 50px;
-      margin: 20px 65px;
+      padding: 20px 54.8px;
+      margin: 35px 56px;
     }
   }
 
@@ -44,10 +45,19 @@
     text-align: center;
   }
 
-  &__searchIcon,
-  &__arrowIcon{
+  &__searchIcon{
     width: 14px;
-    margin-right: 20px;
+    margin-right: 14.6px;
+    margin-left: 20px;
+  }
+  
+  &__arrowIcon{
+    width: 15px;
+    margin-right: 14.6px;
+    
+    @include desktop{
+      width: 20px;
+    }
   }
 
   .MuiSelect-iconOutlined{
@@ -66,16 +76,50 @@
       margin-top: 30px;
     }
 
-    .menus__searchInput{
+    .MuiFormControl-root:first-child{
+      margin-bottom: 0 !important;
+    }
+
+    input::-webkit-input-placeholder{
+      position: relative;
+      top: 0.2em;
+
       @include desktop{
+        top: 0.1em;
+      }
+    }
+
+    .menus__searchInput{
+      
+      @include desktop{
+        margin-top: 20px;
         order: 1;
+        flex-grow: 2;
         width: 400px !important;
       }
     }
 
     .menus__sortOptions{
+
+      .MuiSelect-outlined{
+        padding: 18px 64px;
+        display: flex;
+        
+
+        @include desktop{
+          padding: 18px 25px;
+          line-height: 40px;
+        }
+      }
+
+      p{
+        vertical-align: middle;
+        margin: .2rem 0 0;
+      }
+      
       @include desktop{
-        width: 300px !important;
+        max-width: 300px !important;
+        margin: 20px 20px 30px !important;
       }
     }
 
@@ -90,6 +134,10 @@
   
       button{
         width: 100% !important;
+      }
+
+      svg{
+        margin-right: 20px;
       }
     }
   }

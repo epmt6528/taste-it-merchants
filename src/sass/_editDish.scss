@@ -1,4 +1,6 @@
 .editDish{
+  background-color: $secondaryVariant;
+  padding-bottom: 135px;
 
   &__titleWrap{
     background-color: white;
@@ -54,12 +56,11 @@
     }
 
     &-nameInput{
-      margin-bottom: 90px !important;
-    }
+      margin-bottom: 90px;
 
-    &-priceInput{
 
     }
+
 
     &-saveButton{
       align-self: flex-start;
@@ -69,6 +70,7 @@
   &__metaWrap{
     @include desktop{
       display: flex;
+      width: 100%;
     }
   }
 
@@ -99,14 +101,13 @@
         margin-top: 0 !important;
       }
     }
-  }
 
-  &__descInput{
+    .editDish__editor-descInput{
       height: 280px !important;
 
     @include desktop{
-      height: auto !important;
-      flex-grow: 1;
+      height: 100% !important;
+      flex-grow: 3;
     }
 
     .MuiOutlinedInput-multiline{
@@ -117,4 +118,7 @@
       }
     }
   }
+  }
+
+  
 }
