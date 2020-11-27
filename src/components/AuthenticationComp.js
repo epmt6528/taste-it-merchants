@@ -3,7 +3,6 @@ import { getJwtToken } from "./getJwt";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
-import Navigation from './restaurants/navigation/Navigation'
 import Loading from "./Loading";
 import {BASE_URL} from "../config/config"
 

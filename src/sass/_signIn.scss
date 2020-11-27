@@ -13,9 +13,9 @@
     }
 
     &__logoLarge{
-      width: 115px;
+      width: 91.6px;
       position: absolute;
-      top: 5.3%;
+      top: 26.25px;
       left: 11.6%;
     }
 
@@ -97,6 +97,16 @@
       @include desktop{
         margin: 20px 0 0;
         width: 380.6px;
+      }
+    }
+
+    .MuiInputLabel-outlined {
+      z-index: 1;
+      transform: translate(25px, 20px) scale(1);
+      pointer-events: none;
+
+      @include desktop{
+        transform: translate(25px, 25px) scale(1);
       }
     }
 

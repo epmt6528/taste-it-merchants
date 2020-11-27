@@ -66,15 +66,25 @@
 // Detail Table
 .ordersTable__detailTable{
   padding: 16px 0 !important;
+  
 
   @include desktop{
     padding-bottom: 0 !important;
     padding-top: 0 !important;
     padding-left: 190px !important;
+    font-size: 21px !important;
   }
 
   hr{
     border-top: .5px solid $primaryVariant2;
+  }
+
+  &-cell{
+    font-size: 18px;
+
+    @include desktop{
+      font-size: 21px !important;
+    }
   }
   
 
@@ -104,6 +114,7 @@
       align-items: center;
       padding: 6px 125px 6px 0px !important;
       height: auto;
+      line-height: 30px !important;
     }
 
     // Icon

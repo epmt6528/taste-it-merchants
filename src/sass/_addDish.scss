@@ -26,6 +26,18 @@
     }
   }
 
+  .MuiInputLabel-outlined {
+    z-index: 1;
+    transform: translate(25px, 20px) scale(1);
+    pointer-events: none;
+
+    @include desktop{
+      transform: translate(25px, 25px) scale(1);
+    }
+  }
+
+
+
   &__editor{
     margin: 50px 20px;
     padding: 50px 20px 150px;
@@ -59,12 +71,9 @@
     }
 
     &-nameInput{
-      margin-bottom: 90px !important;
+      margin-bottom: 90px;
     }
 
-    &-priceInput{
-
-    }
 
     &-saveButton{
       align-self: flex-start;
@@ -90,6 +99,7 @@
     
     @include desktop{
       width: 100%;
+      margin-top: 20px;
     }
   }
 

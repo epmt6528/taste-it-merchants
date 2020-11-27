@@ -44,7 +44,7 @@ h1{
 
 
 // Form Input
-.makeStyles-root-1 .MuiFormControl-root{
+.MuiFormControl-root{
   margin: 20px 0 !important;
   width: 100% !important;
 
@@ -80,8 +80,19 @@ h1{
 }
 
 .MuiInputBase-input{
+  // padding: 0 30px !important;
+
   @include desktop{
     height: 40px !important;
+  }
+}
+
+.MuiOutlinedInput-inputMultiline{
+  height: 100% !important;
+  
+
+  @include desktop{
+    padding-top: 40px !important;
   }
 }
 
@@ -138,6 +149,11 @@ h1{
 //   background-color: $primary !important;
 //   color: #ffffff;
 // }
+
+a, 
+button{
+  cursor: pointer;
+}
 
 @import 'headerHome';
 @import 'toolbar';
