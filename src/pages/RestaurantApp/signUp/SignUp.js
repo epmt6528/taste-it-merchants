@@ -18,9 +18,9 @@ class SignUp extends Component {
         </MediaQuery>
 
         <MediaQuery minDeviceWidth={1201}>
-          <Link to="/" >
-            <img src={LogoLarge} alt="logo" className="signIn__logoLarge"/>
-          </Link>
+            <Link to="/" >
+              <img src={LogoLarge} alt="logo" className="signIn__logoLarge"/>
+            </Link>
         </MediaQuery>
         
         <div className="signUp__main">

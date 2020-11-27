@@ -11,18 +11,19 @@ class SignIn extends Component {
   render() {
     return (
       <div className="signIn">
+        
+          <MediaQuery maxDeviceWidth={1200}>
+            <Link to="/" >
+              <img src={Logo} alt="logo" className="signIn__logo"/>
+            </Link>
+          </MediaQuery>
 
-        <MediaQuery maxDeviceWidth={1200}>
-          <Link to="/" >
-            <img src={Logo} alt="logo" className="signIn__logo"/>
-          </Link>
-        </MediaQuery>
-
-        <MediaQuery minDeviceWidth={1201}>
-          <Link to="/" >
-            <img src={LogoLarge} alt="logo" className="signIn__logoLarge"/>
-          </Link>
-        </MediaQuery>
+          <MediaQuery minDeviceWidth={1201}>
+              <Link to="/" >
+                <img src={LogoLarge} alt="logo" className="signIn__logoLarge"/>
+              </Link>
+          </MediaQuery>
+          
         
         <div className="signIn__main">
           <picture>

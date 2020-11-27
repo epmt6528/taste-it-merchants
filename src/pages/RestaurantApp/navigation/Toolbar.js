@@ -1,6 +1,6 @@
 // Libraries
 import React from 'react';
-import {Link} from 'react-scroll'
+import {Link} from 'react-router-dom'
 
 // Images
 import SiteLogo from "../../../assets/img/logos/logo.svg"

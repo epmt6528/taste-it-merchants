@@ -58,7 +58,21 @@
     }
   }
 
-  &__locationWrap,
+  &__locationWrap{
+    display: flex;
+    margin-top: 10px;
+    
+    img{
+      align-self: flex-start;
+      max-width: 30px;
+      margin-right: 25px;
+    }
+
+    p{
+      margin-top: 6px;
+    }
+  }
+  
   &__phoneWrap{
     display: flex;
     
@@ -67,6 +81,8 @@
       margin-right: 25px;
     }
   }
+
+
 
   &__form{
     background-color: white;
@@ -86,6 +102,19 @@
 
       @include desktop{
         font-size: 32px;
+      }
+    }
+
+    form{
+      @include desktop{
+        display: flex;
+        flex-direction: column;
+      }
+
+      .MuiTextField-root{
+        @include desktop{
+          margin-bottom: 42px !important;
+        }
       }
     }
 
@@ -110,6 +139,16 @@
 
     button{
       margin-top: 20px;
+    }
+  }
+
+  .MuiInputLabel-outlined {
+    z-index: 1;
+    transform: translate(25px, 20px) scale(1);
+    pointer-events: none;
+
+    @include desktop{
+      transform: translate(25px, 25px) scale(1);
     }
   }
 }

@@ -71,13 +71,13 @@ export default function Navigation() {
   }
 
   return (
-      <div className={classes.root} >
+      <div className={classes.root} id="restaurantApp_wrap">
 
-      <MediaQuery maxDeviceWidth={1600}>
+      <MediaQuery maxDeviceWidth={1300}>
         <MobileMenu handleChange={handleChange} value={value}/>
       </MediaQuery>
 
-      <MediaQuery minDeviceWidth={1601}>
+      <MediaQuery minDeviceWidth={1301}>
         <div className="navigation__wrapper">
           <Link to="/"><img src={SiteLogo} alt="tasteIt Logo" className="navigation__logo"/></Link>
           {/* Navigation Menu */}

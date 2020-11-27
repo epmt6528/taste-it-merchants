@@ -117,7 +117,7 @@ class Contact extends Component {
     return (
       <div className="contact">
         <div className="contact__title">
-          <p>Hi {rName}, let's kepp in touch</p>
+          <p>Hi {rName}, let's keep in touch</p>
           <h1>Support</h1>
         </div>
 

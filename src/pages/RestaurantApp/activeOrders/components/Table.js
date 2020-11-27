@@ -137,13 +137,13 @@ function Row(props) {
                 <TableBody>
                   {row.customerInfo.map((customerInfoRow) => (
                     <TableRow key={customerInfoRow.customerName}  style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                      <TableCell component="th" scope="row"  style={{ border: 'none', fontFamily: 'NexaXBold'}}>
+                      <TableCell component="th" scope="row"  style={{ border: 'none', fontFamily: 'NexaXBold'}} className="ordersTable__detailTable-cell">
                         {customerInfoRow.customerName}
                       </TableCell>
-                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}}>{customerInfoRow.address}</TableCell>
-                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}}>{customerInfoRow.phoneNumber}</TableCell>
-                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}}>{customerInfoRow.instructions}</TableCell>
-                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}}>{customerInfoRow.dateTime}</TableCell>
+                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}} className="ordersTable__detailTable-cell">{customerInfoRow.address}</TableCell>
+                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}} className="ordersTable__detailTable-cell">{customerInfoRow.phoneNumber}</TableCell>
+                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}} className="ordersTable__detailTable-cell">{customerInfoRow.instructions}</TableCell>
+                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}} className="ordersTable__detailTable-cell">{customerInfoRow.dateTime}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

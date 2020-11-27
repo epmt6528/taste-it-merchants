@@ -52,8 +52,12 @@
   }
   
   &__arrowIcon{
-    width: 14px;
+    width: 15px;
     margin-right: 14.6px;
+    
+    @include desktop{
+      width: 20px;
+    }
   }
 
   .MuiSelect-iconOutlined{
@@ -76,9 +80,19 @@
       margin-bottom: 0 !important;
     }
 
+    input::-webkit-input-placeholder{
+      position: relative;
+      top: 0.2em;
+
+      @include desktop{
+        top: 0.1em;
+      }
+    }
+
     .menus__searchInput{
       
       @include desktop{
+        margin-top: 20px;
         order: 1;
         flex-grow: 2;
         width: 400px !important;
@@ -89,6 +103,18 @@
 
       .MuiSelect-outlined{
         padding: 18px 64px;
+        display: flex;
+        
+
+        @include desktop{
+          padding: 18px 25px;
+          line-height: 40px;
+        }
+      }
+
+      p{
+        vertical-align: middle;
+        margin: .2rem 0 0;
       }
       
       @include desktop{

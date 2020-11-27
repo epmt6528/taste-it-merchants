@@ -122,19 +122,19 @@ function Row(props) {
               <Table size="small" aria-label="purchases"  style={{ display: 'flex', flexDirection: 'row'}}>
                 <TableHead  className="ordersTable__detailTable-tabelHeader">
                   <TableRow  style={{ display: 'flex', flexDirection: 'column'}}>
-                    <TableCell className="ordersTable__detailTable-tHCell" ><img src={CustomerIcon} alt="Customer"/><span>Customer's name</span></TableCell>
-                    <TableCell className="ordersTable__detailTable-tHCell" ><img src={ReviewIcon} alt="Review"/><span>Review</span></TableCell>
-                    <TableCell className="ordersTable__detailTable-tHCell" ><img src={FeedbackIcon} alt="Feedback"/><span>feedback</span></TableCell>
+                    <TableCell className="ordersTable__detailTable-tHCell"><img src={CustomerIcon} alt="Customer"/><span>Customer's name</span></TableCell>
+                    <TableCell className="ordersTable__detailTable-tHCell"><img src={ReviewIcon} alt="Review"/><span>Review</span></TableCell>
+                    <TableCell className="ordersTable__detailTable-tHCell"><img src={FeedbackIcon} alt="Feedback"/><span>feedback</span></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.customerInfo.map((customerInfoRow) => (
                     <TableRow key={customerInfoRow.customerName} style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                      <TableCell component="th" scope="row" style={{ border: 'none', fontFamily: 'NexaXBold'}}>
+                      <TableCell component="th" scope="row" style={{ border: 'none', fontFamily: 'NexaXBold'}} className="ordersTable__detailTable-cell">
                         {customerInfoRow.customerName}
                       </TableCell>
-                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}}>{customerInfoRow.review ? <span style={{color: '#FFC400'}}>{customerInfoRow.review}</span> : 'Not reviewed yet'}</TableCell>
-                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}}>{customerInfoRow.feedback ? customerInfoRow.feedback: 'Not reviewed yet'}</TableCell>
+                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}} className="ordersTable__detailTable-cell">{customerInfoRow.review ? <span style={{color: '#FFC400'}}>{customerInfoRow.review}</span> : 'Not reviewed yet'}</TableCell>
+                      <TableCell style={{ border: 'none', fontFamily: 'NexaXBold'}} className="ordersTable__detailTable-cell">{customerInfoRow.feedback ? customerInfoRow.feedback: 'Not reviewed yet'}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

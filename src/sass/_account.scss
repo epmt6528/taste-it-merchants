@@ -38,6 +38,12 @@
       margin: 35px 56px ;
     }
 
+    input{
+      @include desktop{
+        padding-top: 40px !important;
+      }
+    }
+
     .MuiInputLabel-root{
       @extend %buttons;
       color: $primaryVariant1;
@@ -63,15 +69,15 @@
   &__wrap2,
   &__editorWrap1,
   &__editorWrap2{
-    &>div:first-child{
-      @include desktop{
-        padding-right: 20px;
-      }
-    }
+    // &>div:first-child{
+    //   @include desktop{
+    //     padding-right: 40px;
+    //   }
+    // }
 
-    &>div:last-child{
+    .MuiFormControl-root{
       @include desktop{
-        padding-left: 20px;
+        width: 47% !important;
       }
     }
 
@@ -127,6 +133,16 @@
 
     .MuiOutlinedInput-inputMultiline{
       height: 100% !important;
+    }
+  }
+
+  .MuiInputLabel-outlined{
+    z-index: 1;
+    transform: translate(25px, 20px) scale(1);
+    pointer-events: none;
+
+    @include desktop{
+      transform: translate(25px, 25px) scale(1);
     }
   }
 }

@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 // MaterialUI
 import { TextField } from "@material-ui/core"
 import MenuItem from '@material-ui/core/MenuItem'
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 // Components
 import MenuCard from "./components/MenuCard"
@@ -151,7 +152,10 @@ class Menus extends Component {
             className="menus__searchInput"
             onChange={e => this.keyWordSearch(e.target.value)}
             variant="outlined"
-            label={<><img src={Search} className="menus__searchIcon" alt="Search"/>Search</>}
+            InputProps={{
+              startAdornment: <InputAdornment position="start"><img src={Search} className="menus__searchIcon" alt="Search"/></InputAdornment>,
+            }}
+            placeholder='Search for a dish'
           />
 
           {/* "Sort By" Drop downs */}
@@ -162,9 +166,9 @@ class Menus extends Component {
             onChange={e => this.onSortingChange(e.target.value)}
             variant="outlined"
           >
-            <MenuItem key='1' value='1'><img src={Sort} alt="Arrow Icon" className="menus__arrowIcon"/>Sort By: Latest</MenuItem>
-            <MenuItem key='2' value='2'><img src={Sort} alt="Arrow Icon" className="menus__arrowIcon"/>Sort By: Oldest</MenuItem>
-            <MenuItem key='3' value='3'><img src={Sort} alt="Arrow Icon" className="menus__arrowIcon"/>Sort By: ABC</MenuItem>
+            <MenuItem key='1' value='1'><img src={Sort} alt="Arrow Icon" className="menus__arrowIcon"/><p>Sort By: Latest</p></MenuItem>
+            <MenuItem key='2' value='2'><img src={Sort} alt="Arrow Icon" className="menus__arrowIcon"/><p>Sort By: Oldest</p></MenuItem>
+            <MenuItem key='3' value='3'><img src={Sort} alt="Arrow Icon" className="menus__arrowIcon"/><p>Sort By: ABC</p></MenuItem>
           </TextField>
 
 

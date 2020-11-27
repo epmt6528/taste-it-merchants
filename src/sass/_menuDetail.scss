@@ -84,6 +84,14 @@
       @extend %buttons;
       font-size: 20px;
     }
+
+    .MuiFormControl-root{
+      width: 100% !important;
+
+      .MuiInputBase-input{
+        line-height: 40px;
+      }
+    }
   }
 
   &__nameWrap,
